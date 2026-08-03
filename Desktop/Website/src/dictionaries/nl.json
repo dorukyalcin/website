@@ -1,0 +1,405 @@
+{
+  "language": {
+    "code": "nl",
+    "label": "Nederlands",
+    "shortLabel": "NL",
+    "htmlLang": "nl",
+    "ogLocale": "nl_NL"
+  },
+  "site": {
+    "name": "Avernsys",
+    "description": "Avernsys bouwt Rotasal, software voor last-mile routeoptimalisatie voor bezorgteams.",
+    "tagline": "Gebouwd voor wat morgen vraagt.",
+    "copyright": "Alle rechten voorbehouden."
+  },
+  "navigation": {
+    "brand": "Avernsys",
+    "menuLabel": "Menu openen of sluiten",
+    "languageLabel": "Taal",
+    "links": [
+      {
+        "key": "primeroute",
+        "label": "Rotasal"
+      },
+      {
+        "key": "about",
+        "label": "Over ons"
+      },
+      {
+        "key": "contact",
+        "label": "Contact"
+      }
+    ]
+  },
+  "footer": {
+    "brandDescription": "Gebouwd voor wat morgen vraagt.",
+    "columns": [
+      {
+        "title": "Producten",
+        "links": [
+          {
+            "key": "primeroute",
+            "label": "Rotasal"
+          }
+        ]
+      },
+      {
+        "title": "Bedrijf",
+        "links": [
+          {
+            "key": "about",
+            "label": "Over ons"
+          },
+          {
+            "key": "contact",
+            "label": "Contact"
+          }
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "home": {
+      "title": "Avernsys | Rotasal software voor last-mile routeoptimalisatie",
+      "description": "Avernsys bouwt Rotasal, software voor last-mile routeoptimalisatie waarmee bezorgteams slimmer plannen, kosten verlagen en sneller leveren.",
+      "keywords": [
+        "Avernsys",
+        "Rotasal",
+        "last-mile bezorgsoftware",
+        "routeoptimalisatie software",
+        "bezorgroutes software",
+        "logistieke optimalisatie software"
+      ],
+      "socialImageAlt": "Voorbeeld van de homepage van Avernsys"
+    },
+    "about": {
+      "title": "Over Avernsys",
+      "description": "Maak kennis met de oprichters van Avernsys en ontdek hoe we Rotasal bouwen voor last-mile bezorgoperaties.",
+      "keywords": [
+        "over Avernsys",
+        "Avernsys oprichters",
+        "B2B softwarebedrijf",
+        "logistieke software startup"
+      ],
+      "socialImageAlt": "Voorbeeld van de homepage van Avernsys"
+    },
+    "contact": {
+      "title": "Contact met Avernsys",
+      "description": "Neem contact op met Avernsys voor een Rotasal-demo, vragen over routeoptimalisatie of een mogelijk partnership.",
+      "keywords": [
+        "contact Avernsys",
+        "Avernsys demo",
+        "Rotasal demo",
+        "routeoptimalisatie demo",
+        "last-mile bezorgsoftware"
+      ],
+      "socialImageAlt": "Voorbeeld van de homepage van Avernsys"
+    },
+    "primeroute": {
+      "title": "Rotasal | Software voor last-mile routeoptimalisatie",
+      "description": "Rotasal helpt bezorgteams om de last mile in seconden te optimaliseren, met slimmere routes, lagere kosten en betrouwbaardere leveringen.",
+      "keywords": [
+        "Rotasal",
+        "route optimalisatie software",
+        "last-mile software",
+        "bezorgroutes software",
+        "fleet route planning",
+        "logistieke optimalisatie software"
+      ],
+      "socialImageAlt": "Social preview van Rotasal"
+    }
+  },
+  "structuredData": {
+    "organizationKnowsAbout": [
+      "B2B-software",
+      "Last-mile bezorgoptimalisatie",
+      "Routeoptimalisatie software",
+      "Bezorgroutes plannen",
+      "Logistieke optimalisatie software"
+    ],
+    "organizationDisambiguation": "Avernsys is een onafhankelijk softwarebedrijf dat Rotasal bouwt, een platform voor het optimaliseren van last-mile bezorgroutes. Avernsys is niet gelieerd aan bedrijven met een vergelijkbare naam.",
+    "softwareApplications": {
+      "primeroute": {
+        "applicationSubCategory": "software voor de last mile",
+        "featureList": [
+          "Last-mile routes direct vanuit uw orders berekenen en optimaliseren",
+          "Snellere leveringen met lagere operationele kosten",
+          "Webgebaseerde workflows voor bezorgteams"
+        ]
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "eyebrow": "Avernsys",
+        "titleLines": [
+          "Gebouwd voor",
+          "de volgende stap."
+        ],
+        "description": "We bouwen technologie die bezorgoperaties vooruithelpt. Eén product. Eén focus.",
+        "primaryCta": "Bekijk de producten",
+        "secondaryCta": "Neem contact op"
+      },
+      "products": {
+        "eyebrow": "Producten",
+        "titleLines": [
+          "Eén product.",
+          "Scherpe focus."
+        ],
+        "items": [
+          {
+            "name": "Avernsys Rotasal",
+            "tagline": "De last mile, slimmer geregeld.",
+            "description": "Zet orders in seconden om naar geoptimaliseerde routes. Minder verspilling, lagere kosten en meer rust in de dagelijkse operatie.",
+            "key": "primeroute",
+            "hoverGlow": "from-blue-500/[0.03]"
+          }
+        ],
+        "learnMore": "Meer weten"
+      },
+      "vision": {
+        "titleLines": [
+          "We bouwen niet zomaar software.",
+          "We bouwen wat allang had moeten bestaan."
+        ]
+      }
+    },
+    "about": {
+      "hero": {
+        "eyebrow": "Over ons",
+        "titleLines": [
+          "Twee oprichters.",
+          "Eén duidelijke missie."
+        ],
+        "description": "Avernsys is ontstaan vanuit één overtuiging: technologie moet mensen verbinden en werkprocessen beter laten lopen."
+      },
+      "story": {
+        "title": "Ons verhaal",
+        "paragraphs": [
+          "Avernsys begon met twee mensen die zagen hoeveel tijd bedrijven verliezen door inefficiënte last-mile logistiek.",
+          "In plaats van te wachten tot iemand anders dat zou oplossen, bouwden we Rotasal: software voor routeoptimalisatie die bezorgorders in seconden omzet in efficiënte routes.",
+          "We geloven in minder dingen uitzonderlijk goed doen. Rotasal wordt met zorg gebouwd, is ontworpen om lang mee te gaan en richt zich op één operationeel probleem dat ertoe doet."
+        ]
+      },
+      "founders": {
+        "eyebrow": "Team",
+        "title": "De oprichters",
+        "people": {
+          "doruk": {
+            "role": "Medeoprichter",
+            "bio": "Werkte eerder als engineer bij Amazon aan systemen die wereldwijde logistiek op schaal ondersteunen. Deed computer vision-onderzoek aan UCLA en stapte daarna over naar Tesla om te werken aan perceptiesystemen voor autonoom rijden. Brengt diepgaande kennis mee op het gebied van optimalisatie, machine learning en technologie die in de praktijk echt moet werken."
+          },
+          "murat": {
+            "role": "Medeoprichter",
+            "bio": "Komt uit de advieswereld met ervaring bij zowel PwC als Deloitte. Richt zich op strategie, operatie en het slim opschalen van organisaties. Begrijpt hoe bedrijven beslissen, wat ze nodig hebben en hoe je oplossingen levert die vertrouwen opbouwen."
+          }
+        }
+      },
+      "values": {
+        "eyebrow": "Waarden",
+        "title": "Wat ons drijft",
+        "items": [
+          {
+            "title": "Zorgvuldigheid boven concessies",
+            "description": "Details doen ertoe. Wij willen software maken die doordacht aanvoelt, niet alleen iets dat technisch werkt."
+          },
+          {
+            "title": "Bouw alleen wat ertoe doet",
+            "description": "We lossen echte problemen op voor echte mensen. Als iets de gebruiker niet duidelijk verder helpt, hoort het niet in het product."
+          },
+          {
+            "title": "Klein team, snel handelen",
+            "description": "Twee oprichters, weinig ruis. We nemen snel beslissingen, verbeteren voortdurend en laten het werk voor zich spreken."
+          }
+        ]
+      }
+    },
+    "primeroute": {
+      "hero": {
+        "eyebrow": "Avernsys Rotasal",
+        "titleLines": [
+          "De last mile,",
+          "slimmer geregeld."
+        ],
+        "description": "Voer je orders in en ontvang in seconden geoptimaliseerde routes. Snellere leveringen, lagere kosten en meer grip op de dagelijkse operatie.",
+        "primaryCta": "Start met optimaliseren"
+      },
+      "steps": {
+        "eyebrow": "Zo werkt het",
+        "titleLines": [
+          "Drie stappen.",
+          "Meer is het niet."
+        ],
+        "items": [
+          {
+            "step": "01",
+            "title": "Voer je orders in",
+            "description": "Upload adressen, tijdvakken en pakketinformatie via een bestand, drag-and-drop of een API-koppeling."
+          },
+          {
+            "step": "02",
+            "title": "Wij optimaliseren",
+            "description": "Onze engine berekent in realtime de slimste routes. Alle variabelen tellen mee, elke minuut maakt verschil."
+          },
+          {
+            "step": "03",
+            "title": "Lever slimmer uit",
+            "description": "Je chauffeurs krijgen direct de beste route. Jij krijgt tevredener klanten en een operatie die beter loopt."
+          }
+        ]
+      },
+      "features": [
+        {
+          "label": "Snelheid",
+          "title": "Resultaten in seconden, niet in uren.",
+          "description": "Rotasal verwerkt duizenden afleverpunten in realtime. Geen handmatige planning meer, maar direct routes waar je chauffeurs meteen mee verder kunnen."
+        },
+        {
+          "label": "Optimalisatie",
+          "title": "Elke rit aantoonbaar slimmer.",
+          "description": "Verkeerspatronen, tijdvensters, voertuigcapaciteit en operationele beperkingen worden samen meegenomen. Het resultaat: minder kilometers, minder kosten en meer leveringen op tijd."
+        },
+        {
+          "label": "Integratie",
+          "title": "Past in wat je al gebruikt.",
+          "description": "Dankzij een API-first architectuur sluit Rotasal aan op je bestaande systemen. Van ordermanagement tot warehouse en e-commerce: koppelen gaat snel en zonder gedoe."
+        }
+      ],
+      "cta": {
+        "titleLines": [
+          "Stop met onnodige kilometers.",
+          "Ga slimmer leveren."
+        ],
+        "description": "Of je nu 50 orders per dag bezorgt of 5.000, Rotasal groeit met je mee. Laten we samen je last mile optimaliseren.",
+        "primaryCta": "Aan de slag",
+        "secondaryCta": "Bekijk een demo"
+      }
+    },
+    "contact": {
+      "hero": {
+        "eyebrow": "Contact",
+        "titleLines": [
+          "Laten we kennismaken."
+        ],
+        "description": "Heb je een vraag, wil je een demo of gewoon even contact? We horen graag van je."
+      },
+      "success": {
+        "title": "Bericht verzonden.",
+        "description": "We komen snel bij je terug."
+      },
+      "form": {
+        "nameLabel": "Naam",
+        "namePlaceholder": "Je naam",
+        "emailLabel": "E-mail",
+        "emailPlaceholder": "jij@bedrijf.nl",
+        "subjectLabel": "Onderwerp",
+        "subjectPlaceholder": "Kies een onderwerp",
+        "subjectOptions": [
+          {
+            "value": "primeroute",
+            "label": "Rotasal"
+          },
+          {
+            "value": "general",
+            "label": "Algemene vraag"
+          },
+          {
+            "value": "partnership",
+            "label": "Partnership"
+          }
+        ],
+        "messageLabel": "Bericht",
+        "messagePlaceholder": "Vertel kort waar je naar op zoek bent...",
+        "submitLabel": "Verstuur bericht"
+      }
+    },
+    "notFound": {
+      "title": "Pagina niet gevonden",
+      "description": "De link werkt mogelijk niet meer of de pagina is verwijderd. Probeer een van de onderstaande pagina's of neem contact met ons op.",
+      "primaryCta": "Terug naar home",
+      "secondaryCta": "Contact",
+      "navigationLabel": "Populaire pagina's",
+      "links": [
+        {
+          "key": "home",
+          "label": "Home"
+        },
+        {
+          "key": "primeroute",
+          "label": "Rotasal"
+        },
+        {
+          "key": "contact",
+          "label": "Contact"
+        }
+      ]
+    }
+  },
+  "shareImages": {
+    "homeOpenGraph": {
+      "eyebrow": "Last-mile routeoptimalisatie",
+      "title": "Avernsys",
+      "description": "Eén product, één focus. Rotasal optimaliseert bezorgroutes voor snellere en slankere operaties.",
+      "tone": "neutral",
+      "highlights": [
+        {
+          "label": "Rotasal",
+          "title": "Slimmere routes",
+          "description": "Optimaliseer last-mile bezorgplannen in seconden."
+        },
+        {
+          "label": "Operatie",
+          "title": "Minder verspilling",
+          "description": "Minder handmatige planning, kilometers en vertraging."
+        },
+        {
+          "label": "Avernsys",
+          "title": "Built for what's next",
+          "description": "Gefocust productontwerp voor praktische logistieke teams."
+        }
+      ]
+    },
+    "homeTwitter": {
+      "eyebrow": "Avernsys",
+      "title": "Gebouwd voor wat morgen vraagt.",
+      "description": "Een productbedrijf met focus op last-mile routeoptimalisatie.",
+      "tone": "amber",
+      "highlights": [
+        {
+          "label": "Rotasal",
+          "title": "Routeoptimalisatie",
+          "description": "Last-mile planning voor bezorgteams."
+        },
+        {
+          "label": "Avernsys",
+          "title": "Gefocuste software",
+          "description": "Eén product, zorgvuldig gebouwd."
+        }
+      ]
+    },
+    "primeroute": {
+      "eyebrow": "Rotasal",
+      "title": "De last mile, slimmer geregeld.",
+      "description": "Zet orders in seconden om in geoptimaliseerde routes met een API-first engine voor snelle operationele keuzes.",
+      "tone": "blue",
+      "highlights": [
+        {
+          "label": "Optimalisatie",
+          "title": "Minder kilometers",
+          "description": "Beperk routeverlies en lever efficiënter uit."
+        },
+        {
+          "label": "Snelheid",
+          "title": "Resultaat in seconden",
+          "description": "Van handmatig plannen naar direct routevoorstel."
+        },
+        {
+          "label": "Integratie",
+          "title": "Past in je stack",
+          "description": "Koppel ordermanagement, WMS of e-commerce zonder frictie."
+        }
+      ]
+    }
+  }
+}

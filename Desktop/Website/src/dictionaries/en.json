@@ -1,0 +1,405 @@
+{
+  "language": {
+    "code": "en",
+    "label": "English",
+    "shortLabel": "EN",
+    "htmlLang": "en",
+    "ogLocale": "en_US"
+  },
+  "site": {
+    "name": "Avernsys",
+    "description": "Avernsys builds Rotasal, last-mile route optimization software for delivery teams.",
+    "tagline": "Built for what's next.",
+    "copyright": "All rights reserved."
+  },
+  "navigation": {
+    "brand": "Avernsys",
+    "menuLabel": "Toggle menu",
+    "languageLabel": "Language",
+    "links": [
+      {
+        "key": "primeroute",
+        "label": "Rotasal"
+      },
+      {
+        "key": "about",
+        "label": "About"
+      },
+      {
+        "key": "contact",
+        "label": "Contact"
+      }
+    ]
+  },
+  "footer": {
+    "brandDescription": "Built for what's next.",
+    "columns": [
+      {
+        "title": "Products",
+        "links": [
+          {
+            "key": "primeroute",
+            "label": "Rotasal"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "key": "about",
+            "label": "About"
+          },
+          {
+            "key": "contact",
+            "label": "Contact"
+          }
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "home": {
+      "title": "Avernsys | Rotasal Route Optimization Software",
+      "description": "Avernsys builds Rotasal, last-mile route optimization software that helps delivery teams plan smarter routes, lower costs, and move faster.",
+      "keywords": [
+        "Avernsys",
+        "Rotasal",
+        "last-mile delivery software",
+        "route optimization software",
+        "delivery routing software",
+        "logistics optimization software"
+      ],
+      "socialImageAlt": "Avernsys homepage preview"
+    },
+    "about": {
+      "title": "About Avernsys",
+      "description": "Meet the Avernsys founders and learn how we build Rotasal for last-mile delivery operations.",
+      "keywords": [
+        "about Avernsys",
+        "Avernsys founders",
+        "B2B software company",
+        "logistics software founders"
+      ],
+      "socialImageAlt": "Avernsys homepage preview"
+    },
+    "contact": {
+      "title": "Contact Avernsys",
+      "description": "Contact Avernsys to request a Rotasal demo, ask questions about route optimization, or discuss a partnership.",
+      "keywords": [
+        "contact Avernsys",
+        "Avernsys demo",
+        "Rotasal demo",
+        "route optimization demo",
+        "last-mile delivery software"
+      ],
+      "socialImageAlt": "Avernsys homepage preview"
+    },
+    "primeroute": {
+      "title": "Rotasal | Last-Mile Route Optimization Software",
+      "description": "Rotasal helps delivery teams optimize last-mile routes in seconds with smarter routing, lower costs, and faster deliveries.",
+      "keywords": [
+        "Rotasal",
+        "route optimization software",
+        "last-mile delivery software",
+        "delivery routing software",
+        "fleet route planning",
+        "logistics optimization software"
+      ],
+      "socialImageAlt": "Rotasal social preview"
+    }
+  },
+  "structuredData": {
+    "organizationKnowsAbout": [
+      "B2B software",
+      "Last-mile delivery optimization",
+      "Route optimization software",
+      "Delivery route planning",
+      "Logistics optimization software"
+    ],
+    "organizationDisambiguation": "Avernsys is an independent software company that builds Rotasal, a last-mile delivery route optimization platform. Avernsys is not affiliated with similarly named companies.",
+    "softwareApplications": {
+      "primeroute": {
+        "applicationSubCategory": "Last-mile delivery software",
+        "featureList": [
+          "Last-mile route optimization from your orders",
+          "Faster deliveries and lower operational cost",
+          "Web-based workflow for delivery teams"
+        ]
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "eyebrow": "Introducing Avernsys",
+        "titleLines": [
+          "Built for",
+          "what's next."
+        ],
+        "description": "We build technology that moves delivery operations forward. One product. One focus.",
+        "primaryCta": "Explore",
+        "secondaryCta": "Get in touch"
+      },
+      "products": {
+        "eyebrow": "Products",
+        "titleLines": [
+          "One product.",
+          "Built with focus."
+        ],
+        "items": [
+          {
+            "name": "Avernsys Rotasal",
+            "tagline": "Last-mile delivery, solved.",
+            "description": "Enter your orders. Get optimized delivery routes in seconds. Faster deliveries, lower costs, zero guesswork.",
+            "key": "primeroute",
+            "hoverGlow": "from-blue-500/[0.03]"
+          }
+        ],
+        "learnMore": "Learn more"
+      },
+      "vision": {
+        "titleLines": [
+          "We don't just build software.",
+          "We build what should already exist."
+        ]
+      }
+    },
+    "about": {
+      "hero": {
+        "eyebrow": "About",
+        "titleLines": [
+          "Two founders.",
+          "One mission."
+        ],
+        "description": "Avernsys was built on a simple belief: technology should connect people and make things work better. That's what we do."
+      },
+      "story": {
+        "title": "Our story",
+        "paragraphs": [
+          "Avernsys started with two people who saw how much time businesses lose to inefficient last-mile logistics.",
+          "Instead of waiting for someone else to solve it, we built Rotasal: route optimization software that turns delivery orders into efficient routes in seconds.",
+          "We're a company that believes in doing fewer things exceptionally well. Rotasal is built with care, designed to last, and focused on one operational problem that matters."
+        ]
+      },
+      "founders": {
+        "eyebrow": "Team",
+        "title": "The founders",
+        "people": {
+          "doruk": {
+            "role": "Co-Founder",
+            "bio": "Former engineer at Amazon, where he built systems that power global logistics at scale. Conducted computer vision research at UCLA, then joined Tesla to work on the perception systems behind autonomous driving. Brings deep expertise in optimization, machine learning, and building technology that operates in the real world."
+          },
+          "murat": {
+            "role": "Co-Founder",
+            "bio": "Comes from the advisory and consulting world, with experience at both PwC and Deloitte - two of the Big Four. Specializes in business strategy, operations, and helping organizations scale intelligently. Understands how enterprises think, what they need, and how to deliver solutions that earn their trust."
+          }
+        }
+      },
+      "values": {
+        "eyebrow": "Values",
+        "title": "What drives us",
+        "items": [
+          {
+            "title": "Craft over compromise",
+            "description": "Every detail matters. We obsess over the experience because our users deserve software that feels considered, not just functional."
+          },
+          {
+            "title": "Ship what matters",
+            "description": "We solve real problems for real people. If it doesn't serve the user, it doesn't ship."
+          },
+          {
+            "title": "Stay lean, move fast",
+            "description": "Two founders. No bureaucracy. We make decisions quickly, iterate constantly, and let the work speak for itself."
+          }
+        ]
+      }
+    },
+    "primeroute": {
+      "hero": {
+        "eyebrow": "Avernsys Rotasal",
+        "titleLines": [
+          "Last-mile delivery,",
+          "solved."
+        ],
+        "description": "Enter your orders. Get optimized delivery routes in seconds. Faster deliveries, lower costs, zero guesswork.",
+        "primaryCta": "Start Optimizing"
+      },
+      "steps": {
+        "eyebrow": "How it works",
+        "titleLines": [
+          "Three steps.",
+          "That's it."
+        ],
+        "items": [
+          {
+            "step": "01",
+            "title": "Enter your orders",
+            "description": "Upload your delivery list - addresses, time windows, package details. Drag and drop or integrate via API."
+          },
+          {
+            "step": "02",
+            "title": "We optimize",
+            "description": "Our engine calculates the fastest, most efficient routes in real time. Every variable considered. Every second counts."
+          },
+          {
+            "step": "03",
+            "title": "Deliver smarter",
+            "description": "Your drivers get turn-by-turn optimized routes. You get happier customers and lower operational costs."
+          }
+        ]
+      },
+      "features": [
+        {
+          "label": "Speed",
+          "title": "Results in seconds, not hours.",
+          "description": "The Rotasal optimization engine processes thousands of delivery points in real time. No waiting, no manual route planning. Just instant, optimized routes your drivers can follow immediately."
+        },
+        {
+          "label": "Optimization",
+          "title": "Every route, mathematically optimal.",
+          "description": "We factor in traffic patterns, delivery windows, vehicle capacity, and driver constraints. The result: fewer miles, less fuel, more deliveries per route - and customers who get their orders on time."
+        },
+        {
+          "label": "Integration",
+          "title": "Plugs into what you already use.",
+          "description": "API-first architecture means Rotasal works with your existing systems. Connect your order management, warehouse, or e-commerce platform. Up and running in hours, not weeks."
+        }
+      ],
+      "cta": {
+        "titleLines": [
+          "Stop wasting miles.",
+          "Start delivering smarter."
+        ],
+        "description": "Whether you deliver 50 orders a day or 5,000, Rotasal scales with you. Let's optimize your last mile.",
+        "primaryCta": "Get Started",
+        "secondaryCta": "See a Demo"
+      }
+    },
+    "contact": {
+      "hero": {
+        "eyebrow": "Contact",
+        "titleLines": [
+          "Let's talk."
+        ],
+        "description": "Have a question, want a demo, or just want to say hello? We'd love to hear from you."
+      },
+      "success": {
+        "title": "Message sent.",
+        "description": "We'll get back to you shortly."
+      },
+      "form": {
+        "nameLabel": "Name",
+        "namePlaceholder": "Your name",
+        "emailLabel": "Email",
+        "emailPlaceholder": "you@company.com",
+        "subjectLabel": "Subject",
+        "subjectPlaceholder": "Select a topic",
+        "subjectOptions": [
+          {
+            "value": "primeroute",
+            "label": "Rotasal"
+          },
+          {
+            "value": "general",
+            "label": "General Inquiry"
+          },
+          {
+            "value": "partnership",
+            "label": "Partnership"
+          }
+        ],
+        "messageLabel": "Message",
+        "messagePlaceholder": "Tell us what you're looking for...",
+        "submitLabel": "Send Message"
+      }
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The link may be broken or the page may have been removed. Try one of the links below or reach out from our contact page.",
+      "primaryCta": "Back to home",
+      "secondaryCta": "Contact",
+      "navigationLabel": "Popular pages",
+      "links": [
+        {
+          "key": "home",
+          "label": "Home"
+        },
+        {
+          "key": "primeroute",
+          "label": "Rotasal"
+        },
+        {
+          "key": "contact",
+          "label": "Contact"
+        }
+      ]
+    }
+  },
+  "shareImages": {
+    "homeOpenGraph": {
+      "eyebrow": "Last-mile route optimization",
+      "title": "Avernsys",
+      "description": "One product, one focus. Rotasal optimizes delivery routes for faster, leaner operations.",
+      "tone": "neutral",
+      "highlights": [
+        {
+          "label": "Rotasal",
+          "title": "Smarter routes",
+          "description": "Optimize last-mile delivery plans in seconds."
+        },
+        {
+          "label": "Operations",
+          "title": "Less waste",
+          "description": "Reduce manual planning, miles, and delivery drag."
+        },
+        {
+          "label": "Avernsys",
+          "title": "Built for what's next",
+          "description": "Focused product design for practical logistics teams."
+        }
+      ]
+    },
+    "homeTwitter": {
+      "eyebrow": "Avernsys",
+      "title": "Built for what's next.",
+      "description": "A product company focused on last-mile route optimization.",
+      "tone": "amber",
+      "highlights": [
+        {
+          "label": "Rotasal",
+          "title": "Route optimization",
+          "description": "Last-mile planning for delivery teams."
+        },
+        {
+          "label": "Avernsys",
+          "title": "Focused software",
+          "description": "One product, built carefully."
+        }
+      ]
+    },
+    "primeroute": {
+      "eyebrow": "Rotasal",
+      "title": "Last-mile delivery, solved.",
+      "description": "Turn orders into optimized routes in seconds with an API-first engine built for operational speed.",
+      "tone": "blue",
+      "highlights": [
+        {
+          "label": "Optimization",
+          "title": "Fewer miles",
+          "description": "Reduce route waste and deliver more efficiently."
+        },
+        {
+          "label": "Speed",
+          "title": "Results in seconds",
+          "description": "Move from manual planning to instant routing."
+        },
+        {
+          "label": "Integration",
+          "title": "Fits your stack",
+          "description": "Connect order systems, WMS, or e-commerce flows."
+        }
+      ]
+    }
+  }
+}

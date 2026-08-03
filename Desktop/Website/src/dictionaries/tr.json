@@ -1,0 +1,405 @@
+{
+  "language": {
+    "code": "tr",
+    "label": "Türkçe",
+    "shortLabel": "TR",
+    "htmlLang": "tr",
+    "ogLocale": "tr_TR"
+  },
+  "site": {
+    "name": "Avernsys",
+    "description": "Avernsys, teslimat ekipleri için son kilometre rota optimizasyon yazılımı Rotasal'i geliştirir.",
+    "tagline": "Yarının ihtiyaçları için.",
+    "copyright": "Tüm hakları saklıdır."
+  },
+  "navigation": {
+    "brand": "Avernsys",
+    "menuLabel": "Menüyü aç veya kapat",
+    "languageLabel": "Dil",
+    "links": [
+      {
+        "key": "primeroute",
+        "label": "Rotasal"
+      },
+      {
+        "key": "about",
+        "label": "Hakkımızda"
+      },
+      {
+        "key": "contact",
+        "label": "İletişim"
+      }
+    ]
+  },
+  "footer": {
+    "brandDescription": "Yarının ihtiyaçları için.",
+    "columns": [
+      {
+        "title": "Ürünler",
+        "links": [
+          {
+            "key": "primeroute",
+            "label": "Rotasal"
+          }
+        ]
+      },
+      {
+        "title": "Şirket",
+        "links": [
+          {
+            "key": "about",
+            "label": "Hakkımızda"
+          },
+          {
+            "key": "contact",
+            "label": "İletişim"
+          }
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "home": {
+      "title": "Avernsys | Rotasal Son Kilometre Rota Optimizasyon Yazılımı",
+      "description": "Avernsys, teslimat ekiplerinin daha akıllı rota planlamasına, maliyetleri düşürmesine ve daha hızlı teslimat yapmasına yardımcı olan Rotasal son kilometre rota optimizasyon yazılımını geliştirir.",
+      "keywords": [
+        "Avernsys",
+        "Rotasal",
+        "son kilometre teslimat yazılımı",
+        "rota optimizasyon yazılımı",
+        "teslimat rota planlama",
+        "lojistik optimizasyon yazılımı"
+      ],
+      "socialImageAlt": "Avernsys ana sayfa önizlemesi"
+    },
+    "about": {
+      "title": "Avernsys Hakkında",
+      "description": "Avernsys kurucularını tanıyın ve Rotasal'i son kilometre teslimat operasyonları için nasıl geliştirdiğimizi öğrenin.",
+      "keywords": [
+        "Avernsys hakkında",
+        "Avernsys kurucuları",
+        "B2B yazılım şirketi",
+        "lojistik yazılım girişimi"
+      ],
+      "socialImageAlt": "Avernsys ana sayfa önizlemesi"
+    },
+    "contact": {
+      "title": "Avernsys ile İletişime Geçin",
+      "description": "Rotasal demosu talep etmek, rota optimizasyonu hakkında soru sormak veya iş birliği konuşmak için Avernsys ile iletişime geçin.",
+      "keywords": [
+        "Avernsys iletişim",
+        "Avernsys demo",
+        "Rotasal demo",
+        "rota optimizasyon demosu",
+        "son kilometre teslimat yazılımı"
+      ],
+      "socialImageAlt": "Avernsys ana sayfa önizlemesi"
+    },
+    "primeroute": {
+      "title": "Rotasal | Son Kilometre Rota Optimizasyon Yazılımı",
+      "description": "Rotasal, teslimat ekiplerinin rotalarını saniyeler içinde optimize ederek daha düşük maliyet, daha hızlı teslimat ve daha verimli operasyon sunar.",
+      "keywords": [
+        "Rotasal",
+        "rota optimizasyon yazılımı",
+        "son kilometre teslimat yazılımı",
+        "dağıtım rota planlama",
+        "filo rota optimizasyonu",
+        "lojistik optimizasyon yazılımı"
+      ],
+      "socialImageAlt": "Rotasal sosyal medya önizlemesi"
+    }
+  },
+  "structuredData": {
+    "organizationKnowsAbout": [
+      "B2B yazılım",
+      "Son kilometre teslimat optimizasyonu",
+      "Rota optimizasyon yazılımı",
+      "Teslimat rota planlama",
+      "Lojistik optimizasyon yazılımı"
+    ],
+    "organizationDisambiguation": "Avernsys, son kilometre teslimat rotalarini optimize eden Rotasal platformunu gelistiren bagimsiz bir yazilim sirketidir. Avernsys, benzer adli sirketlerle baglantili degildir.",
+    "softwareApplications": {
+      "primeroute": {
+        "applicationSubCategory": "Son kilometre teslimat yazılımı",
+        "featureList": [
+          "Siparişlerden son kilometre rotaları oluşturma ve optimize etme",
+          "Daha hızlı teslimat ve daha düşük operasyon maliyeti",
+          "Teslimat ekipleri için web tabanlı iş akışları"
+        ]
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "eyebrow": "Avernsys",
+        "titleLines": [
+          "Yarının iş akışları",
+          "için üretilen yazılım."
+        ],
+        "description": "Teslimat operasyonlarını ileri taşıyan teknoloji geliştiriyoruz. Tek ürün. Net odak.",
+        "primaryCta": "Ürünleri incele",
+        "secondaryCta": "İletişime geç"
+      },
+      "products": {
+        "eyebrow": "Ürünler",
+        "titleLines": [
+          "Tek ürün.",
+          "Net odak."
+        ],
+        "items": [
+          {
+            "name": "Avernsys Rotasal",
+            "tagline": "Son kilometreyi daha akıllı yönetin.",
+            "description": "Siparişlerinizi saniyeler içinde optimize edilmiş rotalara dönüştürün. Daha az kilometre, daha düşük maliyet, daha düzenli teslimat.",
+            "key": "primeroute",
+            "hoverGlow": "from-blue-500/[0.03]"
+          }
+        ],
+        "learnMore": "Detayları gör"
+      },
+      "vision": {
+        "titleLines": [
+          "Sadece yazılım geliştirmiyoruz.",
+          "Eksik olanı ortaya çıkarıyoruz."
+        ]
+      }
+    },
+    "about": {
+      "hero": {
+        "eyebrow": "Hakkımızda",
+        "titleLines": [
+          "İki kurucu.",
+          "Tek odak."
+        ],
+        "description": "Avernsys, teknolojinin insanları bir araya getirmesi ve işlerin daha iyi işlemesini sağlaması gerektiği fikriyle kuruldu."
+      },
+      "story": {
+        "title": "Hikayemiz",
+        "paragraphs": [
+          "Avernsys, şirketlerin verimsiz son kilometre lojistiği yüzünden ne kadar zaman kaybettiğini gören iki kişiyle başladı.",
+          "Bu problemi başkasının çözmesini beklemek yerine Rotasal'i geliştirdik: teslimat siparişlerini saniyeler içinde verimli rotalara dönüştüren rota optimizasyon yazılımı.",
+          "Az sayıda işi çok iyi yapmaya inanıyoruz. Rotasal özenle geliştiriliyor, uzun vadeli kullanılmak üzere tasarlanıyor ve gerçekten önemli olan tek bir operasyon problemine odaklanıyor."
+        ]
+      },
+      "founders": {
+        "eyebrow": "Ekip",
+        "title": "Kurucular",
+        "people": {
+          "doruk": {
+            "role": "Kurucu Ortak",
+            "bio": "Amazon'da global lojistik sistemleri üzerinde çalıştı. UCLA'de bilgisayarlı görü alanında araştırma yaptı, ardından Tesla'da otonom sürüş algı sistemlerine katkıda bulundu. Optimizasyon, makine öğrenmesi ve gerçek dünyada çalışan yazılımlar konusunda derin deneyime sahip."
+          },
+          "murat": {
+            "role": "Kurucu Ortak",
+            "bio": "PwC ve Deloitte deneyimiyle gelen danışmanlık ve iş stratejisi arka planına sahip. Operasyon, büyüme ve kurumların ölçeklenme ihtiyaçları konusunda güçlü bir bakış açısı getiriyor. Kurumsal beklentileri anlayıp güven veren çözümler geliştirmeye odaklanıyor."
+          }
+        }
+      },
+      "values": {
+        "eyebrow": "Değerler",
+        "title": "Bizi yönlendiren ilkeler",
+        "items": [
+          {
+            "title": "Taviz yerine özen",
+            "description": "Her detay önemlidir. Kullanıcıların sadece çalışan değil, ince düşünülmüş yazılımlar hak ettiğine inanıyoruz."
+          },
+          {
+            "title": "Gerçekten önemli olanı çıkar",
+            "description": "Gerçek insanların gerçek problemlerini çözüyoruz. Kullanıcıya hizmet etmeyen hiçbir şey ürüne dönüşmez."
+          },
+          {
+            "title": "Yalın kal, hızlı ilerle",
+            "description": "İki kurucu, minimum bürokrasi. Kararları hızla alır, sürekli iterasyon yapar ve işin kalitesiyle konuşuruz."
+          }
+        ]
+      }
+    },
+    "primeroute": {
+      "hero": {
+        "eyebrow": "Avernsys Rotasal",
+        "titleLines": [
+          "Son kilometreyi",
+          "daha akıllı yönetin."
+        ],
+        "description": "Siparişlerinizi yükleyin, saniyeler içinde optimize edilmiş teslimat rotalarına dönüşsün. Daha hızlı teslimat, daha düşük maliyet, daha net operasyon.",
+        "primaryCta": "Optimizasyona başla"
+      },
+      "steps": {
+        "eyebrow": "Nasıl çalışır",
+        "titleLines": [
+          "Üç adım.",
+          "Hepsi bu."
+        ],
+        "items": [
+          {
+            "step": "01",
+            "title": "Siparişleri yükleyin",
+            "description": "Adresleri, zaman aralıklarını ve paket bilgilerini sisteme aktarın. Dosya yükleyin ya da API ile bağlanın."
+          },
+          {
+            "step": "02",
+            "title": "Biz optimize edelim",
+            "description": "Motorumuz tüm değişkenleri hesaba katarak en verimli rotaları gerçek zamanlı olarak hesaplar."
+          },
+          {
+            "step": "03",
+            "title": "Daha akıllı teslim edin",
+            "description": "Sürücüleriniz optimize edilmiş rotaları anında kullanır. Siz de daha mutlu müşteriler ve daha verimli operasyonlar elde edersiniz."
+          }
+        ]
+      },
+      "features": [
+        {
+          "label": "Hız",
+          "title": "Saatler değil, saniyeler içinde sonuç.",
+          "description": "Rotasal binlerce teslimat noktasını gerçek zamanlı olarak optimize eder. Manuel planlama yerine sürücülerinizin hemen kullanabileceği rotalar üretir."
+        },
+        {
+          "label": "Optimizasyon",
+          "title": "Her rota daha verimli.",
+          "description": "Trafik, zaman pencereleri, araç kapasitesi ve saha kısıtları birlikte değerlendirilir. Sonuç: daha az kilometre, daha az yakıt ve zamanında teslimat."
+        },
+        {
+          "label": "Entegrasyon",
+          "title": "Mevcut sistemlerinize uyum sağlar.",
+          "description": "API öncelikli mimarisi sayesinde Rotasal, mevcut sipariş, depo ve e-ticaret altyapınızla hızla entegre olur."
+        }
+      ],
+      "cta": {
+        "titleLines": [
+          "Boşa kilometre yapmayın.",
+          "Teslimatı daha akıllı yönetin."
+        ],
+        "description": "Günde 50 teslimat da yapsanız 5.000 teslimat da, Rotasal sizinle birlikte ölçeklenir. Son kilometreyi birlikte optimize edelim.",
+        "primaryCta": "Başlayın",
+        "secondaryCta": "Demoyu görün"
+      }
+    },
+    "contact": {
+      "hero": {
+        "eyebrow": "İletişim",
+        "titleLines": [
+          "Konuşalım."
+        ],
+        "description": "Bir sorunuz varsa, demo talep etmek istiyorsanız ya da sadece merhaba demek istiyorsanız bize ulaşın."
+      },
+      "success": {
+        "title": "Mesajınız alındı.",
+        "description": "Size en kısa sürede geri döneceğiz."
+      },
+      "form": {
+        "nameLabel": "Ad Soyad",
+        "namePlaceholder": "Adınız soyadınız",
+        "emailLabel": "E-posta",
+        "emailPlaceholder": "siz@sirketiniz.com",
+        "subjectLabel": "Konu",
+        "subjectPlaceholder": "Bir konu seçin",
+        "subjectOptions": [
+          {
+            "value": "primeroute",
+            "label": "Rotasal"
+          },
+          {
+            "value": "general",
+            "label": "Genel Bilgi"
+          },
+          {
+            "value": "partnership",
+            "label": "İş Birliği"
+          }
+        ],
+        "messageLabel": "Mesaj",
+        "messagePlaceholder": "Neye ihtiyacınız olduğunu kısaca anlatın...",
+        "submitLabel": "Mesaj Gönder"
+      }
+    },
+    "notFound": {
+      "title": "Sayfa bulunamadı",
+      "description": "Bağlantı bozuk olabilir ya da sayfa kaldırılmış olabilir. Aşağıdaki sayfalardan birini deneyebilir veya iletişim sayfasından bize ulaşabilirsiniz.",
+      "primaryCta": "Ana sayfaya dön",
+      "secondaryCta": "İletişim",
+      "navigationLabel": "Sık ziyaret edilen sayfalar",
+      "links": [
+        {
+          "key": "home",
+          "label": "Ana sayfa"
+        },
+        {
+          "key": "primeroute",
+          "label": "Rotasal"
+        },
+        {
+          "key": "contact",
+          "label": "İletişim"
+        }
+      ]
+    }
+  },
+  "shareImages": {
+    "homeOpenGraph": {
+      "eyebrow": "Son kilometre rota optimizasyonu",
+      "title": "Avernsys",
+      "description": "Tek ürün, tek odak. Rotasal teslimat rotalarını daha hızlı ve verimli operasyonlar için optimize eder.",
+      "tone": "neutral",
+      "highlights": [
+        {
+          "label": "Rotasal",
+          "title": "Daha akıllı rotalar",
+          "description": "Son kilometre teslimat planlarını saniyeler içinde optimize edin."
+        },
+        {
+          "label": "Operasyon",
+          "title": "Daha az israf",
+          "description": "Manuel planlamayı, kilometreyi ve teslimat sürtünmesini azaltın."
+        },
+        {
+          "label": "Avernsys",
+          "title": "Built for what's next",
+          "description": "Pratik lojistik ekipleri için odaklı ürün tasarımı."
+        }
+      ]
+    },
+    "homeTwitter": {
+      "eyebrow": "Avernsys",
+      "title": "Yarının ihtiyaçları için.",
+      "description": "Son kilometre rota optimizasyonuna odaklanan bir ürün şirketi.",
+      "tone": "amber",
+      "highlights": [
+        {
+          "label": "Rotasal",
+          "title": "Rota optimizasyonu",
+          "description": "Teslimat ekipleri için son kilometre planlama."
+        },
+        {
+          "label": "Avernsys",
+          "title": "Odaklı yazılım",
+          "description": "Tek ürün, özenle geliştirilmiş."
+        }
+      ]
+    },
+    "primeroute": {
+      "eyebrow": "Rotasal",
+      "title": "Son kilometreyi daha akıllı yönetin.",
+      "description": "Operasyon hızı için tasarlanmış API öncelikli bir motorla siparişleri saniyeler içinde optimize edilmiş rotalara dönüştürün.",
+      "tone": "blue",
+      "highlights": [
+        {
+          "label": "Optimizasyon",
+          "title": "Daha az kilometre",
+          "description": "Rota kaybını azaltın, daha verimli teslim edin."
+        },
+        {
+          "label": "Hız",
+          "title": "Saniyeler içinde sonuç",
+          "description": "Manuel planlamadan anında rotalamaya geçin."
+        },
+        {
+          "label": "Entegrasyon",
+          "title": "Altyapınıza uyumlu",
+          "description": "Sipariş sistemleri, WMS ve e-ticaret akışlarına kolayca bağlanın."
+        }
+      ]
+    }
+  }
+}
