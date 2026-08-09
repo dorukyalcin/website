@@ -15,7 +15,7 @@ test("publishes a crawlable robots policy with sitemap", () => {
 test("publishes sitemap entries for every localized indexable page", () => {
   const entries = sitemap();
 
-  assert.equal(entries.length, 24);
+  assert.equal(entries.length, 20);
   assert.ok(entries.some((entry) => entry.url === "https://avernsys.com/"));
   assert.ok(
     entries.some((entry) => entry.url === "https://avernsys.com/rotasal"),

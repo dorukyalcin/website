@@ -169,7 +169,7 @@
       "hero": {
         "eyebrow": "Hakkımızda",
         "titleLines": [
-          "İki kurucu.",
+          "Tek kurucu.",
           "Tek odak."
         ],
         "description": "Avernsys, teknolojinin insanları bir araya getirmesi ve işlerin daha iyi işlemesini sağlaması gerektiği fikriyle kuruldu."
@@ -177,22 +177,17 @@
       "story": {
         "title": "Hikayemiz",
         "paragraphs": [
-          "Avernsys, şirketlerin verimsiz son kilometre lojistiği yüzünden ne kadar zaman kaybettiğini gören iki kişiyle başladı.",
+          "Avernsys, şirketlerin verimsiz son kilometre lojistiği yüzünden ne kadar zaman kaybettiğini gören tek bir kişiyle başladı.",
           "Bu problemi başkasının çözmesini beklemek yerine Rotasal'i geliştirdik: teslimat siparişlerini saniyeler içinde verimli rotalara dönüştüren rota optimizasyon yazılımı.",
           "Az sayıda işi çok iyi yapmaya inanıyoruz. Rotasal özenle geliştiriliyor, uzun vadeli kullanılmak üzere tasarlanıyor ve gerçekten önemli olan tek bir operasyon problemine odaklanıyor."
         ]
       },
       "founders": {
-        "eyebrow": "Ekip",
-        "title": "Kurucular",
+        "title": "Kurucu",
         "people": {
           "doruk": {
             "role": "Kurucu Ortak",
             "bio": "Amazon'da global lojistik sistemleri üzerinde çalıştı. UCLA'de bilgisayarlı görü alanında araştırma yaptı, ardından Tesla'da otonom sürüş algı sistemlerine katkıda bulundu. Optimizasyon, makine öğrenmesi ve gerçek dünyada çalışan yazılımlar konusunda derin deneyime sahip."
-          },
-          "murat": {
-            "role": "Kurucu Ortak",
-            "bio": "PwC ve Deloitte deneyimiyle gelen danışmanlık ve iş stratejisi arka planına sahip. Operasyon, büyüme ve kurumların ölçeklenme ihtiyaçları konusunda güçlü bir bakış açısı getiriyor. Kurumsal beklentileri anlayıp güven veren çözümler geliştirmeye odaklanıyor."
           }
         }
       },
@@ -210,7 +205,7 @@
           },
           {
             "title": "Yalın kal, hızlı ilerle",
-            "description": "İki kurucu, minimum bürokrasi. Kararları hızla alır, sürekli iterasyon yapar ve işin kalitesiyle konuşuruz."
+            "description": "Tek kurucu, minimum bürokrasi. Kararları hızla alır, sürekli iterasyon yapar ve işin kalitesiyle konuşuruz."
           }
         ]
       }

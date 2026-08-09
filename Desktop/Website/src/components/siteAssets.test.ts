@@ -20,13 +20,8 @@ test("about page renders the founder portrait assets", () => {
     markup,
     /src="\/founders\/doruk-yalcin-avernsys-co-founder\.jpg"/,
   );
-  assert.match(
-    markup,
-    /src="\/founders\/murat-baki-avernsys-co-founder\.jpeg"/,
-  );
   assert.match(markup, /href="\/about\/doruk-yalcin"/);
-  assert.match(markup, /href="\/about\/murat-baki"/);
+  assert.doesNotMatch(markup, /murat-baki/);
   assert.match(markup, /rounded-full border border-white\/\[0\.14\]/);
   assert.match(markup, /transform:scale\(1\.95\)/);
-  assert.match(markup, /transform:scale\(2\.1\)/);
 });

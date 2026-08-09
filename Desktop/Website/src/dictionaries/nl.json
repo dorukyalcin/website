@@ -169,7 +169,7 @@
       "hero": {
         "eyebrow": "Over ons",
         "titleLines": [
-          "Twee oprichters.",
+          "Eén oprichter.",
           "Eén duidelijke missie."
         ],
         "description": "Avernsys is ontstaan vanuit één overtuiging: technologie moet mensen verbinden en werkprocessen beter laten lopen."
@@ -177,22 +177,17 @@
       "story": {
         "title": "Ons verhaal",
         "paragraphs": [
-          "Avernsys begon met twee mensen die zagen hoeveel tijd bedrijven verliezen door inefficiënte last-mile logistiek.",
+          "Avernsys begon met één persoon die zag hoeveel tijd bedrijven verliezen door inefficiënte last-mile logistiek.",
           "In plaats van te wachten tot iemand anders dat zou oplossen, bouwden we Rotasal: software voor routeoptimalisatie die bezorgorders in seconden omzet in efficiënte routes.",
           "We geloven in minder dingen uitzonderlijk goed doen. Rotasal wordt met zorg gebouwd, is ontworpen om lang mee te gaan en richt zich op één operationeel probleem dat ertoe doet."
         ]
       },
       "founders": {
-        "eyebrow": "Team",
-        "title": "De oprichters",
+        "title": "De oprichter",
         "people": {
           "doruk": {
             "role": "Medeoprichter",
             "bio": "Werkte eerder als engineer bij Amazon aan systemen die wereldwijde logistiek op schaal ondersteunen. Deed computer vision-onderzoek aan UCLA en stapte daarna over naar Tesla om te werken aan perceptiesystemen voor autonoom rijden. Brengt diepgaande kennis mee op het gebied van optimalisatie, machine learning en technologie die in de praktijk echt moet werken."
-          },
-          "murat": {
-            "role": "Medeoprichter",
-            "bio": "Komt uit de advieswereld met ervaring bij zowel PwC als Deloitte. Richt zich op strategie, operatie en het slim opschalen van organisaties. Begrijpt hoe bedrijven beslissen, wat ze nodig hebben en hoe je oplossingen levert die vertrouwen opbouwen."
           }
         }
       },
@@ -210,7 +205,7 @@
           },
           {
             "title": "Klein team, snel handelen",
-            "description": "Twee oprichters, weinig ruis. We nemen snel beslissingen, verbeteren voortdurend en laten het werk voor zich spreken."
+            "description": "Eén oprichter, weinig ruis. We nemen snel beslissingen, verbeteren voortdurend en laten het werk voor zich spreken."
           }
         ]
       }

@@ -169,7 +169,7 @@
       "hero": {
         "eyebrow": "About",
         "titleLines": [
-          "Two founders.",
+          "One founder.",
           "One mission."
         ],
         "description": "Avernsys was built on a simple belief: technology should connect people and make things work better. That's what we do."
@@ -177,22 +177,17 @@
       "story": {
         "title": "Our story",
         "paragraphs": [
-          "Avernsys started with two people who saw how much time businesses lose to inefficient last-mile logistics.",
+          "Avernsys started with one person who saw how much time businesses lose to inefficient last-mile logistics.",
           "Instead of waiting for someone else to solve it, we built Rotasal: route optimization software that turns delivery orders into efficient routes in seconds.",
           "We're a company that believes in doing fewer things exceptionally well. Rotasal is built with care, designed to last, and focused on one operational problem that matters."
         ]
       },
       "founders": {
-        "eyebrow": "Team",
-        "title": "The founders",
+        "title": "The founder",
         "people": {
           "doruk": {
             "role": "Co-Founder",
             "bio": "Former engineer at Amazon, where he built systems that power global logistics at scale. Conducted computer vision research at UCLA, then joined Tesla to work on the perception systems behind autonomous driving. Brings deep expertise in optimization, machine learning, and building technology that operates in the real world."
-          },
-          "murat": {
-            "role": "Co-Founder",
-            "bio": "Comes from the advisory and consulting world, with experience at both PwC and Deloitte - two of the Big Four. Specializes in business strategy, operations, and helping organizations scale intelligently. Understands how enterprises think, what they need, and how to deliver solutions that earn their trust."
           }
         }
       },
@@ -210,7 +205,7 @@
           },
           {
             "title": "Stay lean, move fast",
-            "description": "Two founders. No bureaucracy. We make decisions quickly, iterate constantly, and let the work speak for itself."
+            "description": "One founder. No bureaucracy. We make decisions quickly, iterate constantly, and let the work speak for itself."
           }
         ]
       }

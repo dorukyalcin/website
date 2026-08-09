@@ -48,7 +48,7 @@ test("returns undefined when IndexNow is not configured", () => {
 test("provides default IndexNow URLs for every supported locale", () => {
   const urls = getDefaultIndexNowUrls();
 
-  assert.equal(urls.length, 24);
+  assert.equal(urls.length, 20);
   assert.ok(urls.includes("https://avernsys.com/rotasal"));
   assert.ok(urls.includes("https://avernsys.com/about/doruk-yalcin"));
   assert.ok(urls.includes("https://avernsys.com/tr/rotasal"));

@@ -169,7 +169,7 @@
       "hero": {
         "eyebrow": "Über uns",
         "titleLines": [
-          "Zwei Gründer.",
+          "Ein Gründer.",
           "Ein gemeinsamer Anspruch."
         ],
         "description": "Avernsys entstand aus einer einfachen Überzeugung: Gute Technologie bringt Menschen zusammen und sorgt dafür, dass Dinge besser funktionieren."
@@ -177,22 +177,17 @@
       "story": {
         "title": "Unsere Geschichte",
         "paragraphs": [
-          "Avernsys begann mit zwei Menschen, die gesehen haben, wie viel Zeit Unternehmen durch ineffiziente Last-Mile-Logistik verlieren.",
+          "Avernsys begann mit einem Menschen, der gesehen hat, wie viel Zeit Unternehmen durch ineffiziente Last-Mile-Logistik verlieren.",
           "Statt darauf zu warten, dass jemand anderes dieses Problem löst, haben wir Rotasal gebaut: Software zur Routenoptimierung, die Lieferaufträge in Sekunden in effiziente Touren verwandelt.",
           "Wir glauben daran, wenige Dinge außergewöhnlich gut zu machen. Rotasal wird mit Sorgfalt gebaut, ist auf Langlebigkeit ausgelegt und konzentriert sich auf ein operatives Problem, das wirklich zählt."
         ]
       },
       "founders": {
-        "eyebrow": "Team",
-        "title": "Die Gründer",
+        "title": "Der Gründer",
         "people": {
           "doruk": {
             "role": "Mitgründer",
             "bio": "War früher Ingenieur bei Amazon und hat dort Systeme für globale Logistikprozesse mitentwickelt. Forschte an der UCLA im Bereich Computer Vision und arbeitete anschließend bei Tesla an Wahrnehmungssystemen für autonomes Fahren. Bringt tiefe Erfahrung in Optimierung, Machine Learning und praxisnaher Technologie mit."
-          },
-          "murat": {
-            "role": "Mitgründer",
-            "bio": "Kommt aus der Beratungswelt und hat Erfahrung bei PwC und Deloitte gesammelt. Sein Schwerpunkt liegt auf Strategie, operativer Exzellenz und nachhaltigem Wachstum. Er versteht, wie Unternehmen Entscheidungen treffen, worauf sie achten und wie man Lösungen liefert, die Vertrauen schaffen."
           }
         }
       },
@@ -210,7 +205,7 @@
           },
           {
             "title": "Klein bleiben, schnell handeln",
-            "description": "Zwei Gründer, kaum Bürokratie. Wir entscheiden zügig, verbessern ständig und lassen lieber das Produkt als große Worte sprechen."
+            "description": "Ein Gründer, kaum Bürokratie. Wir entscheiden zügig, verbessern ständig und lassen lieber das Produkt als große Worte sprechen."
           }
         ]
       }

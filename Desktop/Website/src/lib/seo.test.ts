@@ -301,17 +301,17 @@ test("founder profile metadata uses portrait images and localized alternates", (
 });
 
 test("founder profile JSON-LD marks the founder as the main entity", () => {
-  const profilePage = buildFounderProfilePageJsonLd("en", founders[1]) as {
+  const profilePage = buildFounderProfilePageJsonLd("en", founders[0]) as {
     mainEntity?: Record<string, unknown>;
   };
 
   assert.equal(
     profilePage.mainEntity?.["@id"],
-    schemaFounderPersonId(founders[1]),
+    schemaFounderPersonId(founders[0]),
   );
-  assert.equal(profilePage.mainEntity?.name, "Murat Baki");
+  assert.equal(profilePage.mainEntity?.name, "Doruk Yalcin");
   assert.deepEqual(profilePage.mainEntity?.sameAs, [
-    "https://www.linkedin.com/in/murat-baki-mb/",
+    "https://www.linkedin.com/in/doruk-yalcin/",
   ]);
 });
 
@@ -322,7 +322,7 @@ test("JSON-LD builders round-trip through JSON.stringify", () => {
     buildWebPageJsonLd("en", "contact"),
     buildHomeItemListJsonLd("tr"),
     buildSoftwareApplicationJsonLd("en", "primeroute"),
-    buildFounderPersonJsonLd("en", founders[1]),
+    buildFounderPersonJsonLd("en", founders[0]),
     buildFounderProfilePageJsonLd("en", founders[0]),
     buildBreadcrumbJsonLd("en", [{ name: "Home", path: "/" }]),
   ];
@@ -347,7 +347,7 @@ test("builds verification metadata from env values", () => {
 test("returns all indexable pages across all locales", () => {
   const pages = getIndexablePages();
 
-  assert.equal(pages.length, 24);
+  assert.equal(pages.length, 20);
   assert.ok(
     pages.some((page) => page.locale === "en" && page.path === "/contact"),
   );

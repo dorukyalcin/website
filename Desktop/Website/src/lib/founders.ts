@@ -47,26 +47,6 @@ export const founders = [
       scale: 1.95,
     },
   },
-  {
-    key: "murat",
-    name: "Murat Baki",
-    givenName: "Murat",
-    familyName: "Baki",
-    slug: "murat-baki",
-    sameAs: ["https://www.linkedin.com/in/murat-baki-mb/"],
-    knowsAbout: [
-      "Business strategy",
-      "Operations",
-      "Management consulting",
-      "Enterprise software adoption",
-    ],
-    photo: {
-      src: "/founders/murat-baki-avernsys-co-founder.jpeg",
-      alt: "Murat Baki, co-founder of Avernsys",
-      objectPosition: "50% 18%",
-      scale: 2.1,
-    },
-  },
 ] as const satisfies readonly Founder[];
 
 export type FounderProfile = (typeof founders)[number] &
