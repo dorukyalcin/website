@@ -24,6 +24,8 @@ RUN mkdir -p /data/uploads && chown -R node:node /data
 COPY --from=build --chown=node:node /app/.next/standalone ./
 COPY --from=build --chown=node:node /app/.next/static ./.next/static
 COPY --from=build --chown=node:node /app/public ./public
+COPY --chown=node:node db/migrations ./db/migrations
+COPY --chown=node:node scripts/migrate.mjs scripts/docker-entrypoint.sh ./scripts/
 USER node
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["sh", "scripts/docker-entrypoint.sh"]
