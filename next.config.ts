@@ -6,6 +6,7 @@ const noIndexAssetHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  output: "standalone",
   async redirects() {
     return [
       {

@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.git
+.github
+.claude
+.cursor
+.env
+.env.*
+!.env.example
+.uploads
+docs
+*.md
+*.tsbuildinfo
+.DS_Store
