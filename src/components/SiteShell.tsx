@@ -18,6 +18,10 @@ export function SiteShell({ children }: SiteShellProps) {
     document.documentElement.lang = getDictionary(locale).language.htmlLang;
   }, [locale]);
 
+  if (pathname.startsWith("/admin")) {
+    return <>{children}</>;
+  }
+
   return (
     <>
       <Navbar locale={locale} />

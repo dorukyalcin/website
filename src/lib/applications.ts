@@ -1,18 +1,5 @@
 import { getPool } from "@/lib/db";
-
-export const applicationStatuses = [
-  "new",
-  "in_review",
-  "interview",
-  "hired",
-  "rejected",
-] as const;
-
-export type ApplicationStatus = (typeof applicationStatuses)[number];
-
-export function isApplicationStatus(value: string): value is ApplicationStatus {
-  return applicationStatuses.includes(value as ApplicationStatus);
-}
+import type { ApplicationStatus } from "@/lib/applicationStatus";
 
 export type Application = {
   id: string;
