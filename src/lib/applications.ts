@@ -35,6 +35,7 @@ export type Application = {
 };
 
 export type NewApplication = {
+  id: string;
   openingSlug: string;
   locale: string;
   name: string;
@@ -96,11 +97,12 @@ export async function insertApplication(
 ): Promise<Application> {
   const { rows } = await getPool().query<ApplicationRow>(
     `INSERT INTO applications (
-       opening_slug, locale, name, email, phone, link, motivation, answers,
+       id, opening_slug, locale, name, email, phone, link, motivation, answers,
        cv_original_filename, cv_stored_filename, cv_size_bytes, consented_at
-     ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+     ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
      RETURNING *`,
     [
+      application.id,
       application.openingSlug,
       application.locale,
       application.name,
