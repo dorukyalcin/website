@@ -1,5 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { founders } from "@/lib/founders";
+import { locales, pageKeys } from "@/lib/i18n";
+import { openings } from "@/lib/openings";
 import robots from "./robots";
 import sitemap from "./sitemap";
 
@@ -15,7 +18,19 @@ test("publishes a crawlable robots policy with sitemap", () => {
 test("publishes sitemap entries for every localized indexable page", () => {
   const entries = sitemap();
 
-  assert.equal(entries.length, 20);
+  assert.equal(
+    entries.length,
+    locales.length * (pageKeys.length + founders.length + openings.length),
+  );
+  assert.ok(
+    entries.some((entry) => entry.url === "https://avernsys.com/careers"),
+  );
+  assert.ok(
+    entries.some(
+      (entry) =>
+        entry.url === `https://avernsys.com/nl/careers/${openings[0].slug}`,
+    ),
+  );
   assert.ok(entries.some((entry) => entry.url === "https://avernsys.com/"));
   assert.ok(
     entries.some((entry) => entry.url === "https://avernsys.com/rotasal"),

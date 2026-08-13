@@ -1,5 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { founders } from "./founders";
+import { locales, pageKeys } from "./i18n";
+import { openings } from "./openings";
 import {
   buildIndexNowPayload,
   getDefaultIndexNowUrls,
@@ -48,7 +51,11 @@ test("returns undefined when IndexNow is not configured", () => {
 test("provides default IndexNow URLs for every supported locale", () => {
   const urls = getDefaultIndexNowUrls();
 
-  assert.equal(urls.length, 20);
+  assert.equal(
+    urls.length,
+    locales.length * (pageKeys.length + founders.length + openings.length),
+  );
+  assert.ok(urls.includes("https://avernsys.com/careers"));
   assert.ok(urls.includes("https://avernsys.com/rotasal"));
   assert.ok(urls.includes("https://avernsys.com/about/doruk-yalcin"));
   assert.ok(urls.includes("https://avernsys.com/tr/rotasal"));

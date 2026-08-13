@@ -26,6 +26,10 @@
         "label": "Über uns"
       },
       {
+        "key": "careers",
+        "label": "Karriere"
+      },
+      {
         "key": "contact",
         "label": "Kontakt"
       }
@@ -49,6 +53,10 @@
           {
             "key": "about",
             "label": "Über uns"
+          },
+          {
+            "key": "careers",
+            "label": "Karriere"
           },
           {
             "key": "contact",
@@ -94,6 +102,18 @@
         "Last-Mile-Liefersoftware"
       ],
       "socialImageAlt": "Vorschau der Avernsys-Startseite"
+    },
+    "careers": {
+      "title": "Karriere bei Avernsys",
+      "description": "Offene Stellen bei Avernsys. Arbeite mit am Aufbau von Rotasal, unserer Plattform zur Routenoptimierung für die letzte Meile.",
+      "keywords": [
+        "Avernsys Karriere",
+        "Avernsys Jobs",
+        "Rotasal Jobs",
+        "Routenoptimierung Jobs",
+        "Remote Software Jobs"
+      ],
+      "socialImageAlt": "Avernsys Startseiten-Vorschau"
     },
     "primeroute": {
       "title": "Rotasal | Software zur Last-Mile-Routenoptimierung",
@@ -307,6 +327,95 @@
         "messageLabel": "Nachricht",
         "messagePlaceholder": "Worum geht es bei Ihnen?",
         "submitLabel": "Nachricht senden"
+      }
+    },
+    "careers": {
+      "hero": {
+        "eyebrow": "Karriere",
+        "titleLines": [
+          "Bau mit an dem, was kommt."
+        ],
+        "description": "Wir sind ein kleines Team mit großen Ambitionen und bauen ernsthafte Software für echte Logistik."
+      },
+      "list": {
+        "heading": "Offene Stellen",
+        "empty": "Derzeit gibt es keine offenen Stellen. Schau bald wieder vorbei — oder melde dich über die Kontaktseite, wenn du gut zu uns passt.",
+        "viewLabel": "Stelle ansehen"
+      },
+      "labels": {
+        "workplace": {
+          "REMOTE": "Remote",
+          "HYBRID": "Hybrid",
+          "ONSITE": "Vor Ort"
+        },
+        "employment": {
+          "FULL_TIME": "Vollzeit",
+          "PART_TIME": "Teilzeit",
+          "CONTRACTOR": "Freelance",
+          "INTERN": "Praktikum"
+        },
+        "postedOn": "Veröffentlicht"
+      },
+      "opening": {
+        "sections": {
+          "intro": "Über die Rolle",
+          "responsibilities": "Deine Aufgaben",
+          "requirements": "Was wir suchen",
+          "niceToHave": "Schön zu haben",
+          "offer": "Was wir bieten"
+        },
+        "closed": {
+          "title": "Diese Stelle ist geschlossen.",
+          "description": "Für diese Rolle nehmen wir keine Bewerbungen mehr an. Sieh dir unsere offenen Stellen an oder schau später wieder vorbei."
+        },
+        "backLabel": "Alle Stellen",
+        "applyHeading": "Auf diese Stelle bewerben",
+        "applyDescription": "Deine Bewerbung geht direkt an den Gründer. Wir antworten allen."
+      },
+      "form": {
+        "nameLabel": "Name",
+        "namePlaceholder": "Dein Name",
+        "emailLabel": "E-Mail",
+        "emailPlaceholder": "du@beispiel.de",
+        "phoneLabel": "Telefon",
+        "phonePlaceholder": "+49 151 12345678",
+        "linkLabel": "LinkedIn oder Website",
+        "linkPlaceholder": "https://",
+        "motivationLabel": "Warum Avernsys?",
+        "motivationPlaceholder": "Ein paar Sätze dazu, warum diese Rolle zu dir passt.",
+        "cvLabel": "Lebenslauf (CV)",
+        "cvHelp": "PDF, max. 5 MB",
+        "cvButton": "Datei wählen",
+        "cvNoFile": "Keine Datei ausgewählt",
+        "optionalLabel": "Optional",
+        "selectPlaceholder": "Bitte auswählen",
+        "consentLabel": "Ich willige ein, dass Avernsys diese Bewerbung einschließlich meines Lebenslaufs speichert und verarbeitet, um meine Kandidatur zu prüfen. Die Löschung kann jederzeit über die Kontaktseite angefordert werden.",
+        "submitLabel": "Bewerbung absenden",
+        "submittingLabel": "Wird gesendet..."
+      },
+      "success": {
+        "title": "Bewerbung eingegangen.",
+        "description": "Danke für deine Bewerbung — du erhältst gleich eine Bestätigung per E-Mail, und wir melden uns bald."
+      },
+      "errors": {
+        "generic": "Beim Absenden ist etwas schiefgelaufen. Bitte versuche es erneut.",
+        "validation": "Bitte prüfe die markierten Felder und versuche es erneut.",
+        "cvType": "Der Lebenslauf muss eine PDF-Datei sein.",
+        "cvSize": "Der Lebenslauf darf höchstens 5 MB groß sein.",
+        "turnstile": "Bitte schließe die Verifizierung ab und versuche es erneut.",
+        "rateLimited": "Zu viele Versuche. Bitte warte eine Minute und versuche es erneut.",
+        "closed": "Diese Stelle nimmt keine Bewerbungen mehr an."
+      },
+      "emails": {
+        "confirmation": {
+          "subject": "Deine Bewerbung bei Avernsys — {title}",
+          "greeting": "Hallo {name},",
+          "body": [
+            "danke für deine Bewerbung auf {title} bei Avernsys. Wir haben sie erhalten und melden uns bald bei dir.",
+            "Wenn du etwas ergänzen möchtest, antworte einfach auf diese E-Mail."
+          ],
+          "signoff": "— Doruk, Avernsys"
+        }
       }
     },
     "notFound": {

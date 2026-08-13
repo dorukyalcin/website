@@ -26,6 +26,10 @@
         "label": "Over ons"
       },
       {
+        "key": "careers",
+        "label": "Vacatures"
+      },
+      {
         "key": "contact",
         "label": "Contact"
       }
@@ -49,6 +53,10 @@
           {
             "key": "about",
             "label": "Over ons"
+          },
+          {
+            "key": "careers",
+            "label": "Vacatures"
           },
           {
             "key": "contact",
@@ -94,6 +102,18 @@
         "last-mile bezorgsoftware"
       ],
       "socialImageAlt": "Voorbeeld van de homepage van Avernsys"
+    },
+    "careers": {
+      "title": "Werken bij Avernsys",
+      "description": "Openstaande vacatures bij Avernsys. Bouw mee aan Rotasal, ons platform voor routeoptimalisatie op de laatste kilometer.",
+      "keywords": [
+        "Avernsys vacatures",
+        "Avernsys banen",
+        "Rotasal vacatures",
+        "routeoptimalisatie vacatures",
+        "remote software vacatures"
+      ],
+      "socialImageAlt": "Voorbeeld van de Avernsys-homepage"
     },
     "primeroute": {
       "title": "Rotasal | Software voor last-mile routeoptimalisatie",
@@ -307,6 +327,95 @@
         "messageLabel": "Bericht",
         "messagePlaceholder": "Vertel kort waar je naar op zoek bent...",
         "submitLabel": "Verstuur bericht"
+      }
+    },
+    "careers": {
+      "hero": {
+        "eyebrow": "Vacatures",
+        "titleLines": [
+          "Bouw mee aan wat komt."
+        ],
+        "description": "We zijn een klein team met grote ambities en bouwen serieuze software voor echte logistiek."
+      },
+      "list": {
+        "heading": "Openstaande vacatures",
+        "empty": "Er zijn op dit moment geen openstaande vacatures. Kom binnenkort terug — of neem contact op via de contactpagina als je denkt dat je goed bij ons past.",
+        "viewLabel": "Bekijk vacature"
+      },
+      "labels": {
+        "workplace": {
+          "REMOTE": "Remote",
+          "HYBRID": "Hybride",
+          "ONSITE": "Op locatie"
+        },
+        "employment": {
+          "FULL_TIME": "Fulltime",
+          "PART_TIME": "Parttime",
+          "CONTRACTOR": "Freelance",
+          "INTERN": "Stage"
+        },
+        "postedOn": "Geplaatst"
+      },
+      "opening": {
+        "sections": {
+          "intro": "Over de rol",
+          "responsibilities": "Wat je gaat doen",
+          "requirements": "Wat we zoeken",
+          "niceToHave": "Mooi meegenomen",
+          "offer": "Wat we bieden"
+        },
+        "closed": {
+          "title": "Deze vacature is gesloten.",
+          "description": "We nemen geen sollicitaties meer aan voor deze rol. Bekijk onze openstaande vacatures of kom later terug."
+        },
+        "backLabel": "Alle vacatures",
+        "applyHeading": "Solliciteer op deze vacature",
+        "applyDescription": "Je sollicitatie gaat rechtstreeks naar de oprichter. We reageren op iedereen."
+      },
+      "form": {
+        "nameLabel": "Naam",
+        "namePlaceholder": "Je naam",
+        "emailLabel": "E-mail",
+        "emailPlaceholder": "jij@voorbeeld.nl",
+        "phoneLabel": "Telefoon",
+        "phonePlaceholder": "+31 6 12345678",
+        "linkLabel": "LinkedIn of website",
+        "linkPlaceholder": "https://",
+        "motivationLabel": "Waarom Avernsys?",
+        "motivationPlaceholder": "Een paar zinnen over waarom deze rol bij je past.",
+        "cvLabel": "CV",
+        "cvHelp": "PDF, maximaal 5 MB",
+        "cvButton": "Bestand kiezen",
+        "cvNoFile": "Geen bestand geselecteerd",
+        "optionalLabel": "Optioneel",
+        "selectPlaceholder": "Maak een keuze",
+        "consentLabel": "Ik geef Avernsys toestemming om deze sollicitatie, inclusief mijn cv, op te slaan en te verwerken om mijn kandidatuur te beoordelen. Verwijdering kan op elk moment worden aangevraagd via de contactpagina.",
+        "submitLabel": "Sollicitatie versturen",
+        "submittingLabel": "Versturen..."
+      },
+      "success": {
+        "title": "Sollicitatie ontvangen.",
+        "description": "Bedankt voor je sollicitatie — je ontvangt zo een bevestiging per e-mail en we nemen snel contact met je op."
+      },
+      "errors": {
+        "generic": "Er ging iets mis bij het versturen. Probeer het opnieuw.",
+        "validation": "Controleer de gemarkeerde velden en probeer het opnieuw.",
+        "cvType": "Het cv moet een pdf-bestand zijn.",
+        "cvSize": "Het cv mag maximaal 5 MB groot zijn.",
+        "turnstile": "Rond de verificatie af en probeer het opnieuw.",
+        "rateLimited": "Te veel pogingen. Wacht een minuut en probeer het opnieuw.",
+        "closed": "Deze vacature neemt geen sollicitaties meer aan."
+      },
+      "emails": {
+        "confirmation": {
+          "subject": "Je sollicitatie bij Avernsys — {title}",
+          "greeting": "Hoi {name},",
+          "body": [
+            "bedankt voor je sollicitatie op {title} bij Avernsys. We hebben je sollicitatie ontvangen en nemen snel contact met je op.",
+            "Wil je nog iets toevoegen? Beantwoord dan gewoon deze e-mail."
+          ],
+          "signoff": "— Doruk, Avernsys"
+        }
       }
     },
     "notFound": {

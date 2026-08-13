@@ -26,6 +26,10 @@
         "label": "Hakkımızda"
       },
       {
+        "key": "careers",
+        "label": "Kariyer"
+      },
+      {
         "key": "contact",
         "label": "İletişim"
       }
@@ -49,6 +53,10 @@
           {
             "key": "about",
             "label": "Hakkımızda"
+          },
+          {
+            "key": "careers",
+            "label": "Kariyer"
           },
           {
             "key": "contact",
@@ -92,6 +100,18 @@
         "Rotasal demo",
         "rota optimizasyon demosu",
         "son kilometre teslimat yazılımı"
+      ],
+      "socialImageAlt": "Avernsys ana sayfa önizlemesi"
+    },
+    "careers": {
+      "title": "Avernsys'te Kariyer",
+      "description": "Avernsys'teki açık pozisyonlar. Son kilometre teslimatı için rota optimizasyonu platformumuz Rotasal'ı birlikte geliştirelim.",
+      "keywords": [
+        "Avernsys kariyer",
+        "Avernsys iş ilanları",
+        "Rotasal iş ilanları",
+        "rota optimizasyonu iş ilanları",
+        "uzaktan yazılım işleri"
       ],
       "socialImageAlt": "Avernsys ana sayfa önizlemesi"
     },
@@ -307,6 +327,95 @@
         "messageLabel": "Mesaj",
         "messagePlaceholder": "Neye ihtiyacınız olduğunu kısaca anlatın...",
         "submitLabel": "Mesaj Gönder"
+      }
+    },
+    "careers": {
+      "hero": {
+        "eyebrow": "Kariyer",
+        "titleLines": [
+          "Geleceği birlikte inşa edelim."
+        ],
+        "description": "Büyük hedefleri olan küçük bir ekibiz; gerçek dünyadaki lojistik için ciddi yazılımlar geliştiriyoruz."
+      },
+      "list": {
+        "heading": "Açık pozisyonlar",
+        "empty": "Şu anda açık pozisyon bulunmuyor. Yakında tekrar kontrol et — ya da bize uygun olduğunu düşünüyorsan iletişim sayfasından ulaş.",
+        "viewLabel": "Pozisyonu görüntüle"
+      },
+      "labels": {
+        "workplace": {
+          "REMOTE": "Uzaktan",
+          "HYBRID": "Hibrit",
+          "ONSITE": "Ofiste"
+        },
+        "employment": {
+          "FULL_TIME": "Tam zamanlı",
+          "PART_TIME": "Yarı zamanlı",
+          "CONTRACTOR": "Sözleşmeli",
+          "INTERN": "Staj"
+        },
+        "postedOn": "Yayınlanma"
+      },
+      "opening": {
+        "sections": {
+          "intro": "Rol hakkında",
+          "responsibilities": "Neler yapacaksın",
+          "requirements": "Aradıklarımız",
+          "niceToHave": "Artı sayılır",
+          "offer": "Sunduklarımız"
+        },
+        "closed": {
+          "title": "Bu pozisyon kapandı.",
+          "description": "Bu rol için artık başvuru almıyoruz. Açık pozisyonlarımıza göz at ya da daha sonra tekrar kontrol et."
+        },
+        "backLabel": "Tüm pozisyonlar",
+        "applyHeading": "Bu pozisyona başvur",
+        "applyDescription": "Başvurun doğrudan kurucuya ulaşır. Herkese yanıt veriyoruz."
+      },
+      "form": {
+        "nameLabel": "Ad Soyad",
+        "namePlaceholder": "Adın",
+        "emailLabel": "E-posta",
+        "emailPlaceholder": "sen@ornek.com",
+        "phoneLabel": "Telefon",
+        "phonePlaceholder": "+90 5xx xxx xx xx",
+        "linkLabel": "LinkedIn veya web sitesi",
+        "linkPlaceholder": "https://",
+        "motivationLabel": "Neden Avernsys?",
+        "motivationPlaceholder": "Bu rolün sana neden uygun olduğuna dair birkaç cümle.",
+        "cvLabel": "CV / Özgeçmiş",
+        "cvHelp": "PDF, en fazla 5 MB",
+        "cvButton": "Dosya seç",
+        "cvNoFile": "Dosya seçilmedi",
+        "optionalLabel": "İsteğe bağlı",
+        "selectPlaceholder": "Bir seçenek belirle",
+        "consentLabel": "Avernsys'in bu başvuruyu, CV'm dahil olmak üzere, adaylığımı değerlendirmek amacıyla saklamasına ve işlemesine onay veriyorum. Silme talebi her zaman iletişim sayfasından iletilebilir.",
+        "submitLabel": "Başvuruyu gönder",
+        "submittingLabel": "Gönderiliyor..."
+      },
+      "success": {
+        "title": "Başvurun alındı.",
+        "description": "Başvurun için teşekkürler — kısa süre içinde bir onay e-postası alacaksın ve en kısa zamanda dönüş yapacağız."
+      },
+      "errors": {
+        "generic": "Gönderim sırasında bir şeyler ters gitti. Lütfen tekrar dene.",
+        "validation": "Lütfen işaretli alanları kontrol edip tekrar dene.",
+        "cvType": "CV bir PDF dosyası olmalı.",
+        "cvSize": "CV en fazla 5 MB olabilir.",
+        "turnstile": "Lütfen doğrulamayı tamamlayıp tekrar dene.",
+        "rateLimited": "Çok fazla deneme yapıldı. Lütfen bir dakika bekleyip tekrar dene.",
+        "closed": "Bu pozisyon artık başvuru kabul etmiyor."
+      },
+      "emails": {
+        "confirmation": {
+          "subject": "Avernsys başvurun — {title}",
+          "greeting": "Merhaba {name},",
+          "body": [
+            "Avernsys'teki {title} pozisyonuna başvurduğun için teşekkürler. Başvurunu aldık ve en kısa sürede dönüş yapacağız.",
+            "Eklemek istediğin bir şey olursa bu e-postayı yanıtlaman yeterli."
+          ],
+          "signoff": "— Doruk, Avernsys"
+        }
       }
     },
     "notFound": {

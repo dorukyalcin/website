@@ -13,6 +13,7 @@ import {
 } from "@/lib/i18n";
 import { brandLogo } from "@/lib/brand";
 import { founders, type FounderProfile } from "@/lib/founders";
+import { getOpenings, type Opening } from "@/lib/openings";
 
 function parseSameAsUrls(raw: string | undefined): string[] {
   if (!raw?.trim()) {
@@ -65,6 +66,7 @@ const lastModifiedByPage: Record<PageKey, string> = {
   home: "2026-04-21",
   about: "2026-04-21",
   contact: "2026-04-21",
+  careers: "2026-08-13",
   primeroute: "2026-04-21",
 };
 
@@ -289,6 +291,185 @@ export function buildFounderProfileMetadata(
         "max-video-preview": -1,
       },
     },
+  };
+}
+
+export function getOpeningPath(locale: Locale, opening: Opening) {
+  return localizePath(locale, `/careers/${opening.slug}`);
+}
+
+export function schemaJobPostingId(opening: Opening) {
+  return `${absoluteUrl(`/careers/${opening.slug}`)}#jobposting`;
+}
+
+export function getOpeningSeo(locale: Locale, opening: Opening): PageSeo {
+  const dictionary = getDictionary(locale);
+  const content = opening.content[locale];
+
+  return {
+    title: `${content.title} | ${siteConfig.name}`,
+    description: content.summary,
+    path: getOpeningPath(locale, opening),
+    keywords: [
+      content.title,
+      `${siteConfig.name} ${dictionary.navigation.links.find((link) => link.key === "careers")?.label ?? "Careers"}`,
+      ...dictionary.seo.careers.keywords.slice(0, 3),
+    ],
+    lastModified: opening.postedAt,
+    socialImageAlt: dictionary.seo.careers.socialImageAlt,
+  };
+}
+
+export function buildOpeningMetadata(
+  locale: Locale,
+  opening: Opening,
+): Metadata {
+  const dictionary = getDictionary(locale);
+  const page = getOpeningSeo(locale, opening);
+  const canonical = absoluteUrl(page.path);
+  const basePath = `/careers/${opening.slug}`;
+
+  return {
+    title: { absolute: page.title },
+    description: page.description,
+    keywords: page.keywords,
+    alternates: {
+      canonical,
+      languages: buildAlternateLanguageMetadata(basePath),
+    },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      siteName: siteConfig.name,
+      locale: dictionary.language.ogLocale,
+      title: page.title,
+      description: page.description,
+      images: [
+        {
+          url: getOpenGraphImage(locale, "careers"),
+          width: 1200,
+          height: 630,
+          alt: page.socialImageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.title,
+      description: page.description,
+      images: [getTwitterImage(locale, "careers")],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+  };
+}
+
+function escapeHtml(text: string): string {
+  return text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function buildJobPostingDescriptionHtml(locale: Locale, opening: Opening) {
+  const dictionary = getDictionary(locale);
+  const sections = dictionary.pages.careers.opening.sections;
+  const content = opening.content[locale];
+
+  const parts = content.intro.map(
+    (paragraph) => `<p>${escapeHtml(paragraph)}</p>`,
+  );
+
+  const listSections: [string, readonly string[] | undefined][] = [
+    [sections.responsibilities, content.responsibilities],
+    [sections.requirements, content.requirements],
+    [sections.niceToHave, content.niceToHave],
+    [sections.offer, content.offer],
+  ];
+
+  for (const [heading, items] of listSections) {
+    if (!items || items.length === 0) {
+      continue;
+    }
+    parts.push(
+      `<p><strong>${escapeHtml(heading)}</strong></p><ul>${items
+        .map((item) => `<li>${escapeHtml(item)}</li>`)
+        .join("")}</ul>`,
+    );
+  }
+
+  return parts.join("");
+}
+
+export function buildJobPostingJsonLd(locale: Locale, opening: Opening) {
+  const dictionary = getDictionary(locale);
+  const content = opening.content[locale];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "@id": schemaJobPostingId(opening),
+    title: content.title,
+    description: buildJobPostingDescriptionHtml(locale, opening),
+    datePosted: opening.postedAt,
+    ...(opening.validThrough ? { validThrough: opening.validThrough } : {}),
+    employmentType: opening.employmentType,
+    hiringOrganization: {
+      "@type": "Organization",
+      "@id": schemaOrganizationId(),
+      name: siteConfig.name,
+      sameAs: siteConfig.url,
+    },
+    identifier: {
+      "@type": "PropertyValue",
+      name: siteConfig.name,
+      value: opening.slug,
+    },
+    ...(opening.workplaceType === "REMOTE"
+      ? {
+          jobLocationType: "TELECOMMUTE",
+          applicantLocationRequirements: (
+            opening.remoteEligibleRegions ?? [opening.countryCode]
+          ).map((countryCode) => ({
+            "@type": "Country",
+            name: countryCode,
+          })),
+        }
+      : {
+          jobLocation: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              ...(opening.city ? { addressLocality: opening.city } : {}),
+              addressCountry: opening.countryCode,
+            },
+          },
+        }),
+    ...(opening.salary
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: opening.salary.currency,
+            value: {
+              "@type": "QuantitativeValue",
+              minValue: opening.salary.min,
+              maxValue: opening.salary.max,
+              unitText: opening.salary.unitText,
+            },
+          },
+        }
+      : {}),
+    directApply: true,
+    inLanguage: dictionary.language.htmlLang,
   };
 }
 
@@ -538,5 +719,18 @@ export function getIndexablePages() {
     }),
   );
 
-  return [...pages, ...founderProfilePages];
+  const openingPages = locales.flatMap((locale) =>
+    getOpenings().map((opening) => {
+      const page = getOpeningSeo(locale, opening);
+      return {
+        ...page,
+        locale,
+        pageKey: "opening" as const,
+        openingSlug: opening.slug,
+        url: absoluteUrl(page.path),
+      };
+    }),
+  );
+
+  return [...pages, ...founderProfilePages, ...openingPages];
 }

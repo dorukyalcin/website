@@ -2,7 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { brandLogo } from "./brand";
 import { founders } from "./founders";
-import { getDictionary } from "./i18n";
+import { getDictionary, locales, pageKeys } from "./i18n";
+import { openings } from "./openings";
 import {
   absoluteUrl,
   buildBreadcrumbJsonLd,
@@ -347,7 +348,20 @@ test("builds verification metadata from env values", () => {
 test("returns all indexable pages across all locales", () => {
   const pages = getIndexablePages();
 
-  assert.equal(pages.length, 20);
+  assert.equal(
+    pages.length,
+    locales.length * (pageKeys.length + founders.length + openings.length),
+  );
+  assert.ok(
+    pages.some((page) => page.locale === "en" && page.path === "/careers"),
+  );
+  assert.ok(
+    pages.some(
+      (page) =>
+        page.locale === "de" &&
+        page.path === `/de/careers/${openings[0].slug}`,
+    ),
+  );
   assert.ok(
     pages.some((page) => page.locale === "en" && page.path === "/contact"),
   );

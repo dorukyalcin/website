@@ -1,17 +1,21 @@
 import { StructuredData } from "@/components/StructuredData";
 import { AboutPageView } from "@/components/pages/AboutPageView";
+import { CareersPageView } from "@/components/pages/CareersPageView";
 import { ContactPageView } from "@/components/pages/ContactPageView";
 import { FounderProfilePageView } from "@/components/pages/FounderProfilePageView";
 import { HomePageView } from "@/components/pages/HomePageView";
+import { OpeningPageView } from "@/components/pages/OpeningPageView";
 import { PrimeRoutePageView } from "@/components/pages/PrimeRoutePageView";
 import type { FounderProfile } from "@/lib/founders";
 import { getPageLabel, getPagePath, type Locale } from "@/lib/i18n";
+import type { Opening } from "@/lib/openings";
 import {
   buildAllFoundersPersonJsonLd,
   buildBaseStructuredData,
   buildBreadcrumbJsonLd,
   buildFounderProfilePageJsonLd,
   buildHomeItemListJsonLd,
+  buildJobPostingJsonLd,
   buildSoftwareApplicationJsonLd,
   buildWebPageJsonLd,
   schemaOrganizationId,
@@ -102,6 +106,53 @@ export function renderLocalizedContactPage(locale: Locale) {
         ]}
       />
       <ContactPageView locale={locale} />
+    </>
+  );
+}
+
+export function renderLocalizedCareersPage(locale: Locale) {
+  const homeLabel = getPageLabel(locale, "home");
+  const currentLabel = getPageLabel(locale, "careers");
+
+  return (
+    <>
+      <StructuredData
+        data={[
+          ...buildBaseStructuredData(locale),
+          buildWebPageJsonLd(locale, "careers"),
+          buildBreadcrumbJsonLd(locale, [
+            { name: homeLabel, path: "/" },
+            { name: currentLabel, path: "/careers" },
+          ]),
+        ]}
+      />
+      <CareersPageView locale={locale} />
+    </>
+  );
+}
+
+export function renderLocalizedOpeningPage(locale: Locale, opening: Opening) {
+  const homeLabel = getPageLabel(locale, "home");
+  const careersLabel = getPageLabel(locale, "careers");
+  const structuredData = [
+    ...buildBaseStructuredData(locale),
+    ...(opening.status === "open"
+      ? [buildJobPostingJsonLd(locale, opening)]
+      : []),
+    buildBreadcrumbJsonLd(locale, [
+      { name: homeLabel, path: "/" },
+      { name: careersLabel, path: "/careers" },
+      {
+        name: opening.content[locale].title,
+        path: `/careers/${opening.slug}`,
+      },
+    ]),
+  ];
+
+  return (
+    <>
+      <StructuredData data={structuredData} />
+      <OpeningPageView locale={locale} opening={opening} />
     </>
   );
 }

@@ -24,6 +24,7 @@ export const pageKeys = [
   "home",
   "about",
   "contact",
+  "careers",
   "primeroute",
 ] as const;
 
@@ -34,6 +35,7 @@ export const pageBasePaths: Record<PageKey, string> = {
   home: "/",
   about: "/about",
   contact: "/contact",
+  careers: "/careers",
   primeroute: "/rotasal",
 };
 
