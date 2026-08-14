@@ -340,12 +340,15 @@
         "titleLines": [
           "Bouw mee aan wat komt."
         ],
-        "description": "We zijn een klein team met grote ambities en bouwen serieuze software voor echte logistiek."
+        "description": "We zijn een klein team met grote ambities en bouwen serieuze software voor echte logistiek.",
+        "openCountOne": "1 openstaande vacature",
+        "openCountMany": "{count} openstaande vacatures"
       },
       "list": {
         "heading": "Openstaande vacatures",
         "empty": "Er zijn op dit moment geen openstaande vacatures. Kom binnenkort terug — of neem contact op via de contactpagina als je denkt dat je goed bij ons past.",
-        "viewLabel": "Bekijk vacature"
+        "viewLabel": "Bekijk vacature",
+        "emptyCta": "Neem contact op"
       },
       "labels": {
         "workplace": {
@@ -376,7 +379,13 @@
         "backLabel": "Alle vacatures",
         "applyHeading": "Solliciteer op deze vacature",
         "applyDescription": "Je sollicitatie gaat rechtstreeks naar de oprichter. We reageren op iedereen.",
-        "applyCtaLabel": "Solliciteer nu"
+        "applyCtaLabel": "Solliciteer nu",
+        "glance": {
+          "heading": "In het kort",
+          "workplaceLabel": "Werkplek",
+          "employmentLabel": "Dienstverband",
+          "regionsLabel": "Remote-regio's"
+        }
       },
       "form": {
         "nameLabel": "Naam",
@@ -397,7 +406,12 @@
         "selectPlaceholder": "Maak een keuze",
         "consentLabel": "Ik geef Avernsys toestemming om deze sollicitatie, inclusief mijn cv, op te slaan en te verwerken om mijn kandidatuur te beoordelen. Verwijdering kan op elk moment worden aangevraagd via de contactpagina.",
         "submitLabel": "Sollicitatie versturen",
-        "submittingLabel": "Versturen..."
+        "submittingLabel": "Versturen...",
+        "groups": {
+          "about": "Over jou",
+          "questions": "Vragen over de rol",
+          "documents": "CV & toestemming"
+        }
       },
       "success": {
         "title": "Sollicitatie ontvangen.",
@@ -422,6 +436,27 @@
           ],
           "signoff": "— Doruk, Avernsys"
         }
+      },
+      "hiring": {
+        "heading": "Zo werkt het",
+        "steps": [
+          {
+            "title": "Solliciteer",
+            "description": "Vijf minuten, één formulier — geen motivatiebrief nodig."
+          },
+          {
+            "title": "Kennismaking",
+            "description": "Een gesprek van 30 minuten met de oprichter over jou en de rol."
+          },
+          {
+            "title": "Verdieping",
+            "description": "Een praktische sessie over echte Rotasal-problemen — geen whiteboardpuzzels."
+          },
+          {
+            "title": "Beslissing",
+            "description": "Een duidelijk ja of nee binnen enkele dagen. We reageren op iedereen."
+          }
+        ]
       }
     },
     "notFound": {

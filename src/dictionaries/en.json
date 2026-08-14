@@ -340,12 +340,15 @@
         "titleLines": [
           "Build what's next."
         ],
-        "description": "We're a small team with big ambitions, building serious software for real-world logistics."
+        "description": "We're a small team with big ambitions, building serious software for real-world logistics.",
+        "openCountOne": "1 open position",
+        "openCountMany": "{count} open positions"
       },
       "list": {
         "heading": "Open positions",
         "empty": "There are no open positions right now. Check back soon — or reach out through the contact page if you think you'd be a great fit.",
-        "viewLabel": "View position"
+        "viewLabel": "View position",
+        "emptyCta": "Get in touch"
       },
       "labels": {
         "workplace": {
@@ -376,7 +379,13 @@
         "backLabel": "All positions",
         "applyHeading": "Apply for this position",
         "applyDescription": "Your application goes directly to the founder. We reply to everyone.",
-        "applyCtaLabel": "Apply now"
+        "applyCtaLabel": "Apply now",
+        "glance": {
+          "heading": "At a glance",
+          "workplaceLabel": "Workplace",
+          "employmentLabel": "Type",
+          "regionsLabel": "Remote regions"
+        }
       },
       "form": {
         "nameLabel": "Name",
@@ -397,7 +406,12 @@
         "selectPlaceholder": "Select an option",
         "consentLabel": "I consent to Avernsys storing and processing this application, including my CV, to evaluate my candidacy. Deletion can be requested at any time via the contact page.",
         "submitLabel": "Submit application",
-        "submittingLabel": "Submitting..."
+        "submittingLabel": "Submitting...",
+        "groups": {
+          "about": "About you",
+          "questions": "Role questions",
+          "documents": "CV & consent"
+        }
       },
       "success": {
         "title": "Application received.",
@@ -422,6 +436,27 @@
           ],
           "signoff": "— Doruk, Avernsys"
         }
+      },
+      "hiring": {
+        "heading": "How we hire",
+        "steps": [
+          {
+            "title": "Apply",
+            "description": "Five minutes, one form — no cover letter required."
+          },
+          {
+            "title": "Intro call",
+            "description": "A 30-minute conversation with the founder about you and the role."
+          },
+          {
+            "title": "Deep dive",
+            "description": "A practical session on real Rotasal problems — no whiteboard puzzles."
+          },
+          {
+            "title": "Decision",
+            "description": "A clear yes or no within days. We reply to everyone."
+          }
+        ]
       }
     },
     "notFound": {

@@ -13,6 +13,24 @@ const inputBaseClassName =
 const labelClassName =
   "block text-xs font-medium uppercase tracking-[0.15em] text-gray-500 mb-2";
 
+function GroupLabel({
+  children,
+  first = false,
+}: {
+  children: React.ReactNode;
+  first?: boolean;
+}) {
+  return (
+    <p
+      className={`text-[12px] font-medium uppercase tracking-[0.2em] text-gray-600 ${
+        first ? "" : "border-t border-white/[0.06] pt-10"
+      }`}
+    >
+      {children}
+    </p>
+  );
+}
+
 type SubmitErrorCode =
   | "generic"
   | "validation"
@@ -190,6 +208,7 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <GroupLabel first>{form.groups.about}</GroupLabel>
       <div>
         <label htmlFor="name" className={labelClassName}>
           {form.nameLabel}
@@ -260,6 +279,8 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           placeholder={form.linkPlaceholder}
         />
       </div>
+
+      <GroupLabel>{form.groups.questions}</GroupLabel>
 
       {opening.questions.map((question) => {
         const fieldName = `question:${question.id}`;
@@ -340,6 +361,8 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           placeholder={form.motivationPlaceholder}
         />
       </div>
+
+      <GroupLabel>{form.groups.documents}</GroupLabel>
 
       <div>
         <label htmlFor="cv" className={labelClassName}>

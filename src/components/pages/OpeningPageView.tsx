@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ApplicationForm } from "@/components/ApplicationForm";
 import { headingClassNames } from "@/components/headingStyles";
+import { formatOpeningDate, formatRegionName } from "@/lib/format";
 import { getDictionary, localizePath, type Locale } from "@/lib/i18n";
 import type { Opening } from "@/lib/openings";
 import { getPageHeroSectionClassName } from "./pageHero";
@@ -14,18 +15,33 @@ type OpeningPageViewProps = {
   opening: Opening;
 };
 
+function scrollToApply(event: React.MouseEvent<HTMLAnchorElement>) {
+  const target = document.getElementById("apply");
+  if (target) {
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-6 flex items-center gap-5">
+      <h2 className="text-headline shrink-0">{children}</h2>
+      <span aria-hidden className="h-px flex-1 bg-white/[0.06]" />
+    </div>
+  );
+}
+
 function BulletSection({
   heading,
   items,
-  delay = 0,
 }: {
   heading: string;
   items: readonly string[];
-  delay?: number;
 }) {
   return (
-    <AnimatedSection delay={delay}>
-      <h2 className="text-headline mb-6">{heading}</h2>
+    <AnimatedSection>
+      <SectionHeading>{heading}</SectionHeading>
       <ul className="space-y-3">
         {items.map((item) => (
           <li
@@ -41,18 +57,37 @@ function BulletSection({
   );
 }
 
+function GlanceRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 py-3">
+      <dt className="text-[12px] uppercase tracking-[0.15em] text-gray-600">
+        {label}
+      </dt>
+      <dd className="text-right text-[14px] text-gray-300">{value}</dd>
+    </div>
+  );
+}
+
 export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
   const dictionary = getDictionary(locale);
   const page = dictionary.pages.careers;
   const content = opening.content[locale];
   const isOpen = opening.status === "open";
+  const glance = page.opening.glance;
+
+  const regions =
+    opening.workplaceType === "REMOTE" && opening.remoteEligibleRegions
+      ? opening.remoteEligibleRegions
+          .map((code) => formatRegionName(locale, code))
+          .join(" · ")
+      : null;
 
   return (
     <>
       <section className={getPageHeroSectionClassName("min-h-[55vh]")}>
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-white/[0.015] blur-[100px]" />
 
-        <div className="relative z-10 text-center px-6 max-w-[720px]">
+        <div className="relative z-10 text-center px-6 max-w-[760px]">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,6 +129,7 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
             >
               <a
                 href="#apply"
+                onClick={scrollToApply}
                 className="inline-flex items-center justify-center rounded-full text-[14px] font-medium transition-all duration-300 px-7 py-3 bg-white text-black hover:bg-gray-200 hover:scale-[1.02]"
               >
                 {page.opening.applyCtaLabel}
@@ -117,7 +153,7 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
       </section>
 
       <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-[720px] px-6">
+        <div className="mx-auto max-w-[1040px] px-6">
           <AnimatedSection>
             <Link
               href={localizePath(locale, "/careers")}
@@ -140,65 +176,104 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
             </Link>
           </AnimatedSection>
 
-          <div className="mt-16 space-y-20">
-            <AnimatedSection>
-              <h2 className="text-headline mb-6">
-                {page.opening.sections.intro}
-              </h2>
-              <div className="space-y-4">
-                {content.intro.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="text-[15px] leading-relaxed text-gray-400"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </AnimatedSection>
+          <div className="mt-14 lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16">
+            <div className="max-w-[680px] space-y-20">
+              <AnimatedSection>
+                <SectionHeading>{page.opening.sections.intro}</SectionHeading>
+                <div className="space-y-4">
+                  {content.intro.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="text-[15px] leading-relaxed text-gray-400"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </AnimatedSection>
 
-            <BulletSection
-              heading={page.opening.sections.responsibilities}
-              items={content.responsibilities}
-            />
-            <BulletSection
-              heading={page.opening.sections.requirements}
-              items={content.requirements}
-            />
-            {content.niceToHave && content.niceToHave.length > 0 && (
               <BulletSection
-                heading={page.opening.sections.niceToHave}
-                items={content.niceToHave}
+                heading={page.opening.sections.responsibilities}
+                items={content.responsibilities}
               />
-            )}
-            {content.offer && content.offer.length > 0 && (
               <BulletSection
-                heading={page.opening.sections.offer}
-                items={content.offer}
+                heading={page.opening.sections.requirements}
+                items={content.requirements}
               />
-            )}
+              {content.niceToHave && content.niceToHave.length > 0 && (
+                <BulletSection
+                  heading={page.opening.sections.niceToHave}
+                  items={content.niceToHave}
+                />
+              )}
+              {content.offer && content.offer.length > 0 && (
+                <BulletSection
+                  heading={page.opening.sections.offer}
+                  items={content.offer}
+                />
+              )}
+            </div>
+
+            <div className="hidden lg:block">
+              <AnimatedSection className="sticky top-28">
+                <div className="rounded-3xl glass p-7">
+                  <h2 className="text-[12px] uppercase tracking-[0.15em] text-gray-500">
+                    {glance.heading}
+                  </h2>
+                  <dl className="mt-4 divide-y divide-white/[0.06]">
+                    <GlanceRow
+                      label={page.labels.postedOn}
+                      value={formatOpeningDate(locale, opening.postedAt)}
+                    />
+                    <GlanceRow
+                      label={glance.workplaceLabel}
+                      value={page.labels.workplace[opening.workplaceType]}
+                    />
+                    <GlanceRow
+                      label={glance.employmentLabel}
+                      value={page.labels.employment[opening.employmentType]}
+                    />
+                    {regions && (
+                      <GlanceRow label={glance.regionsLabel} value={regions} />
+                    )}
+                  </dl>
+                  {isOpen && (
+                    <a
+                      href="#apply"
+                      onClick={scrollToApply}
+                      className="mt-6 flex w-full items-center justify-center rounded-full bg-white px-6 py-3 text-[14px] font-medium text-black transition-all duration-300 hover:bg-gray-200 hover:scale-[1.01]"
+                    >
+                      {page.opening.applyCtaLabel}
+                    </a>
+                  )}
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
 
-      <section
-        id="apply"
-        className="scroll-mt-24 py-24 md:py-32 border-t border-white/[0.06]"
-      >
-        <div className="mx-auto max-w-[560px] px-6">
+      <section id="apply" className="scroll-mt-24 pb-32 md:pb-40">
+        <div className="mx-auto max-w-[680px] px-6">
           <AnimatedSection>
             {isOpen ? (
-              <>
-                <h2 className="text-headline mb-3 text-center">
-                  {page.opening.applyHeading}
-                </h2>
-                <p className="text-[15px] leading-relaxed text-gray-500 text-center mb-12">
-                  {page.opening.applyDescription}
-                </p>
-                <ApplicationForm locale={locale} opening={opening} />
-              </>
+              <div className="relative overflow-hidden rounded-3xl glass p-6 md:p-12">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[480px] -translate-x-1/2 rounded-full bg-white/[0.03] blur-[80px]"
+                />
+                <div className="relative">
+                  <h2 className="text-headline mb-3 text-center">
+                    {page.opening.applyHeading}
+                  </h2>
+                  <p className="text-[15px] leading-relaxed text-gray-500 text-center mb-12">
+                    {page.opening.applyDescription}
+                  </p>
+                  <ApplicationForm locale={locale} opening={opening} />
+                </div>
+              </div>
             ) : (
-              <div className="text-center py-10">
+              <div className="rounded-3xl glass p-10 md:p-14 text-center">
                 <h2 className="text-headline mb-3">
                   {page.opening.closed.title}
                 </h2>

@@ -340,12 +340,15 @@
         "titleLines": [
           "Bau mit an dem, was kommt."
         ],
-        "description": "Wir sind ein kleines Team mit großen Ambitionen und bauen ernsthafte Software für echte Logistik."
+        "description": "Wir sind ein kleines Team mit großen Ambitionen und bauen ernsthafte Software für echte Logistik.",
+        "openCountOne": "1 offene Stelle",
+        "openCountMany": "{count} offene Stellen"
       },
       "list": {
         "heading": "Offene Stellen",
         "empty": "Derzeit gibt es keine offenen Stellen. Schau bald wieder vorbei — oder melde dich über die Kontaktseite, wenn du gut zu uns passt.",
-        "viewLabel": "Stelle ansehen"
+        "viewLabel": "Stelle ansehen",
+        "emptyCta": "Kontakt aufnehmen"
       },
       "labels": {
         "workplace": {
@@ -376,7 +379,13 @@
         "backLabel": "Alle Stellen",
         "applyHeading": "Auf diese Stelle bewerben",
         "applyDescription": "Deine Bewerbung geht direkt an den Gründer. Wir antworten allen.",
-        "applyCtaLabel": "Jetzt bewerben"
+        "applyCtaLabel": "Jetzt bewerben",
+        "glance": {
+          "heading": "Auf einen Blick",
+          "workplaceLabel": "Arbeitsort",
+          "employmentLabel": "Anstellung",
+          "regionsLabel": "Remote-Regionen"
+        }
       },
       "form": {
         "nameLabel": "Name",
@@ -397,7 +406,12 @@
         "selectPlaceholder": "Bitte auswählen",
         "consentLabel": "Ich willige ein, dass Avernsys diese Bewerbung einschließlich meines Lebenslaufs speichert und verarbeitet, um meine Kandidatur zu prüfen. Die Löschung kann jederzeit über die Kontaktseite angefordert werden.",
         "submitLabel": "Bewerbung absenden",
-        "submittingLabel": "Wird gesendet..."
+        "submittingLabel": "Wird gesendet...",
+        "groups": {
+          "about": "Über dich",
+          "questions": "Fragen zur Rolle",
+          "documents": "Lebenslauf & Einwilligung"
+        }
       },
       "success": {
         "title": "Bewerbung eingegangen.",
@@ -422,6 +436,27 @@
           ],
           "signoff": "— Doruk, Avernsys"
         }
+      },
+      "hiring": {
+        "heading": "So läuft's ab",
+        "steps": [
+          {
+            "title": "Bewerben",
+            "description": "Fünf Minuten, ein Formular — kein Anschreiben nötig."
+          },
+          {
+            "title": "Kennenlernen",
+            "description": "Ein 30-minütiges Gespräch mit dem Gründer über dich und die Rolle."
+          },
+          {
+            "title": "Deep Dive",
+            "description": "Eine praktische Session zu echten Rotasal-Problemen — keine Whiteboard-Rätsel."
+          },
+          {
+            "title": "Entscheidung",
+            "description": "Ein klares Ja oder Nein innerhalb weniger Tage. Wir antworten allen."
+          }
+        ]
       }
     },
     "notFound": {

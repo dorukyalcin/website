@@ -340,12 +340,15 @@
         "titleLines": [
           "Geleceği birlikte inşa edelim."
         ],
-        "description": "Büyük hedefleri olan küçük bir ekibiz; gerçek dünyadaki lojistik için ciddi yazılımlar geliştiriyoruz."
+        "description": "Büyük hedefleri olan küçük bir ekibiz; gerçek dünyadaki lojistik için ciddi yazılımlar geliştiriyoruz.",
+        "openCountOne": "1 açık pozisyon",
+        "openCountMany": "{count} açık pozisyon"
       },
       "list": {
         "heading": "Açık pozisyonlar",
         "empty": "Şu anda açık pozisyon bulunmuyor. Yakında tekrar kontrol et — ya da bize uygun olduğunu düşünüyorsan iletişim sayfasından ulaş.",
-        "viewLabel": "Pozisyonu görüntüle"
+        "viewLabel": "Pozisyonu görüntüle",
+        "emptyCta": "İletişime geç"
       },
       "labels": {
         "workplace": {
@@ -376,7 +379,13 @@
         "backLabel": "Tüm pozisyonlar",
         "applyHeading": "Bu pozisyona başvur",
         "applyDescription": "Başvurun doğrudan kurucuya ulaşır. Herkese yanıt veriyoruz.",
-        "applyCtaLabel": "Hemen başvur"
+        "applyCtaLabel": "Hemen başvur",
+        "glance": {
+          "heading": "Bir bakışta",
+          "workplaceLabel": "Çalışma şekli",
+          "employmentLabel": "Çalışma türü",
+          "regionsLabel": "Uzaktan bölgeler"
+        }
       },
       "form": {
         "nameLabel": "Ad Soyad",
@@ -397,7 +406,12 @@
         "selectPlaceholder": "Bir seçenek belirle",
         "consentLabel": "Avernsys'in bu başvuruyu, CV'm dahil olmak üzere, adaylığımı değerlendirmek amacıyla saklamasına ve işlemesine onay veriyorum. Silme talebi her zaman iletişim sayfasından iletilebilir.",
         "submitLabel": "Başvuruyu gönder",
-        "submittingLabel": "Gönderiliyor..."
+        "submittingLabel": "Gönderiliyor...",
+        "groups": {
+          "about": "Senin hakkında",
+          "questions": "Role dair sorular",
+          "documents": "CV ve onay"
+        }
       },
       "success": {
         "title": "Başvurun alındı.",
@@ -422,6 +436,27 @@
           ],
           "signoff": "— Doruk, Avernsys"
         }
+      },
+      "hiring": {
+        "heading": "Süreç nasıl işliyor",
+        "steps": [
+          {
+            "title": "Başvur",
+            "description": "Beş dakika, tek form — ön yazı gerekmez."
+          },
+          {
+            "title": "Tanışma",
+            "description": "Kurucuyla, sen ve rol hakkında 30 dakikalık bir görüşme."
+          },
+          {
+            "title": "Derinlemesine",
+            "description": "Gerçek Rotasal problemleri üzerine pratik bir oturum — beyaz tahta bulmacaları yok."
+          },
+          {
+            "title": "Karar",
+            "description": "Birkaç gün içinde net bir evet ya da hayır. Herkese yanıt veriyoruz."
+          }
+        ]
       }
     },
     "notFound": {
