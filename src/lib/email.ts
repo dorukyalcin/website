@@ -12,16 +12,17 @@ type EmailMessage = {
   replyTo?: string;
 };
 
-// No-op (with a warning) when Resend is not configured, so local dev and
-// misconfiguration never block an application from being stored.
-async function sendEmail(message: EmailMessage): Promise<void> {
+// Skips (with a warning) when Resend is not configured, so local dev and
+// misconfiguration never block an application from being stored. Returns
+// whether the message was actually handed to Resend.
+async function sendEmail(message: EmailMessage): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.APPLICATIONS_FROM_EMAIL;
   if (!apiKey || !from) {
     console.warn(
       `email: RESEND_API_KEY/APPLICATIONS_FROM_EMAIL not configured, skipping "${message.subject}"`,
     );
-    return;
+    return false;
   }
 
   const response = await fetch(RESEND_URL, {
@@ -43,6 +44,7 @@ async function sendEmail(message: EmailMessage): Promise<void> {
     const body = await response.text().catch(() => "");
     throw new Error(`resend: ${response.status} ${body}`);
   }
+  return true;
 }
 
 function fillTemplate(template: string, values: Record<string, string>) {
@@ -76,6 +78,39 @@ export async function sendCandidateConfirmation(
     subject: fillTemplate(template.subject, values),
     text,
     replyTo: process.env.APPLICATIONS_NOTIFY_EMAIL,
+  });
+}
+
+export async function sendContactEmail(message: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  locale: string;
+}): Promise<boolean> {
+  const to = process.env.APPLICATIONS_NOTIFY_EMAIL;
+  if (!to) {
+    console.warn("email: APPLICATIONS_NOTIFY_EMAIL not configured, skipping contact message");
+    return false;
+  }
+
+  const subjectLabel =
+    getDictionary(defaultLocale).pages.contact.form.subjectOptions.find(
+      (option) => option.value === message.subject,
+    )?.label ?? message.subject;
+
+  return sendEmail({
+    to,
+    subject: `Contact form: ${subjectLabel} — ${message.name}`,
+    text: [
+      `Name: ${message.name}`,
+      `Email: ${message.email}`,
+      `Topic: ${subjectLabel}`,
+      `Locale: ${message.locale}`,
+      "",
+      message.message,
+    ].join("\n"),
+    replyTo: message.email,
   });
 }
 

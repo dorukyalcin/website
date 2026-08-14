@@ -327,6 +327,11 @@
         "messageLabel": "Message",
         "messagePlaceholder": "Tell us what you're looking for...",
         "submitLabel": "Send Message"
+      },
+      "errors": {
+        "generic": "Something went wrong while sending. Please try again.",
+        "rateLimited": "Too many attempts. Please wait a minute and try again.",
+        "turnstile": "Please complete the verification and try again."
       }
     },
     "careers": {
@@ -370,7 +375,8 @@
         },
         "backLabel": "All positions",
         "applyHeading": "Apply for this position",
-        "applyDescription": "Your application goes directly to the founder. We reply to everyone."
+        "applyDescription": "Your application goes directly to the founder. We reply to everyone.",
+        "applyCtaLabel": "Apply now"
       },
       "form": {
         "nameLabel": "Name",
@@ -432,6 +438,10 @@
         {
           "key": "primeroute",
           "label": "Rotasal"
+        },
+        {
+          "key": "careers",
+          "label": "Careers"
         },
         {
           "key": "contact",

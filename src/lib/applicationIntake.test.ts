@@ -36,16 +36,27 @@ test("accepts a complete valid application", () => {
 test("rejects unknown opening, bad locale, and missing consent", () => {
   assert.deepEqual(
     validateApplicationIntake(baseFields({ openingSlug: "nope" })),
-    { ok: false, error: "validation" },
+    { ok: false, error: "validation", fields: [] },
   );
   assert.deepEqual(
     validateApplicationIntake(baseFields({ locale: "fr" })),
-    { ok: false, error: "validation" },
+    { ok: false, error: "validation", fields: [] },
   );
   assert.deepEqual(validateApplicationIntake(baseFields({ consent: "" })), {
     ok: false,
     error: "validation",
+    fields: ["consent"],
   });
+});
+
+test("reports every invalid field at once", () => {
+  const result = validateApplicationIntake(
+    baseFields({ name: "", email: "bad", consent: "" }),
+  );
+  assert.equal(result.ok, false);
+  if (!result.ok) {
+    assert.deepEqual(result.fields, ["name", "email", "consent"]);
+  }
 });
 
 test("rejects missing or malformed identity fields", () => {

@@ -84,6 +84,35 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
               {page.labels.employment[opening.employmentType]}
             </span>
           </motion.div>
+
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="mt-10"
+            >
+              <a
+                href="#apply"
+                className="inline-flex items-center justify-center rounded-full text-[14px] font-medium transition-all duration-300 px-7 py-3 bg-white text-black hover:bg-gray-200 hover:scale-[1.02]"
+              >
+                {page.opening.applyCtaLabel}
+                <svg
+                  className="ml-2 w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                  />
+                </svg>
+              </a>
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -152,7 +181,10 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 border-t border-white/[0.06]">
+      <section
+        id="apply"
+        className="scroll-mt-24 py-24 md:py-32 border-t border-white/[0.06]"
+      >
         <div className="mx-auto max-w-[560px] px-6">
           <AnimatedSection>
             {isOpen ? (

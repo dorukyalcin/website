@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { headingClassNames } from "@/components/headingStyles";
 import { TextLines } from "@/components/TextLines";
+import { useTurnstile } from "@/components/useTurnstile";
+import { trackEvent } from "@/lib/analytics";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { getPageHeroSectionClassName } from "./pageHero";
 
@@ -12,10 +14,61 @@ type ContactPageViewProps = {
   locale: Locale;
 };
 
+type ContactErrorCode = "generic" | "rateLimited" | "turnstile";
+
 export function ContactPageView({ locale }: ContactPageViewProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorCode, setErrorCode] = useState<ContactErrorCode | null>(null);
+  const turnstile = useTurnstile();
   const dictionary = getDictionary(locale);
   const page = dictionary.pages.contact;
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submitting) {
+      return;
+    }
+    setErrorCode(null);
+    setSubmitting(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          locale,
+          name: formData.get("name"),
+          email: formData.get("email"),
+          subject: formData.get("subject"),
+          message: formData.get("message"),
+          turnstileToken: turnstile.token,
+        }),
+      });
+
+      if (response.ok) {
+        trackEvent("contact_submitted", { locale });
+        setSubmitted(true);
+        return;
+      }
+
+      const body = (await response.json().catch(() => null)) as {
+        error?: string;
+      } | null;
+      if (response.status === 429) {
+        setErrorCode("rateLimited");
+      } else if (body?.error === "turnstile") {
+        setErrorCode("turnstile");
+      } else {
+        setErrorCode("generic");
+      }
+    } catch {
+      setErrorCode("generic");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <>
@@ -76,13 +129,7 @@ export function ContactPageView({ locale }: ContactPageViewProps) {
                 <p className="text-body-large">{page.success.description}</p>
               </div>
             ) : (
-              <form
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  setSubmitted(true);
-                }}
-                className="space-y-6"
-              >
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label
                     htmlFor="name"
@@ -163,9 +210,20 @@ export function ContactPageView({ locale }: ContactPageViewProps) {
                   />
                 </div>
 
+                {turnstile.enabled && (
+                  <div ref={turnstile.containerRef} className="min-h-[65px]" />
+                )}
+
+                {errorCode && (
+                  <p className="text-[14px] text-red-400" role="alert">
+                    {page.errors[errorCode]}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-white text-black rounded-full py-4 text-[14px] font-medium hover:bg-gray-200 transition-all duration-300 hover:scale-[1.01] mt-4"
+                  disabled={submitting}
+                  className="w-full bg-white text-black rounded-full py-4 text-[14px] font-medium hover:bg-gray-200 transition-all duration-300 hover:scale-[1.01] mt-4 disabled:opacity-60 disabled:hover:scale-100"
                 >
                   {page.form.submitLabel}
                 </button>

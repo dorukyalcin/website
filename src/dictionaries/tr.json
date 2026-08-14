@@ -327,6 +327,11 @@
         "messageLabel": "Mesaj",
         "messagePlaceholder": "Neye ihtiyacınız olduğunu kısaca anlatın...",
         "submitLabel": "Mesaj Gönder"
+      },
+      "errors": {
+        "generic": "Gönderim sırasında bir şeyler ters gitti. Lütfen tekrar dene.",
+        "rateLimited": "Çok fazla deneme yapıldı. Lütfen bir dakika bekleyip tekrar dene.",
+        "turnstile": "Lütfen doğrulamayı tamamlayıp tekrar dene."
       }
     },
     "careers": {
@@ -370,7 +375,8 @@
         },
         "backLabel": "Tüm pozisyonlar",
         "applyHeading": "Bu pozisyona başvur",
-        "applyDescription": "Başvurun doğrudan kurucuya ulaşır. Herkese yanıt veriyoruz."
+        "applyDescription": "Başvurun doğrudan kurucuya ulaşır. Herkese yanıt veriyoruz.",
+        "applyCtaLabel": "Hemen başvur"
       },
       "form": {
         "nameLabel": "Ad Soyad",
@@ -432,6 +438,10 @@
         {
           "key": "primeroute",
           "label": "Rotasal"
+        },
+        {
+          "key": "careers",
+          "label": "Kariyer"
         },
         {
           "key": "contact",

@@ -327,6 +327,11 @@
         "messageLabel": "Nachricht",
         "messagePlaceholder": "Worum geht es bei Ihnen?",
         "submitLabel": "Nachricht senden"
+      },
+      "errors": {
+        "generic": "Beim Senden ist etwas schiefgelaufen. Bitte versuche es erneut.",
+        "rateLimited": "Zu viele Versuche. Bitte warte eine Minute und versuche es erneut.",
+        "turnstile": "Bitte schließe die Verifizierung ab und versuche es erneut."
       }
     },
     "careers": {
@@ -370,7 +375,8 @@
         },
         "backLabel": "Alle Stellen",
         "applyHeading": "Auf diese Stelle bewerben",
-        "applyDescription": "Deine Bewerbung geht direkt an den Gründer. Wir antworten allen."
+        "applyDescription": "Deine Bewerbung geht direkt an den Gründer. Wir antworten allen.",
+        "applyCtaLabel": "Jetzt bewerben"
       },
       "form": {
         "nameLabel": "Name",
@@ -432,6 +438,10 @@
         {
           "key": "primeroute",
           "label": "Rotasal"
+        },
+        {
+          "key": "careers",
+          "label": "Karriere"
         },
         {
           "key": "contact",

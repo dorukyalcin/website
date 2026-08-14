@@ -31,7 +31,7 @@ export type IntakeResult =
       motivation: string | null;
       answers: Record<string, string>;
     }
-  | { ok: false; error: IntakeErrorCode };
+  | { ok: false; error: IntakeErrorCode; fields: string[] };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -73,20 +73,26 @@ export function validateApplicationIntake(
 ): IntakeResult {
   const opening = getOpeningBySlug(fields.openingSlug);
   if (!opening || !isLocale(fields.locale)) {
-    return { ok: false, error: "validation" };
+    return { ok: false, error: "validation", fields: [] };
   }
   if (opening.status !== "open") {
-    return { ok: false, error: "closed" };
+    return { ok: false, error: "closed", fields: [] };
   }
 
+  const invalidFields: string[] = [];
+
   const name = normalize(fields.name, LIMITS.name);
+  if (!name) {
+    invalidFields.push("name");
+  }
+
   const email = normalize(fields.email, LIMITS.email);
-  if (!name || !email || !EMAIL_PATTERN.test(email)) {
-    return { ok: false, error: "validation" };
+  if (!email || !EMAIL_PATTERN.test(email)) {
+    invalidFields.push("email");
   }
 
   if (fields.consent !== "on") {
-    return { ok: false, error: "validation" };
+    invalidFields.push("consent");
   }
 
   const answers: Record<string, string> = {};
@@ -96,11 +102,14 @@ export function validateApplicationIntake(
       fields.questionAnswers[question.id],
     );
     if (!result.ok) {
-      return { ok: false, error: "validation" };
-    }
-    if (result.value) {
+      invalidFields.push(`question:${question.id}`);
+    } else if (result.value) {
       answers[question.id] = result.value;
     }
+  }
+
+  if (invalidFields.length > 0) {
+    return { ok: false, error: "validation", fields: invalidFields };
   }
 
   const phone = normalize(fields.phone, LIMITS.phone);

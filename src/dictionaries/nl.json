@@ -327,6 +327,11 @@
         "messageLabel": "Bericht",
         "messagePlaceholder": "Vertel kort waar je naar op zoek bent...",
         "submitLabel": "Verstuur bericht"
+      },
+      "errors": {
+        "generic": "Er ging iets mis bij het versturen. Probeer het opnieuw.",
+        "rateLimited": "Te veel pogingen. Wacht een minuut en probeer het opnieuw.",
+        "turnstile": "Rond de verificatie af en probeer het opnieuw."
       }
     },
     "careers": {
@@ -370,7 +375,8 @@
         },
         "backLabel": "Alle vacatures",
         "applyHeading": "Solliciteer op deze vacature",
-        "applyDescription": "Je sollicitatie gaat rechtstreeks naar de oprichter. We reageren op iedereen."
+        "applyDescription": "Je sollicitatie gaat rechtstreeks naar de oprichter. We reageren op iedereen.",
+        "applyCtaLabel": "Solliciteer nu"
       },
       "form": {
         "nameLabel": "Naam",
@@ -432,6 +438,10 @@
         {
           "key": "primeroute",
           "label": "Rotasal"
+        },
+        {
+          "key": "careers",
+          "label": "Vacatures"
         },
         {
           "key": "contact",

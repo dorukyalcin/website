@@ -1,33 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import type { Opening } from "@/lib/openings";
+import { useTurnstile } from "@/components/useTurnstile";
 
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (
-        element: HTMLElement,
-        options: {
-          sitekey: string;
-          callback: (token: string) => void;
-          "expired-callback": () => void;
-          "error-callback": () => void;
-          theme: "dark" | "light" | "auto";
-        },
-      ) => string;
-    };
-    onTurnstileLoad?: () => void;
-  }
-}
+const CV_MAX_BYTES = 5 * 1024 * 1024;
 
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-const TURNSTILE_SCRIPT_SRC =
-  "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit";
-
-const inputClassName =
-  "w-full bg-transparent border-b border-white/[0.1] py-3 text-white placeholder-gray-600 focus:border-white/30 focus:outline-none transition-colors duration-300";
+const inputBaseClassName =
+  "w-full bg-transparent border-b py-3 text-white placeholder-gray-600 focus:outline-none transition-colors duration-300";
 const labelClassName =
   "block text-xs font-medium uppercase tracking-[0.15em] text-gray-500 mb-2";
 
@@ -68,6 +50,20 @@ function errorCodeFromResponse(status: number, body: unknown): SubmitErrorCode {
   return "generic";
 }
 
+function fieldsFromResponse(body: unknown): string[] {
+  if (
+    body &&
+    typeof body === "object" &&
+    "fields" in body &&
+    Array.isArray((body as { fields: unknown }).fields)
+  ) {
+    return (body as { fields: unknown[] }).fields.filter(
+      (field): field is string => typeof field === "string",
+    );
+  }
+  return [];
+}
+
 type ApplicationFormProps = {
   locale: Locale;
   opening: Opening;
@@ -81,41 +77,51 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorCode, setErrorCode] = useState<SubmitErrorCode | null>(null);
+  const [invalidFields, setInvalidFields] = useState<readonly string[]>([]);
   const [cvName, setCvName] = useState<string | null>(null);
-  const [turnstileToken, setTurnstileToken] = useState("");
-  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstile = useTurnstile();
 
-  useEffect(() => {
-    if (!TURNSTILE_SITE_KEY) {
+  const inputClassName = (field: string) =>
+    `${inputBaseClassName} ${
+      invalidFields.includes(field)
+        ? "border-red-400/70 focus:border-red-300"
+        : "border-white/[0.1] focus:border-white/30"
+    }`;
+  const isInvalid = (field: string) => invalidFields.includes(field) || undefined;
+
+  function clearFieldError(field: string) {
+    setInvalidFields((fields) => fields.filter((name) => name !== field));
+  }
+
+  function handleCvChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.currentTarget.files?.[0];
+    if (!file) {
+      setCvName(null);
       return;
     }
-
-    const renderWidget = () => {
-      if (turnstileRef.current && window.turnstile) {
-        turnstileRef.current.innerHTML = "";
-        window.turnstile.render(turnstileRef.current, {
-          sitekey: TURNSTILE_SITE_KEY,
-          callback: setTurnstileToken,
-          "expired-callback": () => setTurnstileToken(""),
-          "error-callback": () => setTurnstileToken(""),
-          theme: "dark",
-        });
-      }
-    };
-
-    if (window.turnstile) {
-      renderWidget();
+    const looksLikePdf =
+      file.type === "application/pdf" ||
+      file.name.toLowerCase().endsWith(".pdf");
+    if (!looksLikePdf) {
+      event.currentTarget.value = "";
+      setCvName(null);
+      setErrorCode("cvType");
+      setInvalidFields(["cv"]);
       return;
     }
-
-    window.onTurnstileLoad = renderWidget;
-    if (!document.querySelector(`script[src="${TURNSTILE_SCRIPT_SRC}"]`)) {
-      const script = document.createElement("script");
-      script.src = TURNSTILE_SCRIPT_SRC;
-      script.async = true;
-      document.head.appendChild(script);
+    if (file.size > CV_MAX_BYTES) {
+      event.currentTarget.value = "";
+      setCvName(null);
+      setErrorCode("cvSize");
+      setInvalidFields(["cv"]);
+      return;
     }
-  }, []);
+    setCvName(file.name);
+    setErrorCode((code) =>
+      code === "cvType" || code === "cvSize" ? null : code,
+    );
+    clearFieldError("cv");
+  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -123,14 +129,15 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
       return;
     }
     setErrorCode(null);
+    setInvalidFields([]);
     setSubmitting(true);
 
     try {
       const formData = new FormData(event.currentTarget);
       formData.set("openingSlug", opening.slug);
       formData.set("locale", locale);
-      if (turnstileToken) {
-        formData.set("turnstileToken", turnstileToken);
+      if (turnstile.token) {
+        formData.set("turnstileToken", turnstile.token);
       }
 
       const response = await fetch("/api/applications", {
@@ -139,12 +146,17 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
       });
 
       if (response.ok) {
+        trackEvent("application_submitted", {
+          opening: opening.slug,
+          locale,
+        });
         setSubmitted(true);
         return;
       }
 
       const body = await response.json().catch(() => null);
       setErrorCode(errorCodeFromResponse(response.status, body));
+      setInvalidFields(fieldsFromResponse(body));
     } catch {
       setErrorCode("generic");
     } finally {
@@ -177,7 +189,7 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate={false}>
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="name" className={labelClassName}>
           {form.nameLabel}
@@ -189,7 +201,9 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           required
           maxLength={200}
           autoComplete="name"
-          className={inputClassName}
+          aria-invalid={isInvalid("name")}
+          onChange={() => clearFieldError("name")}
+          className={inputClassName("name")}
           placeholder={form.namePlaceholder}
         />
       </div>
@@ -205,7 +219,9 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           required
           maxLength={320}
           autoComplete="email"
-          className={inputClassName}
+          aria-invalid={isInvalid("email")}
+          onChange={() => clearFieldError("email")}
+          className={inputClassName("email")}
           placeholder={form.emailPlaceholder}
         />
       </div>
@@ -223,7 +239,7 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           name="phone"
           maxLength={50}
           autoComplete="tel"
-          className={inputClassName}
+          className={inputClassName("phone")}
           placeholder={form.phonePlaceholder}
         />
       </div>
@@ -240,7 +256,7 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           id="link"
           name="link"
           maxLength={500}
-          className={inputClassName}
+          className={inputClassName("link")}
           placeholder={form.linkPlaceholder}
         />
       </div>
@@ -264,7 +280,9 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
                 name={fieldName}
                 required={question.required}
                 defaultValue=""
-                className={`${inputClassName} appearance-none cursor-pointer`}
+                aria-invalid={isInvalid(fieldName)}
+                onChange={() => clearFieldError(fieldName)}
+                className={`${inputClassName(fieldName)} appearance-none cursor-pointer`}
               >
                 <option value="" disabled className="bg-black">
                   {form.selectPlaceholder}
@@ -286,7 +304,9 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
                 rows={4}
                 required={question.required}
                 maxLength={2000}
-                className={`${inputClassName} resize-none`}
+                aria-invalid={isInvalid(fieldName)}
+                onChange={() => clearFieldError(fieldName)}
+                className={`${inputClassName(fieldName)} resize-none`}
               />
             ) : (
               <input
@@ -295,7 +315,9 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
                 name={fieldName}
                 required={question.required}
                 maxLength={500}
-                className={inputClassName}
+                aria-invalid={isInvalid(fieldName)}
+                onChange={() => clearFieldError(fieldName)}
+                className={inputClassName(fieldName)}
               />
             )}
           </div>
@@ -314,7 +336,7 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           name="motivation"
           rows={5}
           maxLength={5000}
-          className={`${inputClassName} resize-none`}
+          className={`${inputClassName("motivation")} resize-none`}
           placeholder={form.motivationPlaceholder}
         />
       </div>
@@ -328,7 +350,11 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
         </label>
         <label
           htmlFor="cv"
-          className="flex items-center gap-4 border-b border-white/[0.1] py-3 cursor-pointer transition-colors duration-300 hover:border-white/30"
+          className={`flex items-center gap-4 border-b py-3 cursor-pointer transition-colors duration-300 ${
+            invalidFields.includes("cv")
+              ? "border-red-400/70"
+              : "border-white/[0.1] hover:border-white/30"
+          }`}
         >
           <span className="shrink-0 rounded-full border border-white/20 px-4 py-1.5 text-[13px] text-white transition-colors duration-300 hover:border-white/40">
             {form.cvButton}
@@ -344,9 +370,8 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           required
           accept="application/pdf,.pdf"
           className="sr-only"
-          onChange={(event) =>
-            setCvName(event.currentTarget.files?.[0]?.name ?? null)
-          }
+          aria-invalid={isInvalid("cv")}
+          onChange={handleCvChange}
         />
       </div>
 
@@ -355,15 +380,21 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
           type="checkbox"
           name="consent"
           required
+          aria-invalid={isInvalid("consent")}
+          onChange={() => clearFieldError("consent")}
           className="mt-1 h-4 w-4 shrink-0 cursor-pointer accent-white"
         />
-        <span className="text-[13px] leading-relaxed text-gray-500">
+        <span
+          className={`text-[13px] leading-relaxed ${
+            invalidFields.includes("consent") ? "text-red-300" : "text-gray-500"
+          }`}
+        >
           {form.consentLabel}
         </span>
       </label>
 
-      {TURNSTILE_SITE_KEY && (
-        <div ref={turnstileRef} className="min-h-[65px]" />
+      {turnstile.enabled && (
+        <div ref={turnstile.containerRef} className="min-h-[65px]" />
       )}
 
       {errorCode && (

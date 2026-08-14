@@ -28,8 +28,8 @@ function clientIp(request: NextRequest): string {
   );
 }
 
-function error(status: number, code: string) {
-  return NextResponse.json({ error: code }, { status });
+function error(status: number, code: string, fields: string[] = []) {
+  return NextResponse.json({ error: code, fields }, { status });
 }
 
 function formString(formData: FormData, key: string): string {
@@ -40,7 +40,7 @@ function formString(formData: FormData, key: string): string {
 export async function POST(request: NextRequest) {
   const contentLength = Number(request.headers.get("content-length") ?? "0");
   if (contentLength > MAX_REQUEST_BYTES) {
-    return error(413, "cv_size");
+    return error(413, "cv_size", ["cv"]);
   }
 
   const ip = clientIp(request);
@@ -82,19 +82,19 @@ export async function POST(request: NextRequest) {
     questionAnswers,
   });
   if (!intake.ok) {
-    return error(intake.error === "closed" ? 409 : 400, intake.error);
+    return error(intake.error === "closed" ? 409 : 400, intake.error, intake.fields);
   }
 
   const cv = formData.get("cv");
   if (!(cv instanceof File) || cv.size === 0) {
-    return error(400, "validation");
+    return error(400, "validation", ["cv"]);
   }
   if (cv.size > CV_MAX_BYTES) {
-    return error(413, "cv_size");
+    return error(413, "cv_size", ["cv"]);
   }
   const cvBuffer = Buffer.from(await cv.arrayBuffer());
   if (!isPdf(cvBuffer)) {
-    return error(400, "cv_type");
+    return error(400, "cv_type", ["cv"]);
   }
 
   const id = randomUUID();
