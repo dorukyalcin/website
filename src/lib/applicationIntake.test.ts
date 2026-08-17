@@ -7,8 +7,17 @@ const openOpening = openings.find((opening) => opening.status === "open");
 
 function baseFields(overrides: Partial<IntakeFields> = {}): IntakeFields {
   assert.ok(openOpening, "test data requires at least one open opening");
-  const selectQuestion = openOpening.questions.find(
-    (question) => question.type === "select",
+  // Answer every required question with a valid value (first option for
+  // selects, free text otherwise) so tests start from a valid baseline.
+  const questionAnswers = Object.fromEntries(
+    openOpening.questions
+      .filter((question) => question.required)
+      .map((question) => [
+        question.id,
+        question.type === "select"
+          ? question.options![0].value
+          : "Whenever works",
+      ]),
   );
   return {
     openingSlug: openOpening.slug,
@@ -19,9 +28,7 @@ function baseFields(overrides: Partial<IntakeFields> = {}): IntakeFields {
     link: "",
     motivation: "",
     consent: "on",
-    questionAnswers: selectQuestion
-      ? { [selectQuestion.id]: selectQuestion.options![0].value }
-      : {},
+    questionAnswers,
     ...overrides,
   };
 }

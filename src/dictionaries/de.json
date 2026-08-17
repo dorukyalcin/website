@@ -37,6 +37,23 @@
   },
   "footer": {
     "brandDescription": "Für das, was morgen zählt.",
+    "contact": {
+      "title": "Kontakt",
+      "emails": [
+        {
+          "key": "sales",
+          "label": "Vertrieb"
+        },
+        {
+          "key": "careers",
+          "label": "Karriere"
+        },
+        {
+          "key": "general",
+          "label": "Allgemein"
+        }
+      ]
+    },
     "columns": [
       {
         "title": "Produkte",
@@ -82,12 +99,13 @@
     },
     "about": {
       "title": "Über Avernsys",
-      "description": "Lernen Sie die Gründer von Avernsys kennen und erfahren Sie, wie wir Rotasal für Last-Mile-Lieferprozesse entwickeln.",
+      "description": "Avernsys entwickelt Rotasal, eine Plattform für Routenoptimierung und Flottenbetrieb in der Zustellung auf der letzten Meile. Gegründet 2026, gebaut auf einem nativen Optimierungskern in Rust — und so ausgelegt, dass Kundendaten die Installation nie verlassen.",
       "keywords": [
         "Über Avernsys",
         "Avernsys Gründer",
-        "B2B-Softwareunternehmen",
-        "Logistiksoftware Startup"
+        "Rotasal Routenoptimierung",
+        "Softwareunternehmen Last-Mile-Zustellung",
+        "Doruk Yalçın"
       ],
       "socialImageAlt": "Vorschau der Avernsys-Startseite"
     },
@@ -105,13 +123,14 @@
     },
     "careers": {
       "title": "Karriere bei Avernsys",
-      "description": "Offene Stellen bei Avernsys. Arbeite mit am Aufbau von Rotasal, unserer Plattform zur Routenoptimierung für die letzte Meile.",
+      "description": "Offene Stellen in Engineering, Data, Produkt und Go-to-Market in Palo Alto — plus weltweit remote Praktika. Arbeite mit am Aufbau von Rotasal, unserer Plattform zur Routenoptimierung für die letzte Meile.",
       "keywords": [
         "Avernsys Karriere",
         "Avernsys Jobs",
         "Rotasal Jobs",
         "Routenoptimierung Jobs",
-        "Remote Software Jobs"
+        "Software Engineer Jobs Palo Alto",
+        "Remote Praktikum Softwareentwicklung"
       ],
       "socialImageAlt": "Avernsys Startseiten-Vorschau"
     },
@@ -189,45 +208,73 @@
       "hero": {
         "eyebrow": "Über uns",
         "titleLines": [
-          "Ein Gründer.",
-          "Ein gemeinsamer Anspruch."
+          "Software für den",
+          "teuersten Kilometer."
         ],
-        "description": "Avernsys entstand aus einer einfachen Überzeugung: Gute Technologie bringt Menschen zusammen und sorgt dafür, dass Dinge besser funktionieren."
+        "description": "Avernsys entwickelt Rotasal: Routenoptimierung und Flottenbetrieb für die Zustellung auf der letzten Meile — der Teil der Logistik, der am meisten kostet und noch immer mit Tabellen gesteuert wird."
       },
       "story": {
-        "title": "Unsere Geschichte",
+        "title": "Warum es uns gibt",
         "paragraphs": [
-          "Avernsys begann mit einem Menschen, der gesehen hat, wie viel Zeit Unternehmen durch ineffiziente Last-Mile-Logistik verlieren.",
-          "Statt darauf zu warten, dass jemand anderes dieses Problem löst, haben wir Rotasal gebaut: Software zur Routenoptimierung, die Lieferaufträge in Sekunden in effiziente Touren verwandelt.",
-          "Wir glauben daran, wenige Dinge außergewöhnlich gut zu machen. Rotasal wird mit Sorgfalt gebaut, ist auf Langlebigkeit ausgelegt und konzentriert sich auf ein operatives Problem, das wirklich zählt."
+          "Die meisten Last-Mile-Flotten planen ihren Tag noch von Hand. Routen für Dutzende Fahrzeuge entstehen in einer Tabelle, gehen per WhatsApp an die Fahrer und werden telefonisch neu geplant, wenn der Tag aus dem Ruder läuft. Kraftstoff und Fahrerstunden dominieren die Kosten jeder Zustellung — und sobald ein Transporter das Depot verlässt, sieht ihn niemand mehr.",
+          "Rotasal ersetzt das durch ein System vom Dispositionsplatz bis zur Haustür: Disponenten laden die Aufträge des Tages hoch und erhalten optimierte, fahrerfertige Routen aus einem nativen, in Rust gebauten Optimierungskern; Fahrer bekommen eine App, die auch im Funkloch weiterläuft; jeder Kunde erhält einen Live-Tracking-Link. Straßennetze und Verkehrsmuster sind bereits für zwölf Städte in der Türkei, Europa und den USA modelliert — darunter Istanbul, unser größter Markt.",
+          "Avernsys Inc. wurde 2026 in Delaware gegründet; das Team arbeitet in Palo Alto, Kalifornien. Ein Produkt, ein operatives Problem — gebaut von Leuten, die ausliefern."
         ]
+      },
+      "metrics": {
+        "items": [
+          {
+            "value": "25–30 %",
+            "label": "weniger Kraftstoffkosten als bei manueller Disposition"
+          },
+          {
+            "value": "99,8 %",
+            "label": "der Stopps innerhalb ihres Zeitfensters"
+          },
+          {
+            "value": "12",
+            "label": "Städte mit modellierten Straßennetzen und Verkehrsmustern"
+          },
+          {
+            "value": "2026",
+            "label": "in Delaware gegründet"
+          }
+        ],
+        "note": "Kraftstoff- und Pünktlichkeitswerte sind Simulationsergebnisse auf Istanbuler Auftragsdaten — wir validieren sie gern auf Ihren eigenen Daten."
       },
       "founders": {
         "title": "Der Gründer",
+        "profileCta": "Zum Profil",
         "people": {
           "doruk": {
-            "role": "Mitgründer",
-            "bio": "War früher Ingenieur bei Amazon und hat dort Systeme für globale Logistikprozesse mitentwickelt. Forschte an der UCLA im Bereich Computer Vision und arbeitete anschließend bei Tesla an Wahrnehmungssystemen für autonomes Fahren. Bringt tiefe Erfahrung in Optimierung, Machine Learning und praxisnaher Technologie mit."
+            "role": "Gründer",
+            "bio": "Hat die gesamte Rotasal-Plattform selbst entworfen und ausgeliefert — den Optimierungskern in Rust, das Dispositions-Backend, die Kurier- und Tracking-Apps und die Infrastruktur, auf der sie laufen. Davor: Ingenieur bei Amazon und im Autonomous-Driving-Team von Tesla, Computer-Vision-Forschung an der UCLA und die Starlink-Markteintrittsstudie für SpaceX in der Türkei. Computer Engineering, Koç University."
           }
         }
       },
       "values": {
-        "eyebrow": "Werte",
-        "title": "Was uns antreibt",
+        "eyebrow": "Prinzipien",
+        "title": "Wie wir bauen",
         "items": [
           {
-            "title": "Sorgfalt statt Kompromisse",
-            "description": "Details sind nicht nebensächlich. Wir wollen Software bauen, die sich durchdacht anfühlt, nicht nur funktional."
+            "title": "Gemessen, nicht versprochen",
+            "description": "Jede Aussage lässt sich an Ihren eigenen Aufträgen überprüfen. Rotasal lässt den Optimierer gegen eine manuelle Dispositions-Baseline antreten, Kostenzeile für Kostenzeile — und wenn die Einsparung nicht real ist, sehen Sie auch das."
           },
           {
-            "title": "Nur bauen, was wirklich zählt",
-            "description": "Wir lösen echte Probleme für echte Menschen. Was dem Nutzer keinen klaren Mehrwert bringt, gehört nicht ins Produkt."
+            "title": "Ihre Daten bleiben Ihre Daten",
+            "description": "Selbst gehostete Karten und Modelle, eine On-Premises-Option und Kundendaten, die nie geteilt, verkauft oder zum Trainieren von Modellen verwendet werden. DSGVO und KVKK von Grund auf."
           },
           {
-            "title": "Klein bleiben, schnell handeln",
-            "description": "Ein Gründer, kaum Bürokratie. Wir entscheiden zügig, verbessern ständig und lassen lieber das Produkt als große Worte sprechen."
+            "title": "Absichtlich unspektakulär",
+            "description": "Deterministische, reproduzierbare Berechnungen; gestaffelte Fallbacks, damit ein fehlgeschlagener Lauf sicher abfängt statt zu hängen; eine Fahrer-App, die Funklöcher übersteht. Ein Dispositionsplatz um 5 Uhr morgens hat keinen Platz für Überraschungen."
           }
         ]
+      },
+      "hiring": {
+        "eyebrow": "Mitmachen",
+        "title": "Wir stellen in allen Teams ein.",
+        "description": "Engineering-, Data-, Produkt- und Go-to-Market-Rollen in Palo Alto — plus Praktika, remote von überall auf der Welt.",
+        "cta": "Offene Stellen ansehen"
       }
     },
     "primeroute": {
@@ -299,6 +346,32 @@
         ],
         "description": "Sie haben Fragen, möchten eine Demo sehen oder einfach Kontakt aufnehmen? Wir freuen uns auf Ihre Nachricht."
       },
+      "direct": {
+        "eyebrow": "Direkter Draht",
+        "heading": "Direkt ins richtige Postfach",
+        "channels": [
+          {
+            "key": "sales",
+            "title": "Vertrieb & Demos",
+            "description": "Rotasal-Demos, Preise und Partnerschaften."
+          },
+          {
+            "key": "careers",
+            "title": "Karriere",
+            "description": "Bewerbungen, Praktika und Fragen zum Einstieg."
+          },
+          {
+            "key": "general",
+            "title": "Gründer",
+            "description": "Alles andere landet direkt bei Doruk."
+          }
+        ],
+        "address": {
+          "title": "Anschrift",
+          "companyName": "Avernsys Inc."
+        }
+      },
+      "formHeading": "Oder schreiben Sie uns eine Nachricht",
       "success": {
         "title": "Nachricht gesendet.",
         "description": "Wir melden uns in Kürze bei Ihnen."
@@ -340,15 +413,52 @@
         "titleLines": [
           "Bau mit an dem, was kommt."
         ],
-        "description": "Wir sind ein kleines Team mit großen Ambitionen und bauen ernsthafte Software für echte Logistik.",
+        "description": "Wir sind ein kleines Team mit großen Ambitionen und bauen ernsthafte Software für echte Logistik. Wir stellen in allen Teams ein.",
         "openCountOne": "1 offene Stelle",
-        "openCountMany": "{count} offene Stellen"
+        "openCountMany": "{count} offene Stellen",
+        "facts": {
+          "fullTime": {
+            "label": "Vollzeitstellen",
+            "value": "Vor Ort · Palo Alto, Kalifornien"
+          },
+          "internships": {
+            "label": "Praktika",
+            "value": "Remote · von überall auf der Welt"
+          },
+          "deadline": {
+            "label": "Bewerben bis"
+          }
+        }
       },
       "list": {
         "heading": "Offene Stellen",
         "empty": "Derzeit gibt es keine offenen Stellen. Schau bald wieder vorbei — oder melde dich über die Kontaktseite, wenn du gut zu uns passt.",
         "viewLabel": "Stelle ansehen",
-        "emptyCta": "Kontakt aufnehmen"
+        "emptyCta": "Kontakt aufnehmen",
+        "positionCountOne": "1 Stelle",
+        "positionCountMany": "{count} Stellen"
+      },
+      "groups": {
+        "engineering": {
+          "title": "Engineering",
+          "description": "Die Rotasal-Plattform: Optimierungskern, APIs, Web- und Mobile-Oberflächen und die Infrastruktur darunter."
+        },
+        "data": {
+          "title": "Data & Machine Learning",
+          "description": "Routing-Modelle, Prognosen und die Optimierungswissenschaft hinter jedem Plan."
+        },
+        "product": {
+          "title": "Produkt & Design",
+          "description": "Aus Lieferbetrieb ein Produkt machen, das Disponenten und Fahrer wirklich gern benutzen."
+        },
+        "gtm": {
+          "title": "Go-to-Market",
+          "description": "Rotasal zu Lieferteams bringen und sie damit erfolgreich machen."
+        },
+        "internships": {
+          "title": "Praktika",
+          "description": "Alle Teams — remote von überall auf der Welt."
+        }
       },
       "labels": {
         "workplace": {
@@ -362,7 +472,51 @@
           "CONTRACTOR": "Freelance",
           "INTERN": "Praktikum"
         },
-        "postedOn": "Veröffentlicht"
+        "salaryUnit": {
+          "HOUR": "/ Std.",
+          "MONTH": "/ Monat",
+          "YEAR": "/ Jahr"
+        },
+        "worldwide": "Überall auf der Welt",
+        "postedOn": "Veröffentlicht",
+        "applyBy": "Bewerben bis"
+      },
+      "benefits": {
+        "eyebrow": "Benefits",
+        "heading": "Was wir bieten",
+        "description": "Vollzeitstellen beinhalten zusätzlich zum angegebenen Gehalt Folgendes.",
+        "items": [
+          {
+            "title": "US-Visum-Sponsoring",
+            "description": "Wir sponsern Arbeitsvisa für internationale Kolleginnen und Kollegen, die in Palo Alto einsteigen."
+          },
+          {
+            "title": "Krankenversicherung",
+            "description": "Krankenversicherung ab dem ersten Tag."
+          },
+          {
+            "title": "Leistungsbonus",
+            "description": "Ein Bonus, der an das gekoppelt ist, was du und das Produkt erreichen."
+          },
+          {
+            "title": "Überstundenvergütung",
+            "description": "Mehrarbeit wird bezahlt — nicht stillschweigend erwartet."
+          },
+          {
+            "title": "Verpflegung",
+            "description": "Mahlzeiten an Bürotagen inklusive."
+          },
+          {
+            "title": "Shuttle",
+            "description": "Ein Shuttle zum und vom Büro in Palo Alto."
+          }
+        ]
+      },
+      "contact": {
+        "heading": "Fragen zu einer Stelle?",
+        "description": "Schreib uns oder ruf an — es antwortet ein Mensch, und wir antworten allen.",
+        "emailLabel": "E-Mail",
+        "phoneLabel": "Telefon"
       },
       "opening": {
         "sections": {
@@ -370,7 +524,8 @@
           "responsibilities": "Deine Aufgaben",
           "requirements": "Was wir suchen",
           "niceToHave": "Schön zu haben",
-          "offer": "Was wir bieten"
+          "offer": "Was wir bieten",
+          "benefits": "Gehalt & Benefits"
         },
         "closed": {
           "title": "Diese Stelle ist geschlossen.",
@@ -379,12 +534,17 @@
         "backLabel": "Alle Stellen",
         "applyHeading": "Auf diese Stelle bewerben",
         "applyDescription": "Deine Bewerbung geht direkt an den Gründer. Wir antworten allen.",
+        "applyByEmail": "Lieber per E-Mail? Schick deinen Lebenslauf und ein paar Zeilen über dich an {email}.",
         "applyCtaLabel": "Jetzt bewerben",
         "glance": {
           "heading": "Auf einen Blick",
+          "teamLabel": "Team",
           "workplaceLabel": "Arbeitsort",
+          "locationLabel": "Standort",
           "employmentLabel": "Anstellung",
-          "regionsLabel": "Remote-Regionen"
+          "salaryLabel": "Gehalt",
+          "regionsLabel": "Remote-Regionen",
+          "deadlineLabel": "Bewerben bis"
         }
       },
       "form": {

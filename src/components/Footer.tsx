@@ -1,5 +1,14 @@
 import Link from "next/link";
 import { BrandLink } from "@/components/BrandLink";
+import {
+  companyAddress,
+  companyAddressLines,
+  companyEmails,
+  companyLegalName,
+  mailto,
+  type CompanyEmailKey,
+} from "@/lib/company";
+import { formatRegionName } from "@/lib/format";
 import { getDictionary, getPagePath, type Locale, type PageLinkKey } from "@/lib/i18n";
 
 type FooterProps = {
@@ -8,6 +17,7 @@ type FooterProps = {
 
 export function Footer({ locale }: FooterProps) {
   const dictionary = getDictionary(locale);
+  const country = formatRegionName(locale, companyAddress.addressCountry);
 
   return (
     <footer className="border-t border-white/[0.06]">
@@ -27,7 +37,7 @@ export function Footer({ locale }: FooterProps) {
           </div>
 
           {/* Links */}
-          <div className="flex gap-16">
+          <div className="flex flex-wrap gap-x-16 gap-y-10">
             {dictionary.footer.columns.map((col) => (
               <div key={col.title}>
                 <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">
@@ -47,15 +57,44 @@ export function Footer({ locale }: FooterProps) {
                 </ul>
               </div>
             ))}
+
+            <div>
+              <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">
+                {dictionary.footer.contact.title}
+              </h4>
+              <ul className="space-y-3">
+                {dictionary.footer.contact.emails.map((entry) => {
+                  const email = companyEmails[entry.key as CompanyEmailKey];
+                  return (
+                    <li key={entry.key}>
+                      <a
+                        href={mailto(email)}
+                        className="group inline-flex flex-col text-sm leading-tight"
+                      >
+                        <span className="text-[11px] uppercase tracking-wider text-gray-600 transition-colors duration-300 group-hover:text-gray-400">
+                          {entry.label}
+                        </span>
+                        <span className="text-gray-400 transition-colors duration-300 group-hover:text-white">
+                          {email}
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <p className="text-xs text-gray-600">
-            &copy; {new Date().getFullYear()} {dictionary.site.name}.{" "}
+            &copy; {new Date().getFullYear()} {companyLegalName}{" "}
             {dictionary.site.copyright}
           </p>
+          <address className="text-xs not-italic text-gray-600 sm:text-right">
+            {companyAddressLines.join(", ")}, {country}
+          </address>
         </div>
       </div>
     </footer>

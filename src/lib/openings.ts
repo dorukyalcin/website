@@ -1,5 +1,9 @@
 import type { Locale } from "@/lib/i18n";
-import { softwareEngineerRotasal } from "@/content/openings/software-engineer-rotasal";
+import { engineeringOpenings } from "@/content/openings/engineering";
+import { dataOpenings } from "@/content/openings/data";
+import { productOpenings } from "@/content/openings/product";
+import { gtmOpenings } from "@/content/openings/gtm";
+import { internshipOpenings } from "@/content/openings/internships";
 
 export type OpeningStatus = "open" | "closed";
 
@@ -10,6 +14,14 @@ export type EmploymentType =
   | "INTERN";
 
 export type WorkplaceType = "REMOTE" | "HYBRID" | "ONSITE";
+
+// Teams the openings are organised under on the careers page. Internships
+// are grouped separately (by employment type) regardless of team.
+export const openingTeams = ["engineering", "data", "product", "gtm"] as const;
+export type OpeningTeam = (typeof openingTeams)[number];
+
+export const openingGroupKeys = [...openingTeams, "internships"] as const;
+export type OpeningGroupKey = (typeof openingGroupKeys)[number];
 
 export type OpeningQuestionType = "text" | "textarea" | "select";
 
@@ -41,22 +53,33 @@ export type OpeningSalary = {
   unitText: "HOUR" | "MONTH" | "YEAR";
 };
 
+// "WORLDWIDE" marks a remote role open to applicants anywhere.
+export type RemoteEligibility = readonly string[] | "WORLDWIDE";
+
 export type Opening = {
   slug: string;
   status: OpeningStatus;
   postedAt: string;
   validThrough?: string;
+  team: OpeningTeam;
   employmentType: EmploymentType;
   workplaceType: WorkplaceType;
   city?: string;
+  region?: string;
   countryCode: string;
-  remoteEligibleRegions?: readonly string[];
+  remoteEligibleRegions?: RemoteEligibility;
   salary?: OpeningSalary;
   content: Record<Locale, OpeningLocaleContent>;
   questions: readonly OpeningQuestion[];
 };
 
-export const openings: readonly Opening[] = [softwareEngineerRotasal];
+export const openings: readonly Opening[] = [
+  ...engineeringOpenings,
+  ...dataOpenings,
+  ...productOpenings,
+  ...gtmOpenings,
+  ...internshipOpenings,
+];
 
 export function getOpenings(): readonly Opening[] {
   return openings;
@@ -75,4 +98,34 @@ export function getOpeningQuestion(
   questionId: string,
 ): OpeningQuestion | undefined {
   return opening.questions.find((question) => question.id === questionId);
+}
+
+export function getOpeningGroupKey(opening: Opening): OpeningGroupKey {
+  return opening.employmentType === "INTERN" ? "internships" : opening.team;
+}
+
+export type OpeningGroup = {
+  key: OpeningGroupKey;
+  openings: readonly Opening[];
+};
+
+// Open positions grouped for display, in the canonical group order; groups
+// without open positions are omitted.
+export function getOpenOpeningGroups(): readonly OpeningGroup[] {
+  const open = getOpenOpenings();
+  return openingGroupKeys
+    .map((key) => ({
+      key,
+      openings: open.filter((opening) => getOpeningGroupKey(opening) === key),
+    }))
+    .filter((group) => group.openings.length > 0);
+}
+
+// Latest application deadline across open positions (ISO date), if any.
+export function getLatestApplicationDeadline(): string | undefined {
+  return getOpenOpenings()
+    .map((opening) => opening.validThrough)
+    .filter((date): date is string => Boolean(date))
+    .sort()
+    .at(-1);
 }

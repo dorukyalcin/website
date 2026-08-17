@@ -42,7 +42,7 @@ export const founders = [
     },
     photo: {
       src: "/founders/doruk-yalcin-avernsys-co-founder.jpg",
-      alt: "Doruk Yalcin, co-founder of Avernsys",
+      alt: "Doruk Yalcin, founder of Avernsys",
       objectPosition: "78% 55%",
       scale: 1.95,
     },

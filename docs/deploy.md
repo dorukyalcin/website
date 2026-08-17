@@ -54,12 +54,19 @@ If the Access variables are unset in production, /admin is disabled entirely
 
 ## Posting a new opening
 
-Openings live in the repo — publishing one is a deploy:
+Openings live in the repo — publishing one is a deploy. They are grouped by
+team in `src/content/openings/` (`engineering.ts`, `data.ts`, `product.ts`,
+`gtm.ts`, `internships.ts`); shared defaults (hiring-round dates, the Palo
+Alto on-site location, worldwide-remote internships, salary helpers, and the
+reusable application questions) live in `src/content/openings/shared.ts`.
 
-1. Copy `src/content/openings/software-engineer-rotasal.ts` to a new file,
-   change the `slug`, content (all four locales), and custom questions.
-2. Register it in the `openings` array in `src/lib/openings.ts`.
-3. `npm test` (validates locale completeness), commit, then on the server:
+1. Copy an existing opening in the matching team file, change the `slug`,
+   `salary`, content (all four locales), and questions if needed, and add it
+   to that file's exported array (the order there is the display order).
+2. Company facts shown on every page (legal name, address, emails, phone,
+   office) live in `src/lib/company.ts`.
+3. `npm test` (validates locale completeness, salaries, and locations),
+   commit, then on the server:
 
    ```sh
    git pull && docker compose up -d --build
@@ -67,7 +74,8 @@ Openings live in the repo — publishing one is a deploy:
 
 To stop accepting applications, set `status: "closed"` on the opening and
 redeploy — the page stays online (SEO), the form disappears, and the API
-rejects late submissions.
+rejects late submissions. To move the "apply by" date for the whole round,
+change `hiringRound.applyBy` in `shared.ts`.
 
 ## Applications data
 

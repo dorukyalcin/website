@@ -5,9 +5,14 @@ import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ApplicationForm } from "@/components/ApplicationForm";
 import { headingClassNames } from "@/components/headingStyles";
-import { formatOpeningDate, formatRegionName } from "@/lib/format";
+import { companyEmails, mailto } from "@/lib/company";
+import {
+  formatOpeningDate,
+  formatOpeningLocation,
+  formatSalary,
+} from "@/lib/format";
 import { getDictionary, localizePath, type Locale } from "@/lib/i18n";
-import type { Opening } from "@/lib/openings";
+import { getOpeningGroupKey, type Opening } from "@/lib/openings";
 import { getPageHeroSectionClassName } from "./pageHero";
 
 type OpeningPageViewProps = {
@@ -68,19 +73,45 @@ function GlanceRow({ label, value }: { label: string; value: string }) {
   );
 }
 
+function Chip({ children, strong = false }: { children: React.ReactNode; strong?: boolean }) {
+  return (
+    <span
+      className={`rounded-full border px-4 py-1.5 text-[13px] ${
+        strong
+          ? "border-white/[0.18] bg-white/[0.04] text-white"
+          : "border-white/[0.1] text-gray-400"
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
+
+function fillTemplate(template: string, values: Record<string, string>) {
+  return template.replace(/\{(\w+)\}/g, (match, key: string) =>
+    key in values ? values[key] : match,
+  );
+}
+
 export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
   const dictionary = getDictionary(locale);
   const page = dictionary.pages.careers;
   const content = opening.content[locale];
   const isOpen = opening.status === "open";
   const glance = page.opening.glance;
-
-  const regions =
-    opening.workplaceType === "REMOTE" && opening.remoteEligibleRegions
-      ? opening.remoteEligibleRegions
-          .map((code) => formatRegionName(locale, code))
-          .join(" · ")
-      : null;
+  const location = formatOpeningLocation(locale, opening);
+  const salary = opening.salary ? formatSalary(locale, opening.salary) : null;
+  const deadline = opening.validThrough
+    ? formatOpeningDate(locale, opening.validThrough)
+    : null;
+  const teamLabel = page.groups[getOpeningGroupKey(opening)].title;
+  const showBenefits = opening.employmentType === "FULL_TIME";
+  const applyByEmail = fillTemplate(page.opening.applyByEmail, {
+    email: companyEmails.careers,
+  });
+  const [applyByEmailBefore, applyByEmailAfter] = applyByEmail.split(
+    companyEmails.careers,
+  );
 
   return (
     <>
@@ -94,7 +125,7 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className={headingClassNames.heroEyebrow}
           >
-            {page.hero.eyebrow}
+            {page.hero.eyebrow} · {teamLabel}
           </motion.p>
 
           <motion.h1
@@ -112,12 +143,10 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-8 flex flex-wrap justify-center gap-2"
           >
-            <span className="rounded-full border border-white/[0.1] px-4 py-1.5 text-[13px] text-gray-400">
-              {page.labels.workplace[opening.workplaceType]}
-            </span>
-            <span className="rounded-full border border-white/[0.1] px-4 py-1.5 text-[13px] text-gray-400">
-              {page.labels.employment[opening.employmentType]}
-            </span>
+            <Chip>{page.labels.workplace[opening.workplaceType]}</Chip>
+            <Chip>{location}</Chip>
+            <Chip>{page.labels.employment[opening.employmentType]}</Chip>
+            {salary && <Chip strong>{salary}</Chip>}
           </motion.div>
 
           {isOpen && (
@@ -147,6 +176,11 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
                   />
                 </svg>
               </a>
+              {deadline && (
+                <p className="mt-4 text-[13px] text-gray-500">
+                  {page.labels.applyBy} {deadline}
+                </p>
+              )}
             </motion.div>
           )}
         </div>
@@ -212,6 +246,33 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
                   items={content.offer}
                 />
               )}
+
+              {showBenefits && (
+                <AnimatedSection>
+                  <SectionHeading>{page.opening.sections.benefits}</SectionHeading>
+                  {salary && (
+                    <p className="text-[15px] leading-relaxed text-gray-400">
+                      <span className="text-[12px] uppercase tracking-[0.15em] text-gray-600">
+                        {glance.salaryLabel}
+                      </span>
+                      <span className="ml-3 text-[17px] font-medium tabular-nums text-white">
+                        {salary}
+                      </span>
+                    </p>
+                  )}
+                  <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                    {page.benefits.items.map((benefit) => (
+                      <li
+                        key={benefit.title}
+                        className="flex gap-3 text-[15px] leading-relaxed text-gray-400"
+                      >
+                        <span className="mt-[9px] h-px w-4 shrink-0 bg-white/30" />
+                        {benefit.title}
+                      </li>
+                    ))}
+                  </ul>
+                </AnimatedSection>
+              )}
             </div>
 
             <div className="hidden lg:block">
@@ -221,20 +282,25 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
                     {glance.heading}
                   </h2>
                   <dl className="mt-4 divide-y divide-white/[0.06]">
-                    <GlanceRow
-                      label={page.labels.postedOn}
-                      value={formatOpeningDate(locale, opening.postedAt)}
-                    />
+                    <GlanceRow label={glance.teamLabel} value={teamLabel} />
                     <GlanceRow
                       label={glance.workplaceLabel}
                       value={page.labels.workplace[opening.workplaceType]}
                     />
+                    <GlanceRow label={glance.locationLabel} value={location} />
                     <GlanceRow
                       label={glance.employmentLabel}
                       value={page.labels.employment[opening.employmentType]}
                     />
-                    {regions && (
-                      <GlanceRow label={glance.regionsLabel} value={regions} />
+                    {salary && (
+                      <GlanceRow label={glance.salaryLabel} value={salary} />
+                    )}
+                    <GlanceRow
+                      label={page.labels.postedOn}
+                      value={formatOpeningDate(locale, opening.postedAt)}
+                    />
+                    {deadline && (
+                      <GlanceRow label={glance.deadlineLabel} value={deadline} />
                     )}
                   </dl>
                   {isOpen && (
@@ -266,8 +332,18 @@ export function OpeningPageView({ locale, opening }: OpeningPageViewProps) {
                   <h2 className="text-headline mb-3 text-center">
                     {page.opening.applyHeading}
                   </h2>
-                  <p className="text-[15px] leading-relaxed text-gray-500 text-center mb-12">
+                  <p className="text-[15px] leading-relaxed text-gray-500 text-center">
                     {page.opening.applyDescription}
+                  </p>
+                  <p className="mt-2 mb-12 text-[13px] leading-relaxed text-gray-600 text-center">
+                    {applyByEmailBefore}
+                    <a
+                      href={mailto(companyEmails.careers)}
+                      className="text-gray-400 underline decoration-white/20 underline-offset-4 transition-colors duration-300 hover:text-white"
+                    >
+                      {companyEmails.careers}
+                    </a>
+                    {applyByEmailAfter}
                   </p>
                   <ApplicationForm locale={locale} opening={opening} />
                 </div>

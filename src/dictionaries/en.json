@@ -37,6 +37,23 @@
   },
   "footer": {
     "brandDescription": "Built for what's next.",
+    "contact": {
+      "title": "Contact",
+      "emails": [
+        {
+          "key": "sales",
+          "label": "Sales"
+        },
+        {
+          "key": "careers",
+          "label": "Careers"
+        },
+        {
+          "key": "general",
+          "label": "General"
+        }
+      ]
+    },
     "columns": [
       {
         "title": "Products",
@@ -82,12 +99,13 @@
     },
     "about": {
       "title": "About Avernsys",
-      "description": "Meet the Avernsys founders and learn how we build Rotasal for last-mile delivery operations.",
+      "description": "Avernsys builds Rotasal, a route optimization and fleet operations platform for last-mile delivery. Founded in 2026, built on a native Rust optimization core, and designed so customer data never leaves the deployment.",
       "keywords": [
         "about Avernsys",
-        "Avernsys founders",
-        "B2B software company",
-        "logistics software founders"
+        "Avernsys founder",
+        "Rotasal route optimization",
+        "last-mile delivery software company",
+        "Doruk Yalçın"
       ],
       "socialImageAlt": "Avernsys homepage preview"
     },
@@ -105,13 +123,14 @@
     },
     "careers": {
       "title": "Careers at Avernsys",
-      "description": "Open positions at Avernsys. Join the team building Rotasal, our route optimization platform for last-mile delivery.",
+      "description": "Open engineering, data, product, and go-to-market positions in Palo Alto — plus remote internships worldwide. Join the team building Rotasal, our route optimization platform for last-mile delivery.",
       "keywords": [
         "Avernsys careers",
         "Avernsys jobs",
         "Rotasal jobs",
         "route optimization jobs",
-        "remote software jobs"
+        "Palo Alto software engineer jobs",
+        "remote software engineering internship"
       ],
       "socialImageAlt": "Avernsys homepage preview"
     },
@@ -189,45 +208,73 @@
       "hero": {
         "eyebrow": "About",
         "titleLines": [
-          "One founder.",
-          "One mission."
+          "Software for the",
+          "most expensive kilometre."
         ],
-        "description": "Avernsys was built on a simple belief: technology should connect people and make things work better. That's what we do."
+        "description": "Avernsys builds Rotasal: route optimization and fleet operations for last-mile delivery — the part of logistics that costs the most and is still run on spreadsheets."
       },
       "story": {
-        "title": "Our story",
+        "title": "Why we exist",
         "paragraphs": [
-          "Avernsys started with one person who saw how much time businesses lose to inefficient last-mile logistics.",
-          "Instead of waiting for someone else to solve it, we built Rotasal: route optimization software that turns delivery orders into efficient routes in seconds.",
-          "We're a company that believes in doing fewer things exceptionally well. Rotasal is built with care, designed to last, and focused on one operational problem that matters."
+          "Most last-mile fleets still plan the day by hand. Routes for dozens of vehicles are drafted in a spreadsheet, pushed to drivers over WhatsApp, and replanned by phone when the day goes sideways. Fuel and driver hours dominate the cost of every drop — and once a van leaves the depot, nobody can see it.",
+          "Rotasal replaces that with one system from dispatch desk to doorstep: dispatchers upload the day’s orders and get optimized, driver-ready routes from a native optimization core built in Rust; drivers get an app that keeps working in dead zones; every customer gets a live tracking link. Road graphs and traffic patterns are already modelled for twelve cities across Türkiye, Europe and the United States — Istanbul, our largest market, among them.",
+          "Avernsys Inc. was incorporated in Delaware in 2026; the team works from Palo Alto, California. One product, one operational problem — built by people who ship."
         ]
+      },
+      "metrics": {
+        "items": [
+          {
+            "value": "25–30%",
+            "label": "lower fuel spend than human dispatch"
+          },
+          {
+            "value": "99.8%",
+            "label": "of stops arriving inside their window"
+          },
+          {
+            "value": "12",
+            "label": "cities with road graphs and traffic patterns modelled"
+          },
+          {
+            "value": "2026",
+            "label": "incorporated in Delaware"
+          }
+        ],
+        "note": "Fuel and on-time figures are simulation results on Istanbul order sets — we’ll gladly validate them on your own data."
       },
       "founders": {
         "title": "The founder",
+        "profileCta": "Full profile",
         "people": {
           "doruk": {
-            "role": "Co-Founder",
-            "bio": "Former engineer at Amazon, where he built systems that power global logistics at scale. Conducted computer vision research at UCLA, then joined Tesla to work on the perception systems behind autonomous driving. Brings deep expertise in optimization, machine learning, and building technology that operates in the real world."
+            "role": "Founder",
+            "bio": "Designed and shipped the whole Rotasal platform himself — the Rust optimization core, the dispatch backend, the courier and tracking apps, and the infrastructure they run on. Before Avernsys: engineer at Amazon and on Tesla’s autonomous-driving team, computer-vision research at UCLA, and the Starlink market-entry study for SpaceX in Türkiye. Computer engineering, Koç University."
           }
         }
       },
       "values": {
-        "eyebrow": "Values",
-        "title": "What drives us",
+        "eyebrow": "Principles",
+        "title": "How we build",
         "items": [
           {
-            "title": "Craft over compromise",
-            "description": "Every detail matters. We obsess over the experience because our users deserve software that feels considered, not just functional."
+            "title": "Measured, not promised",
+            "description": "Every claim can be checked on your own orders. Rotasal runs the optimizer against a human-dispatch baseline, cost line by cost line — and if the savings aren’t real, you’ll see that too."
           },
           {
-            "title": "Ship what matters",
-            "description": "We solve real problems for real people. If it doesn't serve the user, it doesn't ship."
+            "title": "Your data stays yours",
+            "description": "Self-hosted maps and models, an on-premises option, and customer data that is never shared, sold, or used to train models. GDPR and KVKK by design."
           },
           {
-            "title": "Stay lean, move fast",
-            "description": "One founder. No bureaucracy. We make decisions quickly, iterate constantly, and let the work speak for itself."
+            "title": "Boring on purpose",
+            "description": "Deterministic, reproducible solves; layered fallbacks so a failed solve degrades safely instead of hanging; a driver app that survives dead zones. A 5 a.m. dispatch desk has no room for surprises."
           }
         ]
+      },
+      "hiring": {
+        "eyebrow": "Join us",
+        "title": "We’re hiring across every team.",
+        "description": "Engineering, data, product and go-to-market roles in Palo Alto, plus remote internships from anywhere in the world.",
+        "cta": "See open positions"
       }
     },
     "primeroute": {
@@ -299,6 +346,32 @@
         ],
         "description": "Have a question, want a demo, or just want to say hello? We'd love to hear from you."
       },
+      "direct": {
+        "eyebrow": "Direct lines",
+        "heading": "Reach the right inbox",
+        "channels": [
+          {
+            "key": "sales",
+            "title": "Sales & demos",
+            "description": "Rotasal demos, pricing, and partnerships."
+          },
+          {
+            "key": "careers",
+            "title": "Careers",
+            "description": "Applications, internships, and hiring questions."
+          },
+          {
+            "key": "general",
+            "title": "Founder",
+            "description": "Everything else goes straight to Doruk."
+          }
+        ],
+        "address": {
+          "title": "Address",
+          "companyName": "Avernsys Inc."
+        }
+      },
+      "formHeading": "Or send a message",
       "success": {
         "title": "Message sent.",
         "description": "We'll get back to you shortly."
@@ -340,15 +413,52 @@
         "titleLines": [
           "Build what's next."
         ],
-        "description": "We're a small team with big ambitions, building serious software for real-world logistics.",
+        "description": "We're a small team with big ambitions, building serious software for real-world logistics. Now hiring across all teams.",
         "openCountOne": "1 open position",
-        "openCountMany": "{count} open positions"
+        "openCountMany": "{count} open positions",
+        "facts": {
+          "fullTime": {
+            "label": "Full-time roles",
+            "value": "On-site · Palo Alto, CA"
+          },
+          "internships": {
+            "label": "Internships",
+            "value": "Remote · anywhere in the world"
+          },
+          "deadline": {
+            "label": "Apply by"
+          }
+        }
       },
       "list": {
         "heading": "Open positions",
         "empty": "There are no open positions right now. Check back soon — or reach out through the contact page if you think you'd be a great fit.",
         "viewLabel": "View position",
-        "emptyCta": "Get in touch"
+        "emptyCta": "Get in touch",
+        "positionCountOne": "1 position",
+        "positionCountMany": "{count} positions"
+      },
+      "groups": {
+        "engineering": {
+          "title": "Engineering",
+          "description": "The Rotasal platform: optimization core, APIs, web and mobile surfaces, and the infrastructure underneath."
+        },
+        "data": {
+          "title": "Data & Machine Learning",
+          "description": "Routing models, forecasting, and the optimization science behind every plan."
+        },
+        "product": {
+          "title": "Product & Design",
+          "description": "Turning delivery operations into a product dispatchers and drivers actually enjoy using."
+        },
+        "gtm": {
+          "title": "Go-to-Market",
+          "description": "Bringing Rotasal to delivery teams and making them successful with it."
+        },
+        "internships": {
+          "title": "Internships",
+          "description": "All teams — remote from anywhere in the world."
+        }
       },
       "labels": {
         "workplace": {
@@ -362,7 +472,51 @@
           "CONTRACTOR": "Contract",
           "INTERN": "Internship"
         },
-        "postedOn": "Posted"
+        "salaryUnit": {
+          "HOUR": "/ hr",
+          "MONTH": "/ mo",
+          "YEAR": "/ yr"
+        },
+        "worldwide": "Anywhere in the world",
+        "postedOn": "Posted",
+        "applyBy": "Apply by"
+      },
+      "benefits": {
+        "eyebrow": "Benefits",
+        "heading": "What we offer",
+        "description": "Full-time roles come with the following, on top of the salary listed on each position.",
+        "items": [
+          {
+            "title": "US visa sponsorship",
+            "description": "We sponsor work visas for international hires joining us in Palo Alto."
+          },
+          {
+            "title": "Health insurance",
+            "description": "Medical coverage from day one."
+          },
+          {
+            "title": "Performance bonus",
+            "description": "A bonus tied to what you and the product achieve."
+          },
+          {
+            "title": "Overtime pay",
+            "description": "Extra hours are paid, not silently expected."
+          },
+          {
+            "title": "Meals",
+            "description": "Meals covered on office days."
+          },
+          {
+            "title": "Shuttle",
+            "description": "A shuttle to and from the Palo Alto office."
+          }
+        ]
+      },
+      "contact": {
+        "heading": "Questions about a role?",
+        "description": "Write to us or call — a human answers, and we reply to everyone.",
+        "emailLabel": "Email",
+        "phoneLabel": "Phone"
       },
       "opening": {
         "sections": {
@@ -370,7 +524,8 @@
           "responsibilities": "What you'll do",
           "requirements": "What we're looking for",
           "niceToHave": "Nice to have",
-          "offer": "What we offer"
+          "offer": "What we offer",
+          "benefits": "Compensation & benefits"
         },
         "closed": {
           "title": "This position is closed.",
@@ -379,12 +534,17 @@
         "backLabel": "All positions",
         "applyHeading": "Apply for this position",
         "applyDescription": "Your application goes directly to the founder. We reply to everyone.",
+        "applyByEmail": "Prefer email? Send your CV and a few lines about yourself to {email}.",
         "applyCtaLabel": "Apply now",
         "glance": {
           "heading": "At a glance",
+          "teamLabel": "Team",
           "workplaceLabel": "Workplace",
+          "locationLabel": "Location",
           "employmentLabel": "Type",
-          "regionsLabel": "Remote regions"
+          "salaryLabel": "Salary",
+          "regionsLabel": "Remote regions",
+          "deadlineLabel": "Apply by"
         }
       },
       "form": {

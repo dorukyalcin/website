@@ -37,6 +37,23 @@
   },
   "footer": {
     "brandDescription": "Yarının ihtiyaçları için.",
+    "contact": {
+      "title": "İletişim",
+      "emails": [
+        {
+          "key": "sales",
+          "label": "Satış"
+        },
+        {
+          "key": "careers",
+          "label": "Kariyer"
+        },
+        {
+          "key": "general",
+          "label": "Genel"
+        }
+      ]
+    },
     "columns": [
       {
         "title": "Ürünler",
@@ -82,12 +99,13 @@
     },
     "about": {
       "title": "Avernsys Hakkında",
-      "description": "Avernsys kurucularını tanıyın ve Rotasal'i son kilometre teslimat operasyonları için nasıl geliştirdiğimizi öğrenin.",
+      "description": "Avernsys, son kilometre teslimatı için rota optimizasyonu ve filo operasyonları platformu Rotasal’ı geliştiriyor. 2026’da kuruldu; Rust ile yazılmış yerel bir optimizasyon çekirdeği üzerine inşa edildi ve müşteri verisi kurulumun dışına asla çıkmayacak şekilde tasarlandı.",
       "keywords": [
         "Avernsys hakkında",
-        "Avernsys kurucuları",
-        "B2B yazılım şirketi",
-        "lojistik yazılım girişimi"
+        "Avernsys kurucusu",
+        "Rotasal rota optimizasyonu",
+        "son kilometre teslimat yazılım şirketi",
+        "Doruk Yalçın"
       ],
       "socialImageAlt": "Avernsys ana sayfa önizlemesi"
     },
@@ -105,13 +123,14 @@
     },
     "careers": {
       "title": "Avernsys'te Kariyer",
-      "description": "Avernsys'teki açık pozisyonlar. Son kilometre teslimatı için rota optimizasyonu platformumuz Rotasal'ı birlikte geliştirelim.",
+      "description": "Palo Alto'da mühendislik, veri, ürün ve go-to-market alanlarında açık pozisyonlar — ayrıca dünyanın her yerinden uzaktan stajlar. Son kilometre teslimatı için rota optimizasyonu platformumuz Rotasal'ı birlikte geliştirelim.",
       "keywords": [
         "Avernsys kariyer",
         "Avernsys iş ilanları",
         "Rotasal iş ilanları",
         "rota optimizasyonu iş ilanları",
-        "uzaktan yazılım işleri"
+        "Palo Alto yazılım mühendisi iş ilanı",
+        "uzaktan yazılım stajı"
       ],
       "socialImageAlt": "Avernsys ana sayfa önizlemesi"
     },
@@ -189,45 +208,73 @@
       "hero": {
         "eyebrow": "Hakkımızda",
         "titleLines": [
-          "Tek kurucu.",
-          "Tek odak."
+          "En pahalı kilometre",
+          "için yazılım."
         ],
-        "description": "Avernsys, teknolojinin insanları bir araya getirmesi ve işlerin daha iyi işlemesini sağlaması gerektiği fikriyle kuruldu."
+        "description": "Avernsys, Rotasal’ı geliştiriyor: son kilometre teslimatı için rota optimizasyonu ve filo operasyonları — lojistiğin en çok maliyet üreten ve hâlâ tablolarla yönetilen kısmı."
       },
       "story": {
-        "title": "Hikayemiz",
+        "title": "Neden varız",
         "paragraphs": [
-          "Avernsys, şirketlerin verimsiz son kilometre lojistiği yüzünden ne kadar zaman kaybettiğini gören tek bir kişiyle başladı.",
-          "Bu problemi başkasının çözmesini beklemek yerine Rotasal'i geliştirdik: teslimat siparişlerini saniyeler içinde verimli rotalara dönüştüren rota optimizasyon yazılımı.",
-          "Az sayıda işi çok iyi yapmaya inanıyoruz. Rotasal özenle geliştiriliyor, uzun vadeli kullanılmak üzere tasarlanıyor ve gerçekten önemli olan tek bir operasyon problemine odaklanıyor."
+          "Son kilometre filolarının çoğu günü hâlâ elle planlıyor. Onlarca aracın rotası bir tabloda hazırlanıyor, WhatsApp üzerinden sürücülere gönderiliyor ve gün ters gittiğinde telefonla yeniden planlanıyor. Yakıt ve sürücü saatleri her teslimatın maliyetine hâkim — ve bir araç depodan çıktığı anda onu kimse göremiyor.",
+          "Rotasal bunun yerine sevk masasından kapıya kadar tek bir sistem koyuyor: planlamacılar günün siparişlerini yüklüyor ve Rust ile yazılmış yerel bir optimizasyon çekirdeğinden optimize edilmiş, sürücüye hazır rotalar alıyor; sürücüler çekim olmayan yerlerde de çalışmaya devam eden bir uygulama kullanıyor; her müşteri canlı bir takip bağlantısı alıyor. Yol ağları ve trafik örüntüleri Türkiye, Avrupa ve ABD’de on iki şehir için şimdiden modellenmiş durumda — en büyük pazarımız İstanbul da bunların arasında.",
+          "Avernsys Inc. 2026’da Delaware’de kuruldu; ekip Palo Alto, Kaliforniya’dan çalışıyor. Tek ürün, tek operasyonel problem — işini teslim eden insanlar tarafından geliştiriliyor."
         ]
+      },
+      "metrics": {
+        "items": [
+          {
+            "value": "%25–30",
+            "label": "manuel sevke kıyasla daha düşük yakıt harcaması"
+          },
+          {
+            "value": "%99,8",
+            "label": "zaman penceresi içinde varan durak oranı"
+          },
+          {
+            "value": "12",
+            "label": "yol ağı ve trafik örüntüleri modellenmiş şehir"
+          },
+          {
+            "value": "2026",
+            "label": "Delaware’de kuruluş"
+          }
+        ],
+        "note": "Yakıt ve zamanında varış rakamları İstanbul sipariş setleri üzerinde yapılan simülasyon sonuçlarıdır — kendi verilerinizle doğrulamaktan memnuniyet duyarız."
       },
       "founders": {
         "title": "Kurucu",
+        "profileCta": "Profili gör",
         "people": {
           "doruk": {
-            "role": "Kurucu Ortak",
-            "bio": "Amazon'da global lojistik sistemleri üzerinde çalıştı. UCLA'de bilgisayarlı görü alanında araştırma yaptı, ardından Tesla'da otonom sürüş algı sistemlerine katkıda bulundu. Optimizasyon, makine öğrenmesi ve gerçek dünyada çalışan yazılımlar konusunda derin deneyime sahip."
+            "role": "Kurucu",
+            "bio": "Rotasal platformunun tamamını — Rust optimizasyon çekirdeğini, sevk arka ucunu, kurye ve takip uygulamalarını ve üzerinde çalıştıkları altyapıyı — tek başına tasarlayıp hayata geçirdi. Öncesinde Amazon’da ve Tesla’nın otonom sürüş ekibinde mühendis olarak çalıştı, UCLA’de bilgisayarlı görü araştırması yaptı ve SpaceX için Starlink’in Türkiye pazarına giriş çalışmasını yönetti. Koç Üniversitesi Bilgisayar Mühendisliği mezunu."
           }
         }
       },
       "values": {
-        "eyebrow": "Değerler",
-        "title": "Bizi yönlendiren ilkeler",
+        "eyebrow": "İlkeler",
+        "title": "Nasıl geliştiriyoruz",
         "items": [
           {
-            "title": "Taviz yerine özen",
-            "description": "Her detay önemlidir. Kullanıcıların sadece çalışan değil, ince düşünülmüş yazılımlar hak ettiğine inanıyoruz."
+            "title": "Vaat değil, ölçüm",
+            "description": "Her iddia kendi siparişleriniz üzerinde kontrol edilebilir. Rotasal, optimize ediciyi manuel sevk temeliyle maliyet kalemi kalemi karşılaştırır — tasarruf gerçek değilse onu da görürsünüz."
           },
           {
-            "title": "Gerçekten önemli olanı çıkar",
-            "description": "Gerçek insanların gerçek problemlerini çözüyoruz. Kullanıcıya hizmet etmeyen hiçbir şey ürüne dönüşmez."
+            "title": "Veriniz sizin kalır",
+            "description": "Kendi altyapımızda barındırılan haritalar ve modeller, şirket içi kurulum seçeneği ve asla paylaşılmayan, satılmayan ya da model eğitiminde kullanılmayan müşteri verisi. Tasarım gereği KVKK ve GDPR uyumlu."
           },
           {
-            "title": "Yalın kal, hızlı ilerle",
-            "description": "Tek kurucu, minimum bürokrasi. Kararları hızla alır, sürekli iterasyon yapar ve işin kalitesiyle konuşuruz."
+            "title": "Bilerek sıkıcı",
+            "description": "Deterministik, tekrarlanabilir çözümler; başarısız bir çözümün takılmak yerine güvenle geri düşmesini sağlayan katmanlı yedekler; çekimsiz bölgelerde ayakta kalan bir sürücü uygulaması. Sabah 5’teki bir sevk masasında sürprize yer yoktur."
           }
         ]
+      },
+      "hiring": {
+        "eyebrow": "Bize katıl",
+        "title": "Tüm ekiplerimize alım yapıyoruz.",
+        "description": "Palo Alto’da mühendislik, veri, ürün ve go-to-market rolleri; ayrıca dünyanın her yerinden uzaktan stajlar.",
+        "cta": "Açık pozisyonları gör"
       }
     },
     "primeroute": {
@@ -299,6 +346,32 @@
         ],
         "description": "Bir sorunuz varsa, demo talep etmek istiyorsanız ya da sadece merhaba demek istiyorsanız bize ulaşın."
       },
+      "direct": {
+        "eyebrow": "Doğrudan iletişim",
+        "heading": "Doğru kişiye tek adımda ulaşın",
+        "channels": [
+          {
+            "key": "sales",
+            "title": "Satış ve demo",
+            "description": "Rotasal demoları, fiyatlandırma ve iş birlikleri."
+          },
+          {
+            "key": "careers",
+            "title": "Kariyer",
+            "description": "Başvurular, stajlar ve işe alımla ilgili sorular."
+          },
+          {
+            "key": "general",
+            "title": "Kurucu",
+            "description": "Diğer her şey doğrudan Doruk'a ulaşır."
+          }
+        ],
+        "address": {
+          "title": "Adres",
+          "companyName": "Avernsys Inc."
+        }
+      },
+      "formHeading": "Ya da bize mesaj gönderin",
       "success": {
         "title": "Mesajınız alındı.",
         "description": "Size en kısa sürede geri döneceğiz."
@@ -340,15 +413,52 @@
         "titleLines": [
           "Geleceği birlikte inşa edelim."
         ],
-        "description": "Büyük hedefleri olan küçük bir ekibiz; gerçek dünyadaki lojistik için ciddi yazılımlar geliştiriyoruz.",
+        "description": "Büyük hedefleri olan küçük bir ekibiz; gerçek dünyadaki lojistik için ciddi yazılımlar geliştiriyoruz. Tüm ekiplerimize alım yapıyoruz.",
         "openCountOne": "1 açık pozisyon",
-        "openCountMany": "{count} açık pozisyon"
+        "openCountMany": "{count} açık pozisyon",
+        "facts": {
+          "fullTime": {
+            "label": "Tam zamanlı roller",
+            "value": "Ofiste · Palo Alto, Kaliforniya"
+          },
+          "internships": {
+            "label": "Stajlar",
+            "value": "Uzaktan · dünyanın her yerinden"
+          },
+          "deadline": {
+            "label": "Son başvuru"
+          }
+        }
       },
       "list": {
         "heading": "Açık pozisyonlar",
         "empty": "Şu anda açık pozisyon bulunmuyor. Yakında tekrar kontrol et — ya da bize uygun olduğunu düşünüyorsan iletişim sayfasından ulaş.",
         "viewLabel": "Pozisyonu görüntüle",
-        "emptyCta": "İletişime geç"
+        "emptyCta": "İletişime geç",
+        "positionCountOne": "1 pozisyon",
+        "positionCountMany": "{count} pozisyon"
+      },
+      "groups": {
+        "engineering": {
+          "title": "Mühendislik",
+          "description": "Rotasal platformu: optimizasyon çekirdeği, API'ler, web ve mobil arayüzler ve altındaki altyapı."
+        },
+        "data": {
+          "title": "Veri ve Makine Öğrenimi",
+          "description": "Rotalama modelleri, tahminleme ve her planın arkasındaki optimizasyon bilimi."
+        },
+        "product": {
+          "title": "Ürün ve Tasarım",
+          "description": "Teslimat operasyonlarını, planlamacıların ve sürücülerin gerçekten severek kullandığı bir ürüne dönüştürmek."
+        },
+        "gtm": {
+          "title": "Go-to-Market",
+          "description": "Rotasal'ı teslimat ekiplerine ulaştırmak ve onları bu ürünle başarılı kılmak."
+        },
+        "internships": {
+          "title": "Stajlar",
+          "description": "Tüm ekipler — dünyanın her yerinden uzaktan."
+        }
       },
       "labels": {
         "workplace": {
@@ -362,7 +472,51 @@
           "CONTRACTOR": "Sözleşmeli",
           "INTERN": "Staj"
         },
-        "postedOn": "Yayınlanma"
+        "salaryUnit": {
+          "HOUR": "/ saat",
+          "MONTH": "/ ay",
+          "YEAR": "/ yıl"
+        },
+        "worldwide": "Dünyanın her yerinden",
+        "postedOn": "Yayınlanma",
+        "applyBy": "Son başvuru"
+      },
+      "benefits": {
+        "eyebrow": "Yan haklar",
+        "heading": "Sunduklarımız",
+        "description": "Tam zamanlı roller, her pozisyonda belirtilen maaşa ek olarak şunları içerir.",
+        "items": [
+          {
+            "title": "ABD vize sponsorluğu",
+            "description": "Palo Alto'da bize katılan uluslararası çalışanlar için çalışma vizesine sponsor oluyoruz."
+          },
+          {
+            "title": "Sağlık sigortası",
+            "description": "İlk günden itibaren sağlık sigortası."
+          },
+          {
+            "title": "Performans primi",
+            "description": "Senin ve ürünün başarısına bağlı bir prim."
+          },
+          {
+            "title": "Fazla mesai ücreti",
+            "description": "Fazla çalışma ücretlendirilir; sessizce beklenmez."
+          },
+          {
+            "title": "Yemek",
+            "description": "Ofis günlerinde yemek bizden."
+          },
+          {
+            "title": "Servis",
+            "description": "Palo Alto ofisine gidiş-dönüş servis."
+          }
+        ]
+      },
+      "contact": {
+        "heading": "Bir rol hakkında sorun mu var?",
+        "description": "Bize yaz ya da ara — karşında gerçek bir insan olur ve herkese yanıt veriyoruz.",
+        "emailLabel": "E-posta",
+        "phoneLabel": "Telefon"
       },
       "opening": {
         "sections": {
@@ -370,7 +524,8 @@
           "responsibilities": "Neler yapacaksın",
           "requirements": "Aradıklarımız",
           "niceToHave": "Artı sayılır",
-          "offer": "Sunduklarımız"
+          "offer": "Sunduklarımız",
+          "benefits": "Maaş ve yan haklar"
         },
         "closed": {
           "title": "Bu pozisyon kapandı.",
@@ -379,12 +534,17 @@
         "backLabel": "Tüm pozisyonlar",
         "applyHeading": "Bu pozisyona başvur",
         "applyDescription": "Başvurun doğrudan kurucuya ulaşır. Herkese yanıt veriyoruz.",
+        "applyByEmail": "E-postayı mı tercih edersin? CV'ni ve kendinle ilgili birkaç satırı {email} adresine gönder.",
         "applyCtaLabel": "Hemen başvur",
         "glance": {
           "heading": "Bir bakışta",
+          "teamLabel": "Ekip",
           "workplaceLabel": "Çalışma şekli",
+          "locationLabel": "Konum",
           "employmentLabel": "Çalışma türü",
-          "regionsLabel": "Uzaktan bölgeler"
+          "salaryLabel": "Maaş",
+          "regionsLabel": "Uzaktan bölgeler",
+          "deadlineLabel": "Son başvuru"
         }
       },
       "form": {

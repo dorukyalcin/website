@@ -12,6 +12,13 @@ import {
   type PageKey,
 } from "@/lib/i18n";
 import { brandLogo } from "@/lib/brand";
+import {
+  companyAddress,
+  companyEmails,
+  companyLegalName,
+  companyOffice,
+  companyPhone,
+} from "@/lib/company";
 import { founders, type FounderProfile } from "@/lib/founders";
 import { getOpenings, type Opening } from "@/lib/openings";
 
@@ -28,7 +35,7 @@ function parseSameAsUrls(raw: string | undefined): string[] {
 
 export const siteConfig = {
   name: "Avernsys",
-  legalName: "Avernsys",
+  legalName: companyLegalName,
   alternateName: "Avernsys Software",
   domain: "avernsys.com",
   url:
@@ -63,11 +70,11 @@ function buildAlternateLanguageMetadata(path: string) {
 }
 
 const lastModifiedByPage: Record<PageKey, string> = {
-  home: "2026-04-21",
-  about: "2026-04-21",
-  contact: "2026-04-21",
-  careers: "2026-08-13",
-  primeroute: "2026-04-21",
+  home: "2026-08-17",
+  about: "2026-08-17",
+  contact: "2026-08-17",
+  careers: "2026-08-17",
+  primeroute: "2026-08-17",
 };
 
 export type Breadcrumb = {
@@ -160,17 +167,17 @@ export function getFounderProfileSeo(
   const profile = dictionary.pages.about.founders.people[founder.key];
 
   return {
-    title: `${founder.name} | Avernsys Co-Founder`,
-    description: `${founder.name} is a ${profile.role.toLowerCase()} of Avernsys. ${profile.bio}`,
+    title: `${founder.name} | Avernsys Founder`,
+    description: `${founder.name}, ${profile.role} of Avernsys. ${profile.bio}`,
     path: getFounderProfilePath(locale, founder),
     keywords: [
       founder.name,
       `${founder.name} Avernsys`,
-      `${founder.name} co-founder`,
+      `${founder.name} founder`,
       "Avernsys founder",
       "Rotasal founder",
     ],
-    lastModified: "2026-04-21",
+    lastModified: "2026-08-17",
     socialImageAlt: founder.photo.alt,
     images: [absoluteUrl(founder.photo.src)],
   };
@@ -434,26 +441,7 @@ export function buildJobPostingJsonLd(locale: Locale, opening: Opening) {
       name: siteConfig.name,
       value: opening.slug,
     },
-    ...(opening.workplaceType === "REMOTE"
-      ? {
-          jobLocationType: "TELECOMMUTE",
-          applicantLocationRequirements: (
-            opening.remoteEligibleRegions ?? [opening.countryCode]
-          ).map((countryCode) => ({
-            "@type": "Country",
-            name: countryCode,
-          })),
-        }
-      : {
-          jobLocation: {
-            "@type": "Place",
-            address: {
-              "@type": "PostalAddress",
-              ...(opening.city ? { addressLocality: opening.city } : {}),
-              addressCountry: opening.countryCode,
-            },
-          },
-        }),
+    ...buildJobLocation(opening),
     ...(opening.salary
       ? {
           baseSalary: {
@@ -461,26 +449,85 @@ export function buildJobPostingJsonLd(locale: Locale, opening: Opening) {
             currency: opening.salary.currency,
             value: {
               "@type": "QuantitativeValue",
-              minValue: opening.salary.min,
-              maxValue: opening.salary.max,
+              ...(opening.salary.min === opening.salary.max
+                ? { value: opening.salary.min }
+                : {
+                    minValue: opening.salary.min,
+                    maxValue: opening.salary.max,
+                  }),
               unitText: opening.salary.unitText,
             },
           },
         }
       : {}),
+    applicationContact: {
+      "@type": "ContactPoint",
+      contactType: "recruiting",
+      email: companyEmails.careers,
+      telephone: companyPhone.e164,
+    },
     directApply: true,
     inLanguage: dictionary.language.htmlLang,
+  };
+}
+
+function buildJobLocation(opening: Opening) {
+  const officePlace = {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      ...(opening.city ? { addressLocality: opening.city } : {}),
+      ...(opening.region ? { addressRegion: opening.region } : {}),
+      addressCountry: opening.countryCode,
+    },
+  };
+
+  if (opening.workplaceType !== "REMOTE") {
+    return { jobLocation: officePlace };
+  }
+
+  // Remote from anywhere: Google requires either applicant location
+  // requirements or a job location, so anchor worldwide roles to the office.
+  if (opening.remoteEligibleRegions === "WORLDWIDE") {
+    return {
+      jobLocationType: "TELECOMMUTE",
+      jobLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: companyOffice.city,
+          addressRegion: companyOffice.region,
+          addressCountry: companyOffice.countryCode,
+        },
+      },
+    };
+  }
+
+  return {
+    jobLocationType: "TELECOMMUTE",
+    applicantLocationRequirements: (
+      opening.remoteEligibleRegions ?? [opening.countryCode]
+    ).map((countryCode) => ({
+      "@type": "Country",
+      name: countryCode,
+    })),
   };
 }
 
 export function buildOrganizationJsonLd(locale: Locale) {
   const dictionary = getDictionary(locale);
 
+  const availableLanguage = locales.map(
+    (supportedLocale) => getDictionary(supportedLocale).language.htmlLang,
+  );
+  const contactPageUrl = absoluteUrl(getPagePath(locale, "contact"));
+
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": schemaOrganizationId(),
-    name: siteConfig.legalName,
+    name: siteConfig.name,
+    legalName: siteConfig.legalName,
     alternateName: siteConfig.alternateName,
     disambiguatingDescription:
       dictionary.structuredData.organizationDisambiguation,
@@ -495,14 +542,38 @@ export function buildOrganizationJsonLd(locale: Locale) {
       "@id": schemaFounderPersonId(founder),
     })),
     knowsAbout: [...dictionary.structuredData.organizationKnowsAbout],
+    email: companyEmails.general,
+    telephone: companyPhone.e164,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: companyAddress.streetAddress,
+      addressLocality: companyAddress.addressLocality,
+      addressRegion: companyAddress.addressRegion,
+      postalCode: companyAddress.postalCode,
+      addressCountry: companyAddress.addressCountry,
+    },
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        url: absoluteUrl(getPagePath(locale, "contact")),
-        availableLanguage: locales.map(
-          (supportedLocale) => getDictionary(supportedLocale).language.htmlLang,
-        ),
+        email: companyEmails.sales,
+        url: contactPageUrl,
+        availableLanguage,
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "recruiting",
+        email: companyEmails.careers,
+        telephone: companyPhone.e164,
+        url: absoluteUrl(getPagePath(locale, "careers")),
+        availableLanguage,
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: companyEmails.general,
+        url: contactPageUrl,
+        availableLanguage,
       },
     ],
   };

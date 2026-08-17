@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { brandLogo } from "./brand";
+import { companyEmails, companyLegalName, companyPhone } from "./company";
 import { founders } from "./founders";
 import { getDictionary, locales, pageKeys } from "./i18n";
 import { openings } from "./openings";
@@ -11,6 +12,7 @@ import {
   buildFounderProfileMetadata,
   buildFounderProfilePageJsonLd,
   buildHomeItemListJsonLd,
+  buildJobPostingJsonLd,
   buildOrganizationJsonLd,
   buildPageMetadata,
   buildSoftwareApplicationJsonLd,
@@ -214,6 +216,81 @@ test("organization JSON-LD lists all supported languages in the contact point", 
   ]);
 });
 
+test("organization JSON-LD carries the registered address and contact emails", () => {
+  const org = buildOrganizationJsonLd("de") as {
+    name?: string;
+    legalName?: string;
+    email?: string;
+    telephone?: string;
+    address?: Record<string, string>;
+    contactPoint?: Array<{ contactType?: string; email?: string }>;
+  };
+
+  assert.equal(org.name, "Avernsys");
+  assert.equal(org.legalName, companyLegalName);
+  assert.equal(org.email, companyEmails.general);
+  assert.equal(org.telephone, companyPhone.e164);
+  assert.deepEqual(org.address, {
+    "@type": "PostalAddress",
+    streetAddress: "8 The Green, Ste H",
+    addressLocality: "Dover",
+    addressRegion: "DE",
+    postalCode: "19901",
+    addressCountry: "US",
+  });
+
+  const byType = Object.fromEntries(
+    (org.contactPoint ?? []).map((point) => [point.contactType, point.email]),
+  );
+  assert.equal(byType.sales, companyEmails.sales);
+  assert.equal(byType.recruiting, companyEmails.careers);
+  assert.equal(byType["customer service"], companyEmails.general);
+});
+
+test("JobPosting JSON-LD describes on-site roles with a Palo Alto job location and fixed salary", () => {
+  const onsite = openings.find(
+    (opening) => opening.workplaceType === "ONSITE" && opening.salary,
+  );
+  assert.ok(onsite, "expected an on-site opening with a salary");
+
+  const posting = buildJobPostingJsonLd("en", onsite) as {
+    jobLocation?: { address?: Record<string, string> };
+    jobLocationType?: string;
+    baseSalary?: { currency?: string; value?: Record<string, unknown> };
+    applicationContact?: { email?: string };
+    validThrough?: string;
+  };
+
+  assert.equal(posting.jobLocationType, undefined);
+  assert.equal(posting.jobLocation?.address?.addressLocality, "Palo Alto");
+  assert.equal(posting.jobLocation?.address?.addressRegion, "CA");
+  assert.equal(posting.jobLocation?.address?.addressCountry, "US");
+  assert.equal(posting.baseSalary?.currency, "USD");
+  assert.equal(posting.baseSalary?.value?.value, onsite.salary?.min);
+  assert.equal(posting.baseSalary?.value?.unitText, "YEAR");
+  assert.equal(posting.applicationContact?.email, companyEmails.careers);
+  assert.equal(posting.validThrough, onsite.validThrough);
+});
+
+test("JobPosting JSON-LD marks worldwide-remote internships as telecommute anchored to the office", () => {
+  const remote = openings.find(
+    (opening) => opening.remoteEligibleRegions === "WORLDWIDE",
+  );
+  assert.ok(remote, "expected a worldwide-remote opening");
+
+  const posting = buildJobPostingJsonLd("tr", remote) as {
+    jobLocationType?: string;
+    jobLocation?: { address?: Record<string, string> };
+    applicantLocationRequirements?: unknown;
+    employmentType?: string;
+  };
+
+  assert.equal(posting.jobLocationType, "TELECOMMUTE");
+  assert.equal(posting.applicantLocationRequirements, undefined);
+  assert.equal(posting.jobLocation?.address?.addressLocality, "Palo Alto");
+  assert.equal(posting.employmentType, "INTERN");
+});
+
 test("organization and WebSite JSON-LD use stable ids and localized descriptions", () => {
   const englishOrg = buildOrganizationJsonLd("en") as Record<string, unknown>;
   const turkishSite = buildWebSiteJsonLd("tr") as Record<string, unknown>;
@@ -285,7 +362,7 @@ test("founder profile metadata uses portrait images and localized alternates", (
 
   assert.equal(
     getMetadataAbsoluteTitle(metadata),
-    "Doruk Yalcin | Avernsys Co-Founder",
+    "Doruk Yalcin | Avernsys Founder",
   );
   assert.equal(
     metadata.alternates?.canonical,

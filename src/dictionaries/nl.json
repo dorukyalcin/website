@@ -37,6 +37,23 @@
   },
   "footer": {
     "brandDescription": "Gebouwd voor wat morgen vraagt.",
+    "contact": {
+      "title": "Contact",
+      "emails": [
+        {
+          "key": "sales",
+          "label": "Sales"
+        },
+        {
+          "key": "careers",
+          "label": "Vacatures"
+        },
+        {
+          "key": "general",
+          "label": "Algemeen"
+        }
+      ]
+    },
     "columns": [
       {
         "title": "Producten",
@@ -82,12 +99,13 @@
     },
     "about": {
       "title": "Over Avernsys",
-      "description": "Maak kennis met de oprichters van Avernsys en ontdek hoe we Rotasal bouwen voor last-mile bezorgoperaties.",
+      "description": "Avernsys bouwt Rotasal, een platform voor routeoptimalisatie en fleet operations in last-mile bezorging. Opgericht in 2026, gebouwd op een native optimalisatiekern in Rust — en zo ontworpen dat klantdata de installatie nooit verlaat.",
       "keywords": [
         "over Avernsys",
-        "Avernsys oprichters",
-        "B2B softwarebedrijf",
-        "logistieke software startup"
+        "Avernsys oprichter",
+        "Rotasal routeoptimalisatie",
+        "softwarebedrijf last-mile bezorging",
+        "Doruk Yalçın"
       ],
       "socialImageAlt": "Voorbeeld van de homepage van Avernsys"
     },
@@ -105,13 +123,14 @@
     },
     "careers": {
       "title": "Werken bij Avernsys",
-      "description": "Openstaande vacatures bij Avernsys. Bouw mee aan Rotasal, ons platform voor routeoptimalisatie op de laatste kilometer.",
+      "description": "Openstaande vacatures in engineering, data, product en go-to-market in Palo Alto — plus wereldwijd remote stages. Bouw mee aan Rotasal, ons platform voor routeoptimalisatie op de laatste kilometer.",
       "keywords": [
         "Avernsys vacatures",
         "Avernsys banen",
         "Rotasal vacatures",
         "routeoptimalisatie vacatures",
-        "remote software vacatures"
+        "software engineer vacature Palo Alto",
+        "remote stage software engineering"
       ],
       "socialImageAlt": "Voorbeeld van de Avernsys-homepage"
     },
@@ -189,45 +208,73 @@
       "hero": {
         "eyebrow": "Over ons",
         "titleLines": [
-          "Eén oprichter.",
-          "Eén duidelijke missie."
+          "Software voor de",
+          "duurste kilometer."
         ],
-        "description": "Avernsys is ontstaan vanuit één overtuiging: technologie moet mensen verbinden en werkprocessen beter laten lopen."
+        "description": "Avernsys bouwt Rotasal: routeoptimalisatie en fleet operations voor last-mile bezorging — het deel van de logistiek dat het meest kost en nog altijd op spreadsheets draait."
       },
       "story": {
-        "title": "Ons verhaal",
+        "title": "Waarom we bestaan",
         "paragraphs": [
-          "Avernsys begon met één persoon die zag hoeveel tijd bedrijven verliezen door inefficiënte last-mile logistiek.",
-          "In plaats van te wachten tot iemand anders dat zou oplossen, bouwden we Rotasal: software voor routeoptimalisatie die bezorgorders in seconden omzet in efficiënte routes.",
-          "We geloven in minder dingen uitzonderlijk goed doen. Rotasal wordt met zorg gebouwd, is ontworpen om lang mee te gaan en richt zich op één operationeel probleem dat ertoe doet."
+          "De meeste last-mile vloten plannen hun dag nog met de hand. Routes voor tientallen voertuigen worden in een spreadsheet opgesteld, via WhatsApp naar chauffeurs gestuurd en telefonisch omgegooid als de dag anders loopt. Brandstof en chauffeursuren bepalen de kosten van elke stop — en zodra een bus het depot verlaat, ziet niemand hem meer.",
+          "Rotasal vervangt dat door één systeem, van planningsdesk tot voordeur: planners uploaden de orders van de dag en krijgen geoptimaliseerde, rijklare routes uit een native optimalisatiekern gebouwd in Rust; chauffeurs krijgen een app die blijft werken zonder bereik; elke klant krijgt een live trackinglink. Wegennetten en verkeerspatronen zijn al gemodelleerd voor twaalf steden in Turkije, Europa en de Verenigde Staten — waaronder Istanbul, onze grootste markt.",
+          "Avernsys Inc. is in 2026 opgericht in Delaware; het team werkt vanuit Palo Alto, Californië. Eén product, één operationeel probleem — gebouwd door mensen die opleveren."
         ]
+      },
+      "metrics": {
+        "items": [
+          {
+            "value": "25–30%",
+            "label": "lagere brandstofkosten dan bij handmatige planning"
+          },
+          {
+            "value": "99,8%",
+            "label": "van de stops binnen het tijdvenster"
+          },
+          {
+            "value": "12",
+            "label": "steden met gemodelleerde wegennetten en verkeerspatronen"
+          },
+          {
+            "value": "2026",
+            "label": "opgericht in Delaware"
+          }
+        ],
+        "note": "Brandstof- en stiptheidscijfers zijn simulatieresultaten op Istanbulse orderdata — we valideren ze graag op je eigen data."
       },
       "founders": {
         "title": "De oprichter",
+        "profileCta": "Volledig profiel",
         "people": {
           "doruk": {
-            "role": "Medeoprichter",
-            "bio": "Werkte eerder als engineer bij Amazon aan systemen die wereldwijde logistiek op schaal ondersteunen. Deed computer vision-onderzoek aan UCLA en stapte daarna over naar Tesla om te werken aan perceptiesystemen voor autonoom rijden. Brengt diepgaande kennis mee op het gebied van optimalisatie, machine learning en technologie die in de praktijk echt moet werken."
+            "role": "Oprichter",
+            "bio": "Ontwierp en bouwde het volledige Rotasal-platform zelf — de optimalisatiekern in Rust, de planningsbackend, de koeriers- en trackingapps en de infrastructuur waarop ze draaien. Daarvoor: engineer bij Amazon en in het autonomous-driving-team van Tesla, computer vision-onderzoek aan UCLA en het Starlink-markttoetredingsonderzoek voor SpaceX in Turkije. Computer engineering, Koç University."
           }
         }
       },
       "values": {
-        "eyebrow": "Waarden",
-        "title": "Wat ons drijft",
+        "eyebrow": "Principes",
+        "title": "Hoe we bouwen",
         "items": [
           {
-            "title": "Zorgvuldigheid boven concessies",
-            "description": "Details doen ertoe. Wij willen software maken die doordacht aanvoelt, niet alleen iets dat technisch werkt."
+            "title": "Gemeten, niet beloofd",
+            "description": "Elke claim is te controleren op je eigen orders. Rotasal zet de optimizer naast een handmatige planning als nulmeting, kostenregel voor kostenregel — en als de besparing niet echt is, zie je dat ook."
           },
           {
-            "title": "Bouw alleen wat ertoe doet",
-            "description": "We lossen echte problemen op voor echte mensen. Als iets de gebruiker niet duidelijk verder helpt, hoort het niet in het product."
+            "title": "Jouw data blijft van jou",
+            "description": "Zelfgehoste kaarten en modellen, een on-premises optie en klantdata die nooit wordt gedeeld, verkocht of gebruikt om modellen te trainen. AVG en KVKK by design."
           },
           {
-            "title": "Klein team, snel handelen",
-            "description": "Eén oprichter, weinig ruis. We nemen snel beslissingen, verbeteren voortdurend en laten het werk voor zich spreken."
+            "title": "Bewust saai",
+            "description": "Deterministische, reproduceerbare berekeningen; gelaagde fallbacks zodat een mislukte berekening veilig terugvalt in plaats van vast te lopen; een chauffeursapp die het volhoudt zonder bereik. Een planningsdesk om 5 uur ’s ochtends heeft geen ruimte voor verrassingen."
           }
         ]
+      },
+      "hiring": {
+        "eyebrow": "Kom erbij",
+        "title": "We werven in alle teams.",
+        "description": "Engineering-, data-, product- en go-to-market-rollen in Palo Alto, plus stages op afstand vanaf overal ter wereld.",
+        "cta": "Bekijk de vacatures"
       }
     },
     "primeroute": {
@@ -299,6 +346,32 @@
         ],
         "description": "Heb je een vraag, wil je een demo of gewoon even contact? We horen graag van je."
       },
+      "direct": {
+        "eyebrow": "Directe lijnen",
+        "heading": "Meteen in de juiste inbox",
+        "channels": [
+          {
+            "key": "sales",
+            "title": "Sales & demo's",
+            "description": "Rotasal-demo's, prijzen en partnerships."
+          },
+          {
+            "key": "careers",
+            "title": "Vacatures",
+            "description": "Sollicitaties, stages en vragen over werken bij ons."
+          },
+          {
+            "key": "general",
+            "title": "Oprichter",
+            "description": "Al het andere komt rechtstreeks bij Doruk terecht."
+          }
+        ],
+        "address": {
+          "title": "Adres",
+          "companyName": "Avernsys Inc."
+        }
+      },
+      "formHeading": "Of stuur een bericht",
       "success": {
         "title": "Bericht verzonden.",
         "description": "We komen snel bij je terug."
@@ -340,15 +413,52 @@
         "titleLines": [
           "Bouw mee aan wat komt."
         ],
-        "description": "We zijn een klein team met grote ambities en bouwen serieuze software voor echte logistiek.",
+        "description": "We zijn een klein team met grote ambities en bouwen serieuze software voor echte logistiek. We werven nu in alle teams.",
         "openCountOne": "1 openstaande vacature",
-        "openCountMany": "{count} openstaande vacatures"
+        "openCountMany": "{count} openstaande vacatures",
+        "facts": {
+          "fullTime": {
+            "label": "Fulltime rollen",
+            "value": "Op locatie · Palo Alto, Californië"
+          },
+          "internships": {
+            "label": "Stages",
+            "value": "Remote · overal ter wereld"
+          },
+          "deadline": {
+            "label": "Solliciteer vóór"
+          }
+        }
       },
       "list": {
         "heading": "Openstaande vacatures",
         "empty": "Er zijn op dit moment geen openstaande vacatures. Kom binnenkort terug — of neem contact op via de contactpagina als je denkt dat je goed bij ons past.",
         "viewLabel": "Bekijk vacature",
-        "emptyCta": "Neem contact op"
+        "emptyCta": "Neem contact op",
+        "positionCountOne": "1 vacature",
+        "positionCountMany": "{count} vacatures"
+      },
+      "groups": {
+        "engineering": {
+          "title": "Engineering",
+          "description": "Het Rotasal-platform: optimalisatiekern, API's, web- en mobiele interfaces en de infrastructuur eronder."
+        },
+        "data": {
+          "title": "Data & Machine Learning",
+          "description": "Routeringsmodellen, forecasting en de optimalisatiewetenschap achter elke planning."
+        },
+        "product": {
+          "title": "Product & Design",
+          "description": "Van bezorgoperaties een product maken dat planners en chauffeurs echt graag gebruiken."
+        },
+        "gtm": {
+          "title": "Go-to-Market",
+          "description": "Rotasal naar bezorgteams brengen en ze er succesvol mee maken."
+        },
+        "internships": {
+          "title": "Stages",
+          "description": "Alle teams — remote vanaf overal ter wereld."
+        }
       },
       "labels": {
         "workplace": {
@@ -362,7 +472,51 @@
           "CONTRACTOR": "Freelance",
           "INTERN": "Stage"
         },
-        "postedOn": "Geplaatst"
+        "salaryUnit": {
+          "HOUR": "/ uur",
+          "MONTH": "/ maand",
+          "YEAR": "/ jaar"
+        },
+        "worldwide": "Overal ter wereld",
+        "postedOn": "Geplaatst",
+        "applyBy": "Solliciteer vóór"
+      },
+      "benefits": {
+        "eyebrow": "Voordelen",
+        "heading": "Wat we bieden",
+        "description": "Fulltime rollen komen met het volgende, bovenop het salaris dat bij elke vacature staat.",
+        "items": [
+          {
+            "title": "Amerikaanse visumsponsoring",
+            "description": "We sponsoren werkvisa voor internationale collega's die bij ons in Palo Alto beginnen."
+          },
+          {
+            "title": "Zorgverzekering",
+            "description": "Medische dekking vanaf dag één."
+          },
+          {
+            "title": "Prestatiebonus",
+            "description": "Een bonus gekoppeld aan wat jij en het product bereiken."
+          },
+          {
+            "title": "Overwerkvergoeding",
+            "description": "Extra uren worden betaald, niet stilzwijgend verwacht."
+          },
+          {
+            "title": "Maaltijden",
+            "description": "Maaltijden verzorgd op kantoordagen."
+          },
+          {
+            "title": "Shuttle",
+            "description": "Een shuttle van en naar het kantoor in Palo Alto."
+          }
+        ]
+      },
+      "contact": {
+        "heading": "Vragen over een rol?",
+        "description": "Mail of bel ons — er antwoordt een mens, en we reageren op iedereen.",
+        "emailLabel": "E-mail",
+        "phoneLabel": "Telefoon"
       },
       "opening": {
         "sections": {
@@ -370,7 +524,8 @@
           "responsibilities": "Wat je gaat doen",
           "requirements": "Wat we zoeken",
           "niceToHave": "Mooi meegenomen",
-          "offer": "Wat we bieden"
+          "offer": "Wat we bieden",
+          "benefits": "Salaris & voordelen"
         },
         "closed": {
           "title": "Deze vacature is gesloten.",
@@ -379,12 +534,17 @@
         "backLabel": "Alle vacatures",
         "applyHeading": "Solliciteer op deze vacature",
         "applyDescription": "Je sollicitatie gaat rechtstreeks naar de oprichter. We reageren op iedereen.",
+        "applyByEmail": "Liever per e-mail? Stuur je cv en een paar regels over jezelf naar {email}.",
         "applyCtaLabel": "Solliciteer nu",
         "glance": {
           "heading": "In het kort",
+          "teamLabel": "Team",
           "workplaceLabel": "Werkplek",
+          "locationLabel": "Locatie",
           "employmentLabel": "Dienstverband",
-          "regionsLabel": "Remote-regio's"
+          "salaryLabel": "Salaris",
+          "regionsLabel": "Remote-regio's",
+          "deadlineLabel": "Solliciteer vóór"
         }
       },
       "form": {
