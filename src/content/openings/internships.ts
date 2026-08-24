@@ -121,11 +121,6 @@ export const softwareEngineeringIntern = {
   },
 } as const satisfies Opening;
 
-
-
-
-
-
 export const designIntern = {
   ...base,
   team: "product",
@@ -231,209 +226,111 @@ export const designIntern = {
   },
 } as const satisfies Opening;
 
-export const marketingIntern = {
+
+
+export const marketingAndSalesIntern = {
   ...base,
   team: "gtm",
-  slug: "marketing-intern",
+  slug: "marketing-and-sales-intern",
   content: {
     en: {
-      title: "Marketing Intern",
+      title: "Marketing & Sales Intern",
       summary:
-        "Help tell the Rotasal story: content, campaigns, and the channels delivery operators actually read.",
+        "Help bring Rotasal to delivery operators: content and campaigns on one side, outreach and demos on the other.",
       intro: [
         companyIntro.en,
-        "You'll work directly with the founder on how Avernsys shows up in the world: website copy, case studies, social posts, and campaigns aimed at delivery and logistics teams — and you'll see what each one actually does for the pipeline.",
+        "You'll work directly with the founder across the whole go-to-market: telling the Rotasal story through content and campaigns, and turning it into pipeline through research, outreach, and demos. You'll see what each piece actually does for the business.",
       ],
       responsibilities: [
         "Write and publish content: social posts, case studies, and landing-page copy.",
-        "Help plan campaigns and measure how they perform.",
-        "Watch the analytics and report clearly on what works and what doesn't.",
-      ],
-      requirements: [
-        "Studying marketing, communications, business, or a related field — or a comparable track record.",
-        "Strong writing in English.",
-        "Comfortable with social platforms and basic analytics tools.",
-        "Ability to overlap a few hours a day with the team's working hours.",
-      ],
-      niceToHave: [
-        "Design skills (Figma or Canva) or short-form video editing.",
-        "Interest in B2B software or logistics.",
-      ],
-    },
-    de: {
-      title: "Praktikum Marketing",
-      summary:
-        "Hilf mit, die Rotasal-Geschichte zu erzählen: Content, Kampagnen und die Kanäle, die Lieferbetriebe wirklich lesen.",
-      intro: [
-        companyIntro.de,
-        "Du arbeitest direkt mit dem Gründer daran, wie Avernsys nach außen auftritt: Website-Texte, Case Studies, Social Posts und Kampagnen für Liefer- und Logistikteams — und du siehst, was jede davon tatsächlich für die Pipeline bringt.",
-      ],
-      responsibilities: [
-        "Du schreibst und veröffentlichst Content: Social Posts, Case Studies und Landingpage-Texte.",
-        "Du hilfst, Kampagnen zu planen und ihre Wirkung zu messen.",
-        "Du behältst die Analytics im Blick und berichtest klar, was funktioniert und was nicht.",
-      ],
-      requirements: [
-        "Studium in Marketing, Kommunikation, BWL oder einem verwandten Fach — oder ein vergleichbarer Werdegang.",
-        "Starkes schriftliches Englisch.",
-        "Sicher im Umgang mit Social-Media-Plattformen und einfachen Analytics-Tools.",
-        "Ein paar Stunden Überschneidung pro Tag mit den Arbeitszeiten des Teams.",
-      ],
-      niceToHave: [
-        "Design-Skills (Figma oder Canva) oder Schnitt von Kurzvideos.",
-        "Interesse an B2B-Software oder Logistik.",
-      ],
-    },
-    nl: {
-      title: "Stage Marketing",
-      summary:
-        "Help het verhaal van Rotasal vertellen: content, campagnes en de kanalen die bezorgbedrijven echt lezen.",
-      intro: [
-        companyIntro.nl,
-        "Je werkt rechtstreeks met de oprichter aan hoe Avernsys zich aan de wereld laat zien: websiteteksten, casestudy's, socialposts en campagnes gericht op bezorg- en logistiekteams — en je ziet wat elke actie daadwerkelijk voor de pipeline doet.",
-      ],
-      responsibilities: [
-        "Je schrijft en publiceert content: socialposts, casestudy's en teksten voor landingspagina's.",
-        "Je helpt campagnes plannen en meet hoe ze presteren.",
-        "Je houdt de analytics in de gaten en rapporteert helder wat werkt en wat niet.",
-      ],
-      requirements: [
-        "Je studeert marketing, communicatie, bedrijfskunde of een verwante richting — of hebt een vergelijkbare staat van dienst.",
-        "Sterke schrijfvaardigheid in het Engels.",
-        "Vertrouwd met socialmediaplatformen en eenvoudige analysetools.",
-        "Je kunt dagelijks een paar uur overlappen met de werktijden van het team.",
-      ],
-      niceToHave: [
-        "Designvaardigheden (Figma of Canva) of het monteren van korte video's.",
-        "Interesse in B2B-software of logistiek.",
-      ],
-    },
-    tr: {
-      title: "Pazarlama Stajyeri",
-      summary:
-        "Rotasal'ın hikâyesini anlatmaya yardım et: içerik, kampanyalar ve teslimat operatörlerinin gerçekten okuduğu kanallar.",
-      intro: [
-        companyIntro.tr,
-        "Avernsys'in dünyaya nasıl göründüğü üzerine doğrudan kurucuyla çalışacaksın: web sitesi metinleri, vaka çalışmaları, sosyal medya paylaşımları ve teslimat-lojistik ekiplerine yönelik kampanyalar — ve her birinin satış hattına gerçekte ne kattığını göreceksin.",
-      ],
-      responsibilities: [
-        "İçerik yazıp yayınlayacaksın: sosyal medya paylaşımları, vaka çalışmaları ve açılış sayfası metinleri.",
-        "Kampanyaların planlanmasına yardım edecek ve performanslarını ölçeceksin.",
-        "Analitiği takip edecek; neyin işe yarayıp neyin yaramadığını net biçimde raporlayacaksın.",
-      ],
-      requirements: [
-        "Pazarlama, iletişim, işletme ya da ilgili bir alanda öğrenim görüyor olmak — ya da buna denk bir birikim.",
-        "İngilizcede güçlü yazma becerisi.",
-        "Sosyal medya platformları ve temel analitik araçlarıyla rahat çalışabilme.",
-        "Günde birkaç saat ekibin çalışma saatleriyle örtüşebilmek.",
-      ],
-      niceToHave: [
-        "Tasarım becerileri (Figma veya Canva) ya da kısa video kurgusu.",
-        "B2B yazılımına veya lojistiğe ilgi.",
-      ],
-    },
-  },
-} as const satisfies Opening;
-
-export const salesIntern = {
-  ...base,
-  team: "gtm",
-  slug: "sales-intern",
-  content: {
-    en: {
-      title: "Sales Intern",
-      summary:
-        "Learn B2B sales from first call to close: research, outreach, and demos alongside the founder.",
-      intro: [
-        companyIntro.en,
-        "You'll support new business end to end: mapping delivery and logistics companies, researching prospects, drafting outreach, sitting in on demos, and keeping the pipeline clean — with the founder as your mentor.",
-      ],
-      responsibilities: [
-        "Research prospects and build clean, well-qualified lists.",
-        "Draft outreach and follow-ups, and keep the CRM up to date.",
+        "Help plan campaigns, watch the analytics, and report clearly on what works.",
+        "Research prospects, draft outreach and follow-ups, and keep the CRM clean.",
         "Join demos and calls, take notes, and own the follow-through.",
       ],
       requirements: [
-        "Studying business, economics, or a related field — or a comparable track record.",
-        "Fluent English; additional languages welcome.",
+        "Studying marketing, business, communications, or a related field — or a comparable track record.",
+        "Strong writing and fluent English; additional languages welcome.",
         "Organised, persistent, and comfortable reaching out to people.",
         "Ability to overlap a few hours a day with the team's working hours.",
       ],
       niceToHave: [
-        "Any customer-facing experience (sales, support, hospitality).",
-        "Interest in logistics or B2B software.",
+        "Design skills (Figma or Canva), short-form video, or any customer-facing experience.",
+        "Interest in B2B software or logistics.",
       ],
     },
     de: {
-      title: "Praktikum Sales",
+      title: "Praktikum Marketing & Sales",
       summary:
-        "Lerne B2B-Sales vom ersten Anruf bis zum Abschluss: Recherche, Outreach und Demos an der Seite des Gründers.",
+        "Hilf mit, Rotasal zu Lieferbetrieben zu bringen: Content und Kampagnen auf der einen Seite, Outreach und Demos auf der anderen.",
       intro: [
         companyIntro.de,
-        "Du unterstützt das Neugeschäft von Anfang bis Ende: Liefer- und Logistikunternehmen kartieren, Interessenten recherchieren, Outreach entwerfen, bei Demos dabei sein und die Pipeline sauber halten — mit dem Gründer als Mentor.",
+        "Du arbeitest direkt mit dem Gründer am gesamten Go-to-Market: Du erzählst die Rotasal-Geschichte über Content und Kampagnen und machst daraus Pipeline — durch Recherche, Outreach und Demos. Du siehst, was jeder Baustein tatsächlich fürs Geschäft bringt.",
       ],
       responsibilities: [
-        "Du recherchierst Interessenten und baust saubere, gut qualifizierte Listen auf.",
-        "Du entwirfst Outreach und Follow-ups und hältst das CRM aktuell.",
+        "Du schreibst und veröffentlichst Content: Social Posts, Case Studies und Landingpage-Texte.",
+        "Du hilfst bei der Kampagnenplanung, behältst die Analytics im Blick und berichtest klar, was funktioniert.",
+        "Du recherchierst Interessenten, entwirfst Outreach und Follow-ups und hältst das CRM sauber.",
         "Du nimmst an Demos und Calls teil, machst Notizen und kümmerst dich ums Nachfassen.",
       ],
       requirements: [
-        "Studium in BWL, VWL oder einem verwandten Fach — oder ein vergleichbarer Werdegang.",
-        "Fließendes Englisch; weitere Sprachen willkommen.",
+        "Studium in Marketing, BWL, Kommunikation oder einem verwandten Fach — oder ein vergleichbarer Werdegang.",
+        "Starkes Schreiben und fließendes Englisch; weitere Sprachen willkommen.",
         "Organisiert, hartnäckig und ohne Scheu, auf Menschen zuzugehen.",
         "Ein paar Stunden Überschneidung pro Tag mit den Arbeitszeiten des Teams.",
       ],
       niceToHave: [
-        "Erfahrung im Kundenkontakt (Sales, Support, Gastronomie).",
-        "Interesse an Logistik oder B2B-Software.",
+        "Design-Skills (Figma oder Canva), Kurzvideos oder Erfahrung im Kundenkontakt.",
+        "Interesse an B2B-Software oder Logistik.",
       ],
     },
     nl: {
-      title: "Stage Sales",
+      title: "Stage Marketing & Sales",
       summary:
-        "Leer B2B-sales van eerste gesprek tot deal: research, outreach en demo's naast de oprichter.",
+        "Help Rotasal naar bezorgbedrijven te brengen: content en campagnes aan de ene kant, outreach en demo's aan de andere.",
       intro: [
         companyIntro.nl,
-        "Je ondersteunt new business van begin tot eind: bezorg- en logistiekbedrijven in kaart brengen, prospects onderzoeken, outreach opstellen, meedraaien bij demo's en de pipeline schoon houden — met de oprichter als je mentor.",
+        "Je werkt rechtstreeks met de oprichter aan de hele go-to-market: je vertelt het verhaal van Rotasal via content en campagnes, en zet dat om in pipeline via research, outreach en demo's. Je ziet wat elk onderdeel daadwerkelijk voor het bedrijf doet.",
       ],
       responsibilities: [
-        "Je onderzoekt prospects en bouwt schone, goed gekwalificeerde lijsten.",
-        "Je stelt outreach en follow-ups op en houdt het CRM bij.",
+        "Je schrijft en publiceert content: socialposts, casestudy's en teksten voor landingspagina's.",
+        "Je helpt campagnes plannen, houdt de analytics in de gaten en rapporteert helder wat werkt.",
+        "Je onderzoekt prospects, stelt outreach en follow-ups op en houdt het CRM schoon.",
         "Je schuift aan bij demo's en calls, maakt notities en pakt de opvolging op.",
       ],
       requirements: [
-        "Je studeert bedrijfskunde, economie of een verwante richting — of hebt een vergelijkbare staat van dienst.",
-        "Vloeiend Engels; extra talen zijn welkom.",
+        "Je studeert marketing, bedrijfskunde, communicatie of een verwante richting — of hebt een vergelijkbare staat van dienst.",
+        "Sterke schrijfvaardigheid en vloeiend Engels; extra talen zijn welkom.",
         "Georganiseerd, volhardend en niet bang om mensen te benaderen.",
         "Je kunt dagelijks een paar uur overlappen met de werktijden van het team.",
       ],
       niceToHave: [
-        "Ervaring met klantcontact (sales, support, horeca).",
-        "Interesse in logistiek of B2B-software.",
+        "Designvaardigheden (Figma of Canva), korte video's of ervaring met klantcontact.",
+        "Interesse in B2B-software of logistiek.",
       ],
     },
     tr: {
-      title: "Satış Stajyeri",
+      title: "Pazarlama ve Satış Stajyeri",
       summary:
-        "B2B satışı ilk aramadan kapanışa kadar öğren: araştırma, ulaşım ve kurucunun yanında demolar.",
+        "Rotasal'ı teslimat operatörlerine ulaştırmaya yardım et: bir yanda içerik ve kampanyalar, diğer yanda müşteri araştırması ve demolar.",
       intro: [
         companyIntro.tr,
-        "Yeni müşteri kazanımını uçtan uca destekleyeceksin: teslimat ve lojistik şirketlerini haritalamak, potansiyel müşterileri araştırmak, ulaşım mesajları hazırlamak, demolara katılmak ve satış hattını temiz tutmak — kurucu da mentorun olacak.",
+        "Go-to-market'ın tamamında doğrudan kurucuyla çalışacaksın: Rotasal'ın hikâyesini içerik ve kampanyalarla anlatacak; araştırma, ulaşım ve demolarla bunu satış hattına dönüştüreceksin. Her parçanın işe gerçekte ne kattığını göreceksin.",
       ],
       responsibilities: [
-        "Potansiyel müşterileri araştıracak; temiz, iyi nitelendirilmiş listeler oluşturacaksın.",
-        "Ulaşım mesajları ve takipleri hazırlayacak, CRM'i güncel tutacaksın.",
+        "İçerik yazıp yayınlayacaksın: sosyal medya paylaşımları, vaka çalışmaları ve açılış sayfası metinleri.",
+        "Kampanyaların planlanmasına yardım edecek, analitiği takip edecek ve neyin işe yaradığını net raporlayacaksın.",
+        "Potansiyel müşterileri araştıracak, ulaşım mesajları ve takipleri hazırlayacak, CRM'i temiz tutacaksın.",
         "Demolara ve görüşmelere katılacak, not tutacak ve takibi sahipleneceksin.",
       ],
       requirements: [
-        "İşletme, ekonomi ya da ilgili bir alanda öğrenim görüyor olmak — ya da buna denk bir birikim.",
-        "Akıcı İngilizce; ek diller memnuniyetle karşılanır.",
+        "Pazarlama, işletme, iletişim ya da ilgili bir alanda öğrenim görüyor olmak — ya da buna denk bir birikim.",
+        "Güçlü yazma becerisi ve akıcı İngilizce; ek diller memnuniyetle karşılanır.",
         "Düzenli, azimli ve insanlara ulaşmaktan çekinmeyen biri olmak.",
         "Günde birkaç saat ekibin çalışma saatleriyle örtüşebilmek.",
       ],
       niceToHave: [
-        "Müşteriyle temas gerektiren herhangi bir deneyim (satış, destek, hizmet sektörü).",
-        "Lojistiğe veya B2B yazılımına ilgi.",
+        "Tasarım becerileri (Figma veya Canva), kısa video ya da müşteriyle temas deneyimi.",
+        "B2B yazılımına veya lojistiğe ilgi.",
       ],
     },
   },
@@ -442,6 +339,5 @@ export const salesIntern = {
 export const internshipOpenings = [
   softwareEngineeringIntern,
   designIntern,
-  marketingIntern,
-  salesIntern,
+  marketingAndSalesIntern,
 ] as const satisfies readonly Opening[];
