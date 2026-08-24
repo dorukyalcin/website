@@ -41,15 +41,58 @@ export function monthlySalary(amountUsd: number): OpeningSalary {
 
 // --- Shared application questions -----------------------------------------
 
+export const workModeQuestion = {
+  id: "work-mode",
+  type: "select",
+  required: true,
+  label: {
+    en: "How would you prefer to work?",
+    de: "Wie möchtest du am liebsten arbeiten?",
+    nl: "Hoe werk je het liefst?",
+    tr: "Nasıl çalışmayı tercih edersin?",
+  },
+  options: [
+    {
+      value: "onsite",
+      label: {
+        en: "In person — Palo Alto, CA",
+        de: "Vor Ort — Palo Alto, Kalifornien",
+        nl: "Op locatie — Palo Alto, Californië",
+        tr: "Ofiste — Palo Alto, Kaliforniya",
+      },
+    },
+    {
+      value: "remote",
+      label: {
+        en: "Remote",
+        de: "Remote",
+        nl: "Remote",
+        tr: "Uzaktan",
+      },
+    },
+    {
+      value: "flexible",
+      label: {
+        en: "Either works for me",
+        de: "Beides ist für mich in Ordnung",
+        nl: "Beide zijn prima",
+        tr: "İkisi de olur",
+      },
+    },
+  ],
+} as const satisfies OpeningQuestion;
+
+// Only relevant when the candidate wants to work in person in the US.
 export const visaQuestion = {
   id: "visa-sponsorship",
   type: "select",
   required: true,
+  showIf: { questionId: "work-mode", anyOf: ["onsite", "flexible"] },
   label: {
-    en: "Will you need US visa sponsorship for this role?",
-    de: "Benötigst du für diese Stelle ein US-Visum-Sponsoring?",
-    nl: "Heb je voor deze rol sponsoring van een Amerikaans visum nodig?",
-    tr: "Bu rol için ABD vize sponsorluğuna ihtiyacın olacak mı?",
+    en: "Would you need US visa sponsorship to work in Palo Alto?",
+    de: "Bräuchtest du ein US-Visum-Sponsoring, um in Palo Alto zu arbeiten?",
+    nl: "Heb je sponsoring van een Amerikaans visum nodig om in Palo Alto te werken?",
+    tr: "Palo Alto'da çalışmak için ABD vize sponsorluğuna ihtiyacın olur mu?",
   },
   options: [
     {
@@ -73,63 +116,127 @@ export const visaQuestion = {
   ],
 } as const satisfies OpeningQuestion;
 
-export const startDateQuestion = {
-  id: "start-date",
+export const currentLocationQuestion = {
+  id: "current-location",
   type: "text",
-  required: false,
+  required: true,
   label: {
-    en: "When could you start?",
-    de: "Wann könntest du anfangen?",
-    nl: "Wanneer zou je kunnen beginnen?",
-    tr: "Ne zaman başlayabilirsin?",
+    en: "Where are you currently based? (city, country)",
+    de: "Wo lebst du derzeit? (Stadt, Land)",
+    nl: "Waar woon je op dit moment? (stad, land)",
+    tr: "Şu anda nerede yaşıyorsun? (şehir, ülke)",
   },
 } as const satisfies OpeningQuestion;
 
-export const relocationQuestion = {
-  id: "relocation",
+export const experienceQuestion = {
+  id: "experience",
   type: "select",
   required: true,
   label: {
-    en: "Are you able to work on-site in Palo Alto, CA?",
-    de: "Kannst du vor Ort in Palo Alto, Kalifornien arbeiten?",
-    nl: "Kun je op locatie in Palo Alto, Californië werken?",
-    tr: "Palo Alto, Kaliforniya'da ofiste çalışabilir misin?",
+    en: "How many years of relevant experience do you have?",
+    de: "Wie viele Jahre relevante Erfahrung hast du?",
+    nl: "Hoeveel jaar relevante ervaring heb je?",
+    tr: "Kaç yıllık ilgili deneyimin var?",
   },
   options: [
     {
-      value: "local",
-      label: {
-        en: "Yes — I'm already in the Bay Area",
-        de: "Ja — ich bin bereits in der Bay Area",
-        nl: "Ja — ik woon al in de Bay Area",
-        tr: "Evet — zaten Bay Area'dayım",
-      },
+      value: "0-2",
+      label: { en: "0–2 years", de: "0–2 Jahre", nl: "0–2 jaar", tr: "0–2 yıl" },
     },
     {
-      value: "relocate",
-      label: {
-        en: "Yes — I'm willing to relocate",
-        de: "Ja — ich bin bereit umzuziehen",
-        nl: "Ja — ik ben bereid te verhuizen",
-        tr: "Evet — taşınmaya hazırım",
-      },
+      value: "3-5",
+      label: { en: "3–5 years", de: "3–5 Jahre", nl: "3–5 jaar", tr: "3–5 yıl" },
     },
     {
-      value: "no",
+      value: "6-10",
+      label: { en: "6–10 years", de: "6–10 Jahre", nl: "6–10 jaar", tr: "6–10 yıl" },
+    },
+    {
+      value: "10+",
       label: {
-        en: "No",
-        de: "Nein",
-        nl: "Nee",
-        tr: "Hayır",
+        en: "More than 10 years",
+        de: "Mehr als 10 Jahre",
+        nl: "Meer dan 10 jaar",
+        tr: "10 yıldan fazla",
       },
     },
   ],
 } as const satisfies OpeningQuestion;
 
+export const noticePeriodQuestion = {
+  id: "start-date",
+  type: "text",
+  required: false,
+  label: {
+    en: "When could you start? (notice period, if any)",
+    de: "Wann könntest du anfangen? (ggf. Kündigungsfrist)",
+    nl: "Wanneer zou je kunnen beginnen? (eventuele opzegtermijn)",
+    tr: "Ne zaman başlayabilirsin? (varsa ihbar süren)",
+  },
+} as const satisfies OpeningQuestion;
+
+export const hearAboutQuestion = {
+  id: "hear-about-us",
+  type: "select",
+  required: false,
+  label: {
+    en: "How did you hear about us?",
+    de: "Wie bist du auf uns aufmerksam geworden?",
+    nl: "Hoe heb je over ons gehoord?",
+    tr: "Bizi nereden duydun?",
+  },
+  options: [
+    {
+      value: "linkedin",
+      label: { en: "LinkedIn", de: "LinkedIn", nl: "LinkedIn", tr: "LinkedIn" },
+    },
+    {
+      value: "instagram",
+      label: { en: "Instagram", de: "Instagram", nl: "Instagram", tr: "Instagram" },
+    },
+    {
+      value: "referral",
+      label: {
+        en: "A friend or colleague",
+        de: "Über Freunde oder Kollegen",
+        nl: "Via een vriend of collega",
+        tr: "Bir arkadaş ya da meslektaş",
+      },
+    },
+    {
+      value: "job-board",
+      label: {
+        en: "A job board",
+        de: "Über eine Jobbörse",
+        nl: "Via een vacaturesite",
+        tr: "Bir iş ilanı sitesi",
+      },
+    },
+    {
+      value: "other",
+      label: { en: "Other", de: "Anders", nl: "Anders", tr: "Diğer" },
+    },
+  ],
+} as const satisfies OpeningQuestion;
+
+export const educationQuestion = {
+  id: "education",
+  type: "text",
+  required: true,
+  label: {
+    en: "Where do you study, and in which program and year?",
+    de: "Wo studierst du, und in welchem Studiengang und Jahr?",
+    nl: "Waar studeer je, en in welke opleiding en welk jaar?",
+    tr: "Nerede, hangi bölümde ve kaçıncı sınıfta okuyorsun?",
+  },
+} as const satisfies OpeningQuestion;
+
+// Only relevant when the candidate wants to work remotely.
 export const timezoneQuestion = {
   id: "timezone",
   type: "select",
   required: true,
+  showIf: { questionId: "work-mode", anyOf: ["remote", "flexible"] },
   label: {
     en: "Which time zone are you based in?",
     de: "In welcher Zeitzone arbeitest du?",
@@ -192,12 +299,21 @@ export const portfolioQuestion = {
 } as const satisfies OpeningQuestion;
 
 export const fullTimeQuestions = [
-  relocationQuestion,
+  workModeQuestion,
   visaQuestion,
-  startDateQuestion,
+  timezoneQuestion,
+  currentLocationQuestion,
+  experienceQuestion,
+  noticePeriodQuestion,
+  hearAboutQuestion,
 ] as const;
 
 export const internshipQuestions = [
+  workModeQuestion,
+  visaQuestion,
   timezoneQuestion,
+  currentLocationQuestion,
+  educationQuestion,
   internshipDatesQuestion,
+  hearAboutQuestion,
 ] as const;

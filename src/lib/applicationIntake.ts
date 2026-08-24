@@ -1,6 +1,7 @@
 import { isLocale, type Locale } from "@/lib/i18n";
 import {
   getOpeningBySlug,
+  isQuestionActive,
   type Opening,
   type OpeningQuestion,
 } from "@/lib/openings";
@@ -95,8 +96,14 @@ export function validateApplicationIntake(
     invalidFields.push("consent");
   }
 
+  // Conditional questions are validated in declaration order: a question
+  // hidden by its condition is skipped entirely, and any answer submitted
+  // for it is dropped.
   const answers: Record<string, string> = {};
   for (const question of opening.questions) {
+    if (!isQuestionActive(question, answers)) {
+      continue;
+    }
     const result = validateAnswer(
       question,
       fields.questionAnswers[question.id],

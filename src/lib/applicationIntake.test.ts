@@ -101,6 +101,57 @@ test("enforces required custom questions and select option values", () => {
   }
 });
 
+test("conditional questions are required only when their condition matches", () => {
+  assert.ok(openOpening);
+  const conditional = openOpening.questions.find(
+    (question) => question.showIf && question.required,
+  );
+  if (!conditional?.showIf) {
+    return;
+  }
+  const parent = openOpening.questions.find(
+    (question) => question.id === conditional.showIf?.questionId,
+  );
+  assert.ok(parent?.options);
+  const activating = conditional.showIf.anyOf[0];
+  const deactivating = parent.options.find(
+    (option) => !conditional.showIf?.anyOf.includes(option.value),
+  )?.value;
+  assert.ok(deactivating, "expected an option that hides the conditional question");
+
+  const withoutConditional = { ...baseFields().questionAnswers };
+  delete withoutConditional[conditional.id];
+
+  // Hidden: the missing answer is fine, and a stale answer is dropped.
+  const hidden = validateApplicationIntake(
+    baseFields({
+      questionAnswers: { ...withoutConditional, [parent.id]: deactivating },
+    }),
+  );
+  assert.ok(hidden.ok);
+  assert.equal(conditional.id in hidden.answers, false);
+
+  const stale = validateApplicationIntake(baseFields({
+    questionAnswers: {
+      ...baseFields().questionAnswers,
+      [parent.id]: deactivating,
+    },
+  }));
+  assert.ok(stale.ok);
+  assert.equal(conditional.id in stale.answers, false);
+
+  // Shown: the answer becomes required.
+  const shown = validateApplicationIntake(
+    baseFields({
+      questionAnswers: { ...withoutConditional, [parent.id]: activating },
+    }),
+  );
+  assert.equal(shown.ok, false);
+  if (!shown.ok) {
+    assert.deepEqual(shown.fields, [`question:${conditional.id}`]);
+  }
+});
+
 test("ignores answers for unknown question ids", () => {
   const result = validateApplicationIntake(
     baseFields({

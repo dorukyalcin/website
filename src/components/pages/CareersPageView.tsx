@@ -111,8 +111,8 @@ export function CareersPageView({ locale }: CareersPageViewProps) {
       : page.hero.openCountMany.replace("{count}", String(openings.length));
 
   const facts = [
-    page.hero.facts.fullTime,
     page.hero.facts.internships,
+    page.hero.facts.fullTime,
     ...(deadline
       ? [
           {

@@ -61,6 +61,32 @@ test("custom question ids are unique with complete locale labels", () => {
   }
 });
 
+test("conditional questions reference an earlier select question and its real options", () => {
+  for (const opening of openings) {
+    opening.questions.forEach((question, index) => {
+      if (!question.showIf) {
+        return;
+      }
+      const target = opening.questions
+        .slice(0, index)
+        .find((candidate) => candidate.id === question.showIf?.questionId);
+      assert.ok(
+        target,
+        `${opening.slug}/${question.id} depends on a question that does not precede it`,
+      );
+      assert.equal(target.type, "select");
+      const optionValues = (target.options ?? []).map((option) => option.value);
+      assert.ok(question.showIf.anyOf.length > 0);
+      for (const value of question.showIf.anyOf) {
+        assert.ok(
+          optionValues.includes(value),
+          `${opening.slug}/${question.id} condition uses unknown value ${value}`,
+        );
+      }
+    });
+  }
+});
+
 test("opening dates are ISO formatted", () => {
   for (const opening of openings) {
     assert.match(opening.postedAt, /^\d{4}-\d{2}-\d{2}$/);

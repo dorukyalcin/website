@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { getDictionary, type Locale } from "@/lib/i18n";
-import type { Opening } from "@/lib/openings";
+import { isQuestionActive, type Opening } from "@/lib/openings";
 import { useTurnstile } from "@/components/useTurnstile";
 
 const CV_MAX_BYTES = 5 * 1024 * 1024;
@@ -97,7 +97,14 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
   const [errorCode, setErrorCode] = useState<SubmitErrorCode | null>(null);
   const [invalidFields, setInvalidFields] = useState<readonly string[]>([]);
   const [cvName, setCvName] = useState<string | null>(null);
+  // Select answers are tracked so conditional questions can appear or
+  // disappear based on earlier choices.
+  const [selectAnswers, setSelectAnswers] = useState<Record<string, string>>({});
   const turnstile = useTurnstile();
+
+  const visibleQuestions = opening.questions.filter((question) =>
+    isQuestionActive(question, selectAnswers),
+  );
 
   const inputClassName = (field: string) =>
     `${inputBaseClassName} ${
@@ -282,7 +289,7 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
 
       <GroupLabel>{form.groups.questions}</GroupLabel>
 
-      {opening.questions.map((question) => {
+      {visibleQuestions.map((question) => {
         const fieldName = `question:${question.id}`;
         return (
           <div key={question.id}>
@@ -300,9 +307,16 @@ export function ApplicationForm({ locale, opening }: ApplicationFormProps) {
                 id={fieldName}
                 name={fieldName}
                 required={question.required}
-                defaultValue=""
+                value={selectAnswers[question.id] ?? ""}
                 aria-invalid={isInvalid(fieldName)}
-                onChange={() => clearFieldError(fieldName)}
+                onChange={(event) => {
+                  const value = event.currentTarget.value;
+                  setSelectAnswers((answers) => ({
+                    ...answers,
+                    [question.id]: value,
+                  }));
+                  clearFieldError(fieldName);
+                }}
                 className={`${inputClassName(fieldName)} appearance-none cursor-pointer`}
               >
                 <option value="" disabled className="bg-black">

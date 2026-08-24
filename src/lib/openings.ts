@@ -15,11 +15,12 @@ export type EmploymentType =
 export type WorkplaceType = "REMOTE" | "HYBRID" | "ONSITE";
 
 // Teams the openings are organised under on the careers page. Internships
-// are grouped separately (by employment type) regardless of team.
+// are grouped separately (by employment type) regardless of team, and are
+// listed first.
 export const openingTeams = ["engineering", "data", "product", "gtm"] as const;
 export type OpeningTeam = (typeof openingTeams)[number];
 
-export const openingGroupKeys = [...openingTeams, "internships"] as const;
+export const openingGroupKeys = ["internships", ...openingTeams] as const;
 export type OpeningGroupKey = (typeof openingGroupKeys)[number];
 
 export type OpeningQuestionType = "text" | "textarea" | "select";
@@ -33,7 +34,26 @@ export type OpeningQuestion = {
     value: string;
     label: Record<Locale, string>;
   }[];
+  // Only shown (and validated) when an earlier select question was answered
+  // with one of the listed values.
+  showIf?: {
+    questionId: string;
+    anyOf: readonly string[];
+  };
 };
+
+// A question is active for a given set of answers when it has no condition
+// or its condition matches the (raw) answer to the referenced question.
+export function isQuestionActive(
+  question: OpeningQuestion,
+  answers: Record<string, string | undefined>,
+): boolean {
+  if (!question.showIf) {
+    return true;
+  }
+  const value = answers[question.showIf.questionId];
+  return value !== undefined && question.showIf.anyOf.includes(value);
+}
 
 export type OpeningLocaleContent = {
   title: string;
