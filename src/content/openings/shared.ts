@@ -13,7 +13,7 @@ export const companyIntro: Record<Locale, string> = {
 // Dates shared by the current hiring round (see the "Join Avernsys" flier).
 export const hiringRound = {
   postedAt: "2026-08-17",
-  applyBy: "2026-09-01",
+  applyBy: "2026-10-01",
 } as const;
 
 // Full-time roles are on-site at the Palo Alto office.
