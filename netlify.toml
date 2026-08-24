@@ -1,0 +1,6 @@
+# Netlify runs API routes as serverless functions: CVs are stored in Netlify
+# Blobs (see src/lib/uploads.ts) and the database is Postgres via
+# DATABASE_URL / NETLIFY_DATABASE_URL. Migrations run during the build, when
+# a database is configured.
+[build]
+  command = "node scripts/migrate.mjs --if-configured && npm run build"

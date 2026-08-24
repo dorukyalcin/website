@@ -26,9 +26,16 @@ async function connectWithRetry(databaseUrl) {
 }
 
 async function main() {
-  const databaseUrl = process.env.DATABASE_URL;
+  const databaseUrl =
+    process.env.DATABASE_URL || process.env.NETLIFY_DATABASE_URL;
   if (!databaseUrl) {
-    throw new Error("DATABASE_URL is not set");
+    // --if-configured lets the Netlify build run migrations only when a
+    // database is attached, without failing deploys of a database-less site.
+    if (process.argv.includes("--if-configured")) {
+      console.warn("migrate: no database configured, skipping");
+      return;
+    }
+    throw new Error("DATABASE_URL / NETLIFY_DATABASE_URL is not set");
   }
 
   const client = await connectWithRetry(databaseUrl);
