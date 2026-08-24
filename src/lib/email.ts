@@ -2,14 +2,21 @@ import type { Application } from "@/lib/applications";
 import { getDictionary, isLocale, defaultLocale, type Locale } from "@/lib/i18n";
 import type { Opening } from "@/lib/openings";
 import { siteConfig } from "@/lib/seo";
+import { readCv } from "@/lib/uploads";
 
 const RESEND_URL = "https://api.resend.com/emails";
+
+type EmailAttachment = {
+  filename: string;
+  content: string; // base64
+};
 
 type EmailMessage = {
   to: string;
   subject: string;
   text: string;
   replyTo?: string;
+  attachments?: EmailAttachment[];
 };
 
 // Skips (with a warning) when Resend is not configured, so local dev and
@@ -37,6 +44,9 @@ async function sendEmail(message: EmailMessage): Promise<boolean> {
       subject: message.subject,
       text: message.text,
       ...(message.replyTo ? { reply_to: [message.replyTo] } : {}),
+      ...(message.attachments?.length
+        ? { attachments: message.attachments }
+        : {}),
     }),
   });
 
@@ -144,10 +154,26 @@ export async function sendAdminNotification(
     `Review: ${siteConfig.url}/admin/applications/${application.id}`,
   ].filter((line): line is string => line !== null);
 
+  // Attach the CV so the inbox alone is a complete record of the
+  // application; a read failure downgrades to the plain notification.
+  let attachments: EmailAttachment[] | undefined;
+  try {
+    const cv = await readCv(application.cvStoredFilename);
+    attachments = [
+      {
+        filename: application.cvOriginalFilename,
+        content: cv.toString("base64"),
+      },
+    ];
+  } catch (error) {
+    console.warn("email: could not attach CV, sending without it", error);
+  }
+
   await sendEmail({
     to,
     subject: `New application: ${application.name} — ${title}`,
     text: lines.join("\n"),
     replyTo: application.email,
+    attachments,
   });
 }
