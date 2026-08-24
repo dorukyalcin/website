@@ -80,14 +80,12 @@ test("lookup helpers find openings by slug and filter by status", () => {
   }
 });
 
-test("every opening belongs to a known team and carries a salary", () => {
+test("every opening belongs to a known team with coherent dates", () => {
   for (const opening of openings) {
     assert.ok(
       (openingTeams as readonly string[]).includes(opening.team),
       `${opening.slug} has unknown team ${opening.team}`,
     );
-    assert.ok(opening.salary, `${opening.slug} is missing a salary`);
-    assert.ok(opening.salary.min > 0 && opening.salary.max >= opening.salary.min);
     if (opening.validThrough) {
       assert.ok(
         opening.validThrough > opening.postedAt,
@@ -97,32 +95,36 @@ test("every opening belongs to a known team and carries a salary", () => {
   }
 });
 
-test("on-site roles are placed in Palo Alto and internships are remote worldwide", () => {
+test("on-site roles are salaried in Palo Alto; internships are unpaid remote worldwide", () => {
   for (const opening of openings) {
     if (opening.employmentType === "INTERN") {
       assert.equal(opening.workplaceType, "REMOTE");
       assert.equal(opening.remoteEligibleRegions, "WORLDWIDE");
-      assert.equal(opening.salary?.unitText, "MONTH");
+      assert.equal(opening.salary, undefined, `${opening.slug} interns are unpaid`);
       assert.equal(getOpeningGroupKey(opening), "internships");
     } else {
       assert.equal(opening.workplaceType, "ONSITE");
       assert.equal(opening.city, "Palo Alto");
       assert.equal(opening.region, "CA");
       assert.equal(opening.countryCode, "US");
-      assert.equal(opening.salary?.unitText, "YEAR");
+      assert.ok(opening.salary, `${opening.slug} is missing a salary`);
+      assert.equal(opening.salary.unitText, "YEAR");
+      assert.ok(
+        opening.salary.min > 0 && opening.salary.max >= opening.salary.min,
+      );
       assert.equal(getOpeningGroupKey(opening), opening.team);
     }
   }
 });
 
-test("open positions group in canonical order and cover every group", () => {
+test("open positions group in canonical order without empty groups", () => {
   const groups = getOpenOpeningGroups();
   const keys = groups.map((group) => group.key);
   assert.deepEqual(
     keys,
     openingGroupKeys.filter((key) => keys.includes(key)),
   );
-  assert.deepEqual(keys, [...openingGroupKeys]);
+  assert.ok(groups.every((group) => group.openings.length > 0));
   const total = groups.reduce((sum, group) => sum + group.openings.length, 0);
   assert.equal(total, getOpenOpenings().length);
 });

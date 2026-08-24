@@ -1,7 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import { engineeringOpenings } from "@/content/openings/engineering";
 import { dataOpenings } from "@/content/openings/data";
-import { productOpenings } from "@/content/openings/product";
 import { gtmOpenings } from "@/content/openings/gtm";
 import { internshipOpenings } from "@/content/openings/internships";
 
@@ -76,7 +75,6 @@ export type Opening = {
 export const openings: readonly Opening[] = [
   ...engineeringOpenings,
   ...dataOpenings,
-  ...productOpenings,
   ...gtmOpenings,
   ...internshipOpenings,
 ];
