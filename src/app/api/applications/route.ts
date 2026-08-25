@@ -1,18 +1,10 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { validateApplicationIntake } from "@/lib/applicationIntake";
-import { insertApplication } from "@/lib/applications";
 import { sendAdminNotification, sendCandidateConfirmation } from "@/lib/email";
 import { isRateLimited } from "@/lib/rateLimit";
 import { verifyTurnstileToken } from "@/lib/turnstile";
-import {
-  CV_MAX_BYTES,
-  deleteCv,
-  isPdf,
-  sanitizeOriginalFilename,
-  saveCv,
-  storedCvFilename,
-} from "@/lib/uploads";
+import { CV_MAX_BYTES, isPdf, sanitizeOriginalFilename } from "@/lib/uploads";
 
 export const runtime = "nodejs";
 
@@ -37,6 +29,8 @@ function formString(formData: FormData, key: string): string {
   return typeof value === "string" ? value : "";
 }
 
+// Applications are not stored anywhere: the admin-notification email (CV
+// attached) is the record, so sending it decides success or failure.
 export async function POST(request: NextRequest) {
   const contentLength = Number(request.headers.get("content-length") ?? "0");
   if (contentLength > MAX_REQUEST_BYTES) {
@@ -97,48 +91,33 @@ export async function POST(request: NextRequest) {
     return error(400, "cv_type", ["cv"]);
   }
 
-  const id = randomUUID();
-  const cvStoredFilename = storedCvFilename(id);
+  const application = {
+    id: randomUUID(),
+    openingSlug: intake.opening.slug,
+    locale: intake.locale,
+    name: intake.name,
+    email: intake.email,
+    phone: intake.phone,
+    link: intake.link,
+    motivation: intake.motivation,
+    answers: intake.answers,
+    cvOriginalFilename: sanitizeOriginalFilename(cv.name),
+    cvSizeBytes: cvBuffer.length,
+  };
 
   try {
-    await saveCv(id, cvBuffer);
+    await sendAdminNotification(application, intake.opening, cvBuffer);
   } catch (err) {
-    console.error("applications: failed to store CV", err);
+    console.error("applications: failed to send notification email", err);
     return error(500, "generic");
   }
 
-  let application;
+  // Best-effort: the candidate confirmation must not fail a delivered
+  // application. Awaited because serverless runtimes freeze after respond.
   try {
-    application = await insertApplication({
-      id,
-      openingSlug: intake.opening.slug,
-      locale: intake.locale,
-      name: intake.name,
-      email: intake.email,
-      phone: intake.phone,
-      link: intake.link,
-      motivation: intake.motivation,
-      answers: intake.answers,
-      cvOriginalFilename: sanitizeOriginalFilename(cv.name),
-      cvStoredFilename,
-      cvSizeBytes: cvBuffer.length,
-      consentedAt: new Date(),
-    });
+    await sendCandidateConfirmation(application, intake.opening);
   } catch (err) {
-    console.error("applications: failed to insert application", err);
-    await deleteCv(cvStoredFilename).catch(() => {});
-    return error(500, "generic");
-  }
-
-  // Email failures are logged but never fail a stored application.
-  const emailResults = await Promise.allSettled([
-    sendAdminNotification(application, intake.opening),
-    sendCandidateConfirmation(application, intake.opening),
-  ]);
-  for (const result of emailResults) {
-    if (result.status === "rejected") {
-      console.error("applications: email failed", result.reason);
-    }
+    console.error("applications: confirmation email failed", err);
   }
 
   return NextResponse.json({ id: application.id }, { status: 201 });

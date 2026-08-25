@@ -1,8 +1,21 @@
-import type { Application } from "@/lib/applications";
 import { getDictionary, isLocale, defaultLocale, type Locale } from "@/lib/i18n";
 import type { Opening } from "@/lib/openings";
-import { siteConfig } from "@/lib/seo";
-import { readCv } from "@/lib/uploads";
+
+// The submission pipeline is email-only: an application exists as the
+// admin-notification email (CV attached), nothing is stored server-side.
+export type ApplicationEmail = {
+  id: string;
+  openingSlug: string;
+  locale: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  link: string | null;
+  motivation: string | null;
+  answers: Record<string, string>;
+  cvOriginalFilename: string;
+  cvSizeBytes: number;
+};
 
 const RESEND_URL = "https://api.resend.com/emails";
 
@@ -64,7 +77,7 @@ function fillTemplate(template: string, values: Record<string, string>) {
 }
 
 export async function sendCandidateConfirmation(
-  application: Application,
+  application: ApplicationEmail,
   opening: Opening,
 ): Promise<void> {
   const locale: Locale = isLocale(application.locale)
@@ -124,14 +137,17 @@ export async function sendContactEmail(message: {
   });
 }
 
+// This email IS the application record — there is no database — so any
+// configuration or delivery problem must throw, making the submission fail
+// visibly instead of silently dropping a candidate.
 export async function sendAdminNotification(
-  application: Application,
+  application: ApplicationEmail,
   opening: Opening,
+  cv: Buffer,
 ): Promise<void> {
   const to = process.env.APPLICATIONS_NOTIFY_EMAIL;
   if (!to) {
-    console.warn("email: APPLICATIONS_NOTIFY_EMAIL not configured, skipping notification");
-    return;
+    throw new Error("email: APPLICATIONS_NOTIFY_EMAIL not configured");
   }
 
   const title = opening.content[defaultLocale].title;
@@ -142,6 +158,7 @@ export async function sendAdminNotification(
   const lines = [
     `New application for ${title} (${application.openingSlug})`,
     "",
+    `Reference: ${application.id}`,
     `Name: ${application.name}`,
     `Email: ${application.email}`,
     application.phone ? `Phone: ${application.phone}` : null,
@@ -150,30 +167,22 @@ export async function sendAdminNotification(
     answers ? `\nAnswers:\n${answers}` : null,
     application.motivation ? `\nMotivation:\n${application.motivation}` : null,
     "",
-    `CV: ${application.cvOriginalFilename} (${Math.round(application.cvSizeBytes / 1024)} kB)`,
-    `Review: ${siteConfig.url}/admin/applications/${application.id}`,
+    `CV: ${application.cvOriginalFilename} (${Math.round(application.cvSizeBytes / 1024)} kB), attached`,
   ].filter((line): line is string => line !== null);
 
-  // Attach the CV so the inbox alone is a complete record of the
-  // application; a read failure downgrades to the plain notification.
-  let attachments: EmailAttachment[] | undefined;
-  try {
-    const cv = await readCv(application.cvStoredFilename);
-    attachments = [
-      {
-        filename: application.cvOriginalFilename,
-        content: cv.toString("base64"),
-      },
-    ];
-  } catch (error) {
-    console.warn("email: could not attach CV, sending without it", error);
-  }
-
-  await sendEmail({
+  const sent = await sendEmail({
     to,
     subject: `New application: ${application.name} — ${title}`,
     text: lines.join("\n"),
     replyTo: application.email,
-    attachments,
+    attachments: [
+      {
+        filename: application.cvOriginalFilename,
+        content: cv.toString("base64"),
+      },
+    ],
   });
+  if (!sent) {
+    throw new Error("email: RESEND_API_KEY/APPLICATIONS_FROM_EMAIL not configured");
+  }
 }
